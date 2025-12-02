@@ -1,15 +1,21 @@
-# Frontend env
-frontend/.env
-frontend/.env.local
-
-# Backend env
+# Environment files
+.env
 backend/.env
-backend/.env.local
+frontend/.env
+*.env
 
 # Node modules
-frontend/node_modules
-backend/node_modules
+node_modules/
+frontend/node_modules/
+backend/node_modules/
 
-# Build folders
-frontend/dist
-backend/__pycache__
+# Build files
+dist/
+frontend/dist/
+backend/dist/
+
+# Python cache
+backend/_pycache_/
+
+# Capacitor Android build
+android/
