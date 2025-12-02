@@ -1,0 +1,141 @@
+{
+  "appName": "AgriSat",
+
+  "menu": {
+    "darkMode": "डार्क मोड",
+    "lightMode": "लाइट मोड",
+    "language": "भाषा",
+    "feedback": "फीडबैक दें",
+    "creator": "निर्माता के बारे में"
+  },
+
+  "languages": {
+    "en": "English",
+    "hi": "हिन्दी",
+    "or": "ओड़िया"
+  },
+
+  "dashboard": {
+    "weather": "मौसम",
+    "startPrecision": "सटीक खेती शुरू करें",
+    "startPrecisionSub": "NDVI और खेत की स्वास्थ्य जानकारी पाने के लिए अपना खेत जोड़ें।",
+    "addField": "+ खेत जोड़ें",
+    "healCrop": "फसल ठीक करें",
+    "takePicture": "तस्वीर लें",
+    "seeDiagnosis": "निदान देखें",
+    "getMedicine": "दवा प्राप्त करें",
+    "yourCrops": "आपकी फसलें"
+  },
+
+  "weatherPage": {
+    "todayWeather": "आज का मौसम",
+    "humidity": "नमी",
+    "wind": "हवा",
+    "pressure": "दबाव",
+    "sunrise": "सूर्योदय",
+    "sunset": "सूर्यास्त",
+    "hourlyForecast": "प्रति घंटे का पूर्वानुमान",
+    "weeklyForecast": "साप्ताहिक पूर्वानुमान"
+  },
+
+  "ndvi": {
+    "title": "NDVI मानचित्र",
+    "farmList": "आपके खेत",
+    "selectFarm": "खेत चुनें",
+    "analyze": "NDVI विश्लेषण",
+    "result": "NDVI परिणाम",
+    "noResult": "अभी कोई परिणाम नहीं। विश्लेषण के लिए खेत चुनें।",
+    "mean": "NDVI औसत",
+    "source": "स्रोत"
+  },
+
+  "farmInsights": {
+    "title": "खेत जानकारी",
+    "soilMoisture": "मृदा नमी",
+    "rainfall": "वर्षा",
+    "cropHealth": "फसल स्वास्थ्य",
+    "temperature": "तापमान",
+    "noData": "इस खेत के लिए कोई जानकारी उपलब्ध नहीं।"
+  },
+
+  "selectCrops": {
+    "title": "अपनी फसल चुनें",
+    "selected": "चयनित",
+    "chooseCrop": "फसल चुनें",
+    "next": "आगे बढ़ें"
+  },
+
+  "fertilizer": {
+    "title": "उर्वरक कैलकुलेटर",
+    "nitrogen": "नाइट्रोजन (N)",
+    "phosphorus": "फॉस्फोरस (P)",
+    "potassium": "पोटैशियम (K)",
+    "calculate": "गणना करें"
+  },
+
+  "pests": {
+    "title": "कीट एवं रोग",
+    "search": "कीट खोजें",
+    "commonPests": "सामान्य कीट",
+    "symptoms": "लक्षण",
+    "treatment": "उपचार"
+  },
+
+  "cultivationTips": {
+    "title": "खेती सुझाव",
+    "selectCrop": "फसल चुनें",
+    "videoTutorial": "वीडियो ट्यूटोरियल",
+    "soilPrep": "मृदा तैयारी",
+    "irrigation": "सिंचाई",
+    "fertilizer": "उर्वरक मार्गदर्शन",
+    "harvesting": "कटाई सुझाव"
+  },
+
+  "pestAlerts": {
+    "title": "कीट चेतावनी",
+    "noAlerts": "आपके क्षेत्र में कोई कीट चेतावनी नहीं है।",
+    "viewDetails": "विवरण देखें"
+  },
+
+  "marketPrices": {
+    "title": "बाजार भाव",
+    "searchCrop": "फसल खोजें",
+    "highest": "सबसे अधिक",
+    "lowest": "सबसे कम",
+    "updated": "अपडेटेड"
+  },
+
+  "govtSchemes": {
+    "title": "सरकारी योजनाएँ",
+    "state": "राज्य चुनें",
+    "loading": "योजनाएँ लोड हो रही हैं...",
+    "noSchemes": "कोई योजना नहीं मिली",
+    "details": "विवरण",
+    "apply": "अभी आवेदन करें"
+  },
+
+  "knowledgeHub": {
+    "title": "ज्ञान केंद्र",
+    "articles": "लेख",
+    "videos": "वीडियो",
+    "guides": "मार्गदर्शन"
+  },
+
+  "diagnosis": {
+    "title": "फसल निदान",
+    "upload": "छवि अपलोड करें",
+    "loading": "रोग पहचाना जा रहा है...",
+    "result": "निदान परिणाम",
+    "confidence": "विश्वास स्तर",
+    "recommended": "सुझाया गया उपचार"
+  },
+
+  "addField": {
+    "title": "खेत जोड़ें",
+    "fieldName": "खेत का नाम",
+    "latitude": "अक्षांश",
+    "longitude": "देशांतर",
+    "size": "आकार (किमी)",
+    "submit": "खेत जोड़ें"
+  }
+}

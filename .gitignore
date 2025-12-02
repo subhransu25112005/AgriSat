@@ -1,0 +1,15 @@
+# Frontend env
+frontend/.env
+frontend/.env.local
+
+# Backend env
+backend/.env
+backend/.env.local
+
+# Node modules
+frontend/node_modules
+backend/node_modules
+
+# Build folders
+frontend/dist
+backend/__pycache__

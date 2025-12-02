@@ -1,0 +1,141 @@
+{
+  "appName": "AgriSat",
+
+  "menu": {
+    "darkMode": "ଡାର୍କ ମୋଡ୍",
+    "lightMode": "ଲାଇଟ୍ ମୋଡ୍",
+    "language": "ଭାଷା",
+    "feedback": "ଫିଡ୍‌ବ୍ୟାକ୍ ଦିଅନ୍ତୁ",
+    "creator": "ନିର୍ମାତା ବିଷୟରେ"
+  },
+
+  "languages": {
+    "en": "English",
+    "hi": "ହିନ୍ଦୀ",
+    "or": "ଓଡିଆ"
+  },
+
+  "dashboard": {
+    "weather": "ଆବହାଅଵା",
+    "startPrecision": "ସଠିକ୍ ଚାଷ ଆରମ୍ଭ କରନ୍ତୁ",
+    "startPrecisionSub": "NDVI ଓ ଖେତର ସ୍ୱାସ୍ଥ୍ୟ ଦେଖିବାକୁ ଖେତ ଯୋଡନ୍ତୁ।",
+    "addField": "+ ଖେତ ଯୋଡନ୍ତୁ",
+    "healCrop": "ଫସଲ ଠିକ୍ କରନ୍ତୁ",
+    "takePicture": "ଫଟୋ ନିଅନ୍ତୁ",
+    "seeDiagnosis": "ରୋଗ ଚିହ୍ନଟ",
+    "getMedicine": "ଔଷଧ ନିଅନ୍ତୁ",
+    "yourCrops": "ଆପଣଙ୍କର ଫସଲ"
+  },
+
+  "weatherPage": {
+    "todayWeather": "ଆଜିର ଆବହାଅଵା",
+    "humidity": "ଆର୍ଦ୍ରତା",
+    "wind": "ପବନ",
+    "pressure": "ଦବନ",
+    "sunrise": "ସୂର୍ଯ୍ୟୋଦୟ",
+    "sunset": "ସୂର୍ଯ୍ୟାସ୍ତ",
+    "hourlyForecast": "ପ୍ରତିଘଣ୍ଟା ପୂର୍ବାଭାସ",
+    "weeklyForecast": "ସାପ୍ତାହିକ ପୂର୍ବାଭାସ"
+  },
+
+  "ndvi": {
+    "title": "NDVI ମାନଚିତ୍ର",
+    "farmList": "ଆପଣଙ୍କର ଖେତ",
+    "selectFarm": "ଖେତ ଚୟନ କରନ୍ତୁ",
+    "analyze": "NDVI ବିଶ୍ଳେଷଣ",
+    "result": "NDVI ଫଳାଫଳ",
+    "noResult": "ଏଯାବତ୍ କୌଣସି ଫଳ ନାହିଁ। ଖେତ ଚୟନ କରି ବିଶ୍ଳେଷଣ କରନ୍ତୁ।",
+    "mean": "NDVI ମଧ୍ୟମ",
+    "source": "ସତ୍ୟ ସ୍ତ୍ରୋତ"
+  },
+
+  "farmInsights": {
+    "title": "ଖେତ ତଥ୍ୟ",
+    "soilMoisture": "ମାଟିର ଆର୍ଦ୍ରତା",
+    "rainfall": "ବର୍ଷା",
+    "cropHealth": "ଫସଲ ସ୍ୱାସ୍ଥ୍ୟ",
+    "temperature": "ତାପମାତ୍ରା",
+    "noData": "ଏହି ଖେତ ପାଇଁ କୌଣସି ତଥ୍ୟ ନାହିଁ।"
+  },
+
+  "selectCrops": {
+    "title": "ଫସଲ ଚୟନ",
+    "selected": "ଚୟନିତ",
+    "chooseCrop": "ଫସଲ ବାଛନ୍ତୁ",
+    "next": "ଆଗକୁ"
+  },
+
+  "fertilizer": {
+    "title": "ସାର ଗଣନା",
+    "nitrogen": "ନାଇଟ୍ରୋଜେନ୍ (N)",
+    "phosphorus": "ଫସ୍‌ଫୋରସ୍ (P)",
+    "potassium": "ପୋଟାସିଅମ୍ (K)",
+    "calculate": "ଗଣନା କରନ୍ତୁ"
+  },
+
+  "pests": {
+    "title": "ପୋକା ଓ ରୋଗ",
+    "search": "ପୋକା ଖୋଜନ୍ତୁ",
+    "commonPests": "ସାଧାରଣ ପୋକା",
+    "symptoms": "ଲକ୍ଷଣ",
+    "treatment": "ଚିକିତ୍ସା"
+  },
+
+  "cultivationTips": {
+    "title": "ଚାଷ ସୁପରିସ୍",
+    "selectCrop": "ଫସଲ ବାଛନ୍ତୁ",
+    "videoTutorial": "ଭିଡିଓ ଶିକ୍ଷା",
+    "soilPrep": "ମାଟି ପ୍ରସ୍ତୁତି",
+    "irrigation": "ସିଚାଇ",
+    "fertilizer": "ସାର ପରାମର୍ଶ",
+    "harvesting": "କଟାଇ ସୁପରିସ୍"
+  },
+
+  "pestAlerts": {
+    "title": "ପୋକା ସତର୍କ",
+    "noAlerts": "ଆପଣଙ୍କ ଅଞ୍ଚଳରେ କୌଣସି ସତର୍କବାଣୀ ନାହିଁ।",
+    "viewDetails": "ବିବରଣୀ ଦେଖନ୍ତୁ"
+  },
+
+  "marketPrices": {
+    "title": "ବଜାର ଦର",
+    "searchCrop": "ଫସଲ ଖୋଜନ୍ତୁ",
+    "highest": "ସର୍ବାଧିକ",
+    "lowest": "ସର୍ବନିମ୍ନ",
+    "updated": "ଅଦ୍ୟତନ"
+  },
+
+  "govtSchemes": {
+    "title": "ସରକାରୀ ଯୋଜନା",
+    "state": "ରାଜ୍ୟ ବାଛନ୍ତୁ",
+    "loading": "ଯୋଜନା ଲୋଡ୍ ହେଉଛି...",
+    "noSchemes": "କୌଣସି ଯୋଜନା ମିଳିଲା ନାହିଁ",
+    "details": "ବିବରଣୀ",
+    "apply": "ଦାଖଲ କରନ୍ତୁ"
+  },
+
+  "knowledgeHub": {
+    "title": "ଜ୍ଞାନ କେନ୍ଦ୍ର",
+    "articles": "ଲେଖା",
+    "videos": "ଭିଡିଓ",
+    "guides": "ମାର୍ଗଦର୍ଶିକା"
+  },
+
+  "diagnosis": {
+    "title": "ରୋଗ ଚିହ୍ନଟ",
+    "upload": "ଛବି ଅପଲୋଡ୍",
+    "loading": "ରୋଗ ଚିହ୍ନଟ ହେଉଛି...",
+    "result": "ଫଳାଫଳ",
+    "confidence": "ବିଶ୍ୱାସ ସ୍ତର",
+    "recommended": "ସୁପରିସ୍ କରାଯାଇଥିବା ଚିକିତ୍ସା"
+  },
+
+  "addField": {
+    "title": "ଖେତ ଯୋଡନ୍ତୁ",
+    "fieldName": "ଖେତର ନାମ",
+    "latitude": "ଲାଟିଟ୍ୟୁଡ୍",
+    "longitude": "ଲଙ୍ଗିଟ୍ୟୁଡ୍",
+    "size": "ଆକାର (କି.ମି.)",
+    "submit": "ଖେତ ଯୋଡନ୍ତୁ"
+  }
+}

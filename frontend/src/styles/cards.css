@@ -1,0 +1,13 @@
+.card-green {
+  border-left: 4px solid #0F7A3A;
+  @apply bg-white rounded-xl p-4 shadow-card;
+}
+
+.card-soft {
+  @apply bg-softGreen rounded-xl p-4 shadow-innerCard;
+}
+
+.card-overlay {
+  @apply rounded-xl bg-white shadow-card;
+  backdrop-filter: blur(8px);
+}

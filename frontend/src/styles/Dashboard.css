@@ -1,0 +1,116 @@
+/* ============================
+   DASHBOARD PAGE STYLES
+============================ */
+
+.dashboard-container {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: #f8f9fc;
+  min-height: 100vh;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-title {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Cards Grid */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 1.2rem;
+}
+
+.dashboard-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+}
+
+.dashboard-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.dashboard-card-value {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+/* Weather Section */
+.weather-section {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.weather-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather-info {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Insights grid */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.2rem;
+}
+
+.insight-box {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Icons */
+.icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 1.3rem;
+  }
+
+  .dashboard-cards {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-cards {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}

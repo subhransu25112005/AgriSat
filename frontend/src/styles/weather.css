@@ -1,0 +1,63 @@
+.weather-wrapper {
+  padding: 14px;
+  margin-bottom: 70px;
+}
+
+.weather-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.today-card {
+  background: #eaf1ff;
+  padding: 18px;
+  margin-top: 14px;
+  border-radius: 14px;
+}
+
+.temp {
+  font-size: 36px;
+  font-weight: bold;
+  color: #0059ff;
+}
+
+.details-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.forecast-box {
+  display: flex;
+  overflow-x: scroll;
+  gap: 12px;
+  margin-top: 20px;
+  padding-bottom: 8px;
+}
+
+.forecast-card {
+  min-width: 90px;
+  background: #f6f9ff;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+}
+
+.f-temp {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.chart-section {
+  margin-top: 20px;
+  padding: 14px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+}

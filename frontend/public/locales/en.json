@@ -1,0 +1,147 @@
+{
+  "appName": "AgriSat",
+
+  "menu": {
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "language": "Language",
+    "feedback": "Give Feedback",
+    "creator": "About Creator"
+  },
+
+  "languages": {
+    "en": "English",
+    "hi": "Hindi",
+    "or": "Odia"
+  },
+
+  "dashboard": {
+    "weather": "Weather",
+    "startPrecision": "Start precision farming",
+    "startPrecisionSub": "Add your field to receive tailored insights & NDVI crop health.",
+    "addField": "+ Add field",
+    "healCrop": "Heal your crop",
+    "takePicture": "Take a picture",
+    "seeDiagnosis": "See diagnosis",
+    "getMedicine": "Get medicine",
+    "yourCrops": "Your Crops"
+  },
+
+  "weatherPage": {
+    "todayWeather": "Today's Weather",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "pressure": "Pressure",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "hourlyForecast": "Hourly Forecast",
+    "weeklyForecast": "Weekly Forecast"
+  },
+
+  "ndvi": {
+    "title": "NDVI Map",
+    "farmList": "Your Farms",
+    "selectFarm": "Select a farm",
+    "analyze": "Analyze NDVI",
+    "result": "NDVI Result",
+    "noResult": "No analysis yet. Select a farm and click Analyze.",
+    "mean": "NDVI Mean",
+    "source": "Source"
+  },
+
+  "farmInsights": {
+    "title": "Farm Insights",
+    "soilMoisture": "Soil Moisture",
+    "rainfall": "Rainfall",
+    "cropHealth": "Crop Health",
+    "temperature": "Temperature",
+    "noData": "No insights available for this field."
+  },
+
+  "selectCrops": {
+    "title": "Select Your Crop",
+    "selected": "Selected",
+    "chooseCrop": "Choose crop",
+    "next": "Next"
+  },
+
+  "fertilizer": {
+    "title": "Fertilizer Calculator",
+    "nitrogen": "Nitrogen (N)",
+    "phosphorus": "Phosphorus (P)",
+    "potassium": "Potassium (K)",
+    "calculate": "Calculate"
+  },
+
+  "pests": {
+    "title": "Pests & Diseases",
+    "search": "Search pests",
+    "commonPests": "Common Pests",
+    "symptoms": "Symptoms",
+    "treatment": "Treatment"
+  },
+
+  "cultivationTips": {
+    "title": "Cultivation Tips",
+    "selectCrop": "Select crop to view tips",
+    "videoTutorial": "Video Tutorial",
+    "soilPrep": "Soil Preparation",
+    "irrigation": "Irrigation",
+    "fertilizer": "Fertilizer Guide",
+    "harvesting": "Harvesting Tips"
+  },
+
+  "pestAlerts": {
+    "title": "Pest Alerts",
+    "noAlerts": "No active pest alerts in your region.",
+    "viewDetails": "View Details"
+  },
+
+  "marketPrices": {
+    "title": "Market Prices",
+    "searchCrop": "Search crop",
+    "highest": "Highest",
+    "lowest": "Lowest",
+    "updated": "Updated"
+  },
+
+  "govtSchemes": {
+    "title": "Government Schemes",
+    "state": "Select State",
+    "loading": "Loading schemes...",
+    "noSchemes": "No schemes found",
+    "details": "Details",
+    "apply": "Apply Now"
+  },
+
+  "knowledgeHub": {
+    "title": "Knowledge Hub",
+    "articles": "Articles",
+    "videos": "Videos",
+    "guides": "Guides"
+  },
+
+  "diagnosis": {
+    "title": "Crop Diagnosis",
+    "upload": "Upload Image",
+    "loading": "Detecting disease...",
+    "result": "Diagnosis Result",
+    "confidence": "Confidence",
+    "recommended": "Recommended Treatment"
+  },
+
+  "addField": {
+    "title": "Add Field",
+    "fieldName": "Field Name",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "size": "Size (km)",
+    "submit": "Add Field"
+  },
+
+  "errors": {
+    "network": "Network error. Please try again.",
+    "locationDenied": "Location access denied.",
+    "tryAgain": "Please try again."
+  }
+}

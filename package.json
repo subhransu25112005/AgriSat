@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@capacitor/android": "^7.4.4",
+    "@capacitor/cli": "^7.4.4",
+    "@capacitor/core": "^7.4.4",
+    "i18next-http-backend": "^3.0.2",
+    "leaflet": "^1.9.4",
+    "react-leaflet": "^5.0.0"
+  }
+}
