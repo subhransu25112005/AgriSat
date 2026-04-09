@@ -107,7 +107,7 @@ export default function Login({ onLogin }) {
     <div className="min-h-screen flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-900">
       <div className="bg-white dark:bg-gray-800 p-8 w-full max-w-md rounded-2xl shadow-lg fade-in">
         <div className="text-center mb-6">
-          <img src="/glogo.png" alt="AgriSat" className="h-10 mx-auto mb-2" />
+          <img src="/logo.svg" alt="AgriSat" className="h-10 mx-auto mb-2" />
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white">{t("auth.welcome")}</h2>
           <p className="text-sm text-gray-500">Log in to your AgriSat account</p>
         </div>

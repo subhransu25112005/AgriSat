@@ -5,6 +5,7 @@ from db import async_session
 from models import Farm
 from schemas import FarmCreate, FarmOut
 from jose import jwt
+from loguru import logger
 import os
 
 JWT_SECRET = os.getenv("JWT_SECRET") or "supersecretjwtkey"

@@ -17,7 +17,7 @@ export default function Header() {
     try {
       i18n.changeLanguage(lng);
       localStorage.setItem("lang", lng);
-      await api.post("/auth/update-language", { language: lng }).catch(() => {});
+      await api.post("/auth/update-language", { language: lng }).catch(() => { });
     } catch (e) {
       console.error(e);
     }
@@ -41,12 +41,8 @@ export default function Header() {
     <header className="bg-white shadow sticky top-0 z-50">
       <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
 
-        {/* LEFT — LOGO */}
-        <img
-          src="/glogo.png"
-          alt="AgriSat Logo"
-          className="h-10 w-auto object-contain"
-        />
+        <div className="w-10"></div>
+
 
         {/* RIGHT — 3 DOT MENU */}
         <div className="relative">
@@ -60,7 +56,7 @@ export default function Header() {
           {/* DROPDOWN MENU */}
           {menuOpen && (
             <div className="language-panel absolute right-0 mt-2 w-44 rounded-lg p-2 space-y-2 animate-fadeIn z-50">
-              
+
               {/* Change Language */}
               <div className="px-3 py-2 text-sm font-semibold text-gray-700">
                 {t("menu.language")}

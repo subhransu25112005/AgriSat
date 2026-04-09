@@ -253,9 +253,11 @@ export default function DiagnosisResult() {
 
       {state.failed ? (
         /* ── ORIGINAL FAILED STATE ──────────────────────────────────── */
-        <div className="bg-red-50 rounded-2xl shadow p-5 mb-4 text-center">
-          <h2 className="text-xl font-bold text-red-600 mb-2">Detection Failed</h2>
-          <p className="text-gray-700">Unable to detect. Try clearer image</p>
+        <div className="bg-red-50 dark:bg-red-900/20 rounded-2xl shadow p-5 mb-4 text-center border border-red-100 dark:border-red-900/40">
+          <h2 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2">Detection Failed</h2>
+          <p className="text-gray-700 dark:text-gray-300 font-medium">
+            {state.message || "Unable to detect. Try a clearer image."}
+          </p>
         </div>
       ) : (
         <div className="space-y-4">

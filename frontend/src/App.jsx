@@ -4,36 +4,38 @@ import "./styles/weather.css";
 import "./styles/farmInsights.css";
 import "./styles/splash.css";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import SplashScreen from "./components/SplashScreen";
 
-import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
-import Settings from "./pages/Settings";
-import WeatherPage from "./pages/WeatherPage";
-import NDVIMonitor from "./pages/NDVIMonitor";
-import FarmInsights from "./pages/FarmInsights";
-import Profile from "./pages/Profile";
-import AddField from "./pages/AddField";
-import NotFound from "./pages/NotFound";
-import Diagnosis from "./pages/Diagnosis";
-import DiagnosisResult from "./pages/DiagnosisResult";
-import SelectCrops from "./pages/selectcrops";
-import FertilizerCalculator from "./pages/FertilizerCalculator";
-import PestsDiseases from "./pages/PestsDiseases";
-import CultivationTips from "./pages/CultivationTips";
-import PestAlerts from "./pages/PestAlerts";
-import MarketPrices from "./pages/MarketPrices";
-import GovtSchemes from "./pages/GovtSchemes";
-import KnowledgeHub from "./pages/KnowledgeHub";
-import Signup from "./pages/Signup";
-import ForgotPassword from "./pages/ForgotPassword";
-import Welcome from "./pages/Welcome";
-import Landing from "./pages/Landing";
+// ── LAZY LOADED ROUTE COMPONENTS ───────────────────────────────────────
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Login = lazy(() => import("./pages/Login"));
+const Settings = lazy(() => import("./pages/Settings"));
+const WeatherPage = lazy(() => import("./pages/WeatherPage"));
+const NDVIMonitor = lazy(() => import("./pages/NDVIMonitor"));
+const FarmInsights = lazy(() => import("./pages/FarmInsights"));
+const Profile = lazy(() => import("./pages/Profile"));
+const AddField = lazy(() => import("./pages/AddField"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Diagnosis = lazy(() => import("./pages/Diagnosis"));
+const DiagnosisResult = lazy(() => import("./pages/DiagnosisResult"));
+const SelectCrops = lazy(() => import("./pages/selectcrops"));
+const FertilizerCalculator = lazy(() => import("./pages/FertilizerCalculator"));
+const PestsDiseases = lazy(() => import("./pages/PestsDiseases"));
+const CultivationTips = lazy(() => import("./pages/CultivationTips"));
+const PestAlerts = lazy(() => import("./pages/PestAlerts"));
+const MarketPrices = lazy(() => import("./pages/MarketPrices"));
+const GovtSchemes = lazy(() => import("./pages/GovtSchemes"));
+const KnowledgeHub = lazy(() => import("./pages/KnowledgeHub"));
+const Signup = lazy(() => import("./pages/Signup"));
+const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
+const Welcome = lazy(() => import("./pages/Welcome"));
+const Landing = lazy(() => import("./pages/Landing"));
 
+// Standard imports for persistent UI
 import OfflineBanner from "./components/OfflineBanner";
 import FarmHelperChat from "./components/FarmHelperChat";
 import UserPanel from "./components/UserPanel";
@@ -41,6 +43,16 @@ import UserPanel from "./components/UserPanel";
 import api, { setAuth } from "./api/api";
 import i18n from "./i18n";
 import { useTranslation } from "react-i18next";
+
+// ── GLOBAL SUSPENSE FALLBACK ──────────────────────────────────────────
+const RouteLoader = () => (
+  <div className="w-full h-full min-h-[50vh] flex flex-col items-center justify-center animate-pulse">
+    <div className="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin mb-4" />
+    <p className="text-gray-500 font-semibold tracking-widest uppercase text-xs">Loading Interface...</p>
+  </div>
+);
+
+
 
 export default function App() {
   // 🔥 All hooks must be here (no conditional returns before hooks)
@@ -97,26 +109,28 @@ export default function App() {
         <>
           {!token ? (
             <div className="min-h-screen">
-              <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/login" element={<Login onLogin={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
-                <Route path="/signup" element={<Signup onSignedUp={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route path="*" element={<Landing />} />
-              </Routes>
+              <Suspense fallback={<RouteLoader />}>
+                <Routes>
+                  <Route path="/" element={<Landing />} />
+                  <Route path="/login" element={<Login onLogin={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
+                  <Route path="/signup" element={<Signup onSignedUp={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
+                  <Route path="/forgot-password" element={<ForgotPassword />} />
+                  <Route path="*" element={<Landing />} />
+                </Routes>
+              </Suspense>
             </div>
           ) : (
-            <div className="min-h-screen">
+            <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
               <OfflineBanner />
               {/* HEADER */}
-              <header className="bg-white dark:bg-gray-900 shadow sticky top-0 z-50">
-                <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
-                  <img src="/glogo.png" alt="AgriSat" className="h-10 w-auto" />
+              <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-100 dark:border-gray-800 sticky top-0 z-[45]">
+                <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between">
+                  <div className="w-10"></div>
 
                   <button
                     id="user-menu-btn"
                     onClick={() => setMenuOpen(!menuOpen)}
-                    className="text-3xl px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="w-12 h-12 flex items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-green-900/40 text-gray-700 dark:text-gray-200 transition-all font-black text-xl"
                   >
                     ⋮
                   </button>
@@ -124,28 +138,31 @@ export default function App() {
               </header>
 
               {/* ROUTES */}
-              <main className="p-4">
-                <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/weather" element={<WeatherPage />} />
-                  <Route path="/ndvi" element={<NDVIMonitor />} />
-                  <Route path="/farm-insights" element={<FarmInsights />} />
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/add-field" element={<AddField />} />
-                  <Route path="/settings" element={<Settings />} />
-                  <Route path="/diagnosis" element={<Diagnosis />} />
-                  <Route path="/diagnosis/result" element={<DiagnosisResult />} />
-                  <Route path="/select-crops" element={<SelectCrops />} />
-                  <Route path="/fertilizer" element={<FertilizerCalculator />} />
-                  <Route path="/pests" element={<PestsDiseases />} />
-                  <Route path="/cultivation-tips" element={<CultivationTips />} />
-                  <Route path="/pest-alerts" element={<PestAlerts />} />
-                  <Route path="/market-prices" element={<MarketPrices />} />
-                  <Route path="/govt-schemes" element={<GovtSchemes />} />
-                  <Route path="/knowledge-hub" element={<KnowledgeHub />} />
-                  <Route path="/welcome" element={<Welcome />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
+              <main className="max-w-[1440px] mx-auto p-6 min-h-[calc(100vh-80px)]">
+                <Suspense fallback={<RouteLoader />}>
+                  <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/weather" element={<WeatherPage />} />
+                    <Route path="/ndvi" element={<NDVIMonitor />} />
+                    <Route path="/farm-insights" element={<FarmInsights />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/add-field" element={<AddField />} />
+                    <Route path="/settings" element={<Settings />} />
+                    <Route path="/diagnosis" element={<Diagnosis />} />
+                    <Route path="/diagnosis/result" element={<DiagnosisResult />} />
+                    <Route path="/select-crops" element={<SelectCrops />} />
+                    <Route path="/fertilizer" element={<FertilizerCalculator />} />
+                    <Route path="/pests" element={<PestsDiseases />} />
+                    <Route path="/cultivation-tips" element={<CultivationTips />} />
+                    <Route path="/pest-alerts" element={<PestAlerts />} />
+                    <Route path="/market-prices" element={<MarketPrices />} />
+                    <Route path="/govt-schemes" element={<GovtSchemes />} />
+                    <Route path="/knowledge-hub" element={<KnowledgeHub />} />
+                    <Route path="/welcome" element={<Welcome />} />
+                    {/* Fallback for logged-in users */}
+                    <Route path="*" element={<Dashboard />} />
+                  </Routes>
+                </Suspense>
               </main>
 
               <FarmHelperChat />

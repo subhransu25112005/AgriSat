@@ -8,6 +8,7 @@ import NDVIIcon from "../components/icons/NDVIIcon";
 import SatelliteIcon from "../components/icons/SatelliteIcon";
 import FarmIcon from "../components/icons/FarmIcon";
 import FarmCard from "../components/FarmCard";
+import AgriMediaSection from "../components/media/AgriMediaSection";
 import api from "../api/api";
 
 export default function Dashboard() {
@@ -368,6 +369,9 @@ export default function Dashboard() {
             </button>
           </div>
         </div>
+
+        {/* AGRI LIVE UPDATES (Videos & News) */}
+        <AgriMediaSection />
 
         <div className="h-6" />
       </div>

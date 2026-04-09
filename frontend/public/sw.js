@@ -1,55 +1,63 @@
-const CACHE_NAME = 'agrisat-cache-v3';
+const CACHE_NAME = 'agrisat-pwa-cache-v1';
 
+const STATIC_ASSETS = [
+  '/',
+  '/index.html',
+  '/manifest.json',
+  '/favicon.svg',
+  '/logo.svg'
+];
+
+// Install Event: Cache essential static files
 self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(STATIC_ASSETS);
+    })
+  );
   self.skipWaiting();
 });
 
+// Activate Event: Clear out old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
+        cacheNames
+          .filter((name) => name !== CACHE_NAME)
+          .map((name) => caches.delete(name))
       );
     })
   );
   self.clients.claim();
 });
 
-// Production-ready fetch handler
+// Fetch Event: Serve static files from cache, bypass APIs
 self.addEventListener('fetch', (event) => {
-  const { request } = event;
-  const url = new URL(request.url);
+  const url = new URL(event.request.url);
 
-  // 1. Skip non-GET and non-http/https
-  if (request.method !== 'GET' || !url.protocol.startsWith('http')) return;
-
-  // 2. Network-First strategy for API calls (ensure real data)
-  if (url.pathname.startsWith('/api/') || url.pathname.includes('/farms/insights')) {
-    event.respondWith(
-      fetch(request)
-        .catch(() => caches.match(request))
-    );
-    return;
+  // 1. DO NOT cache external API requests to avoid stale data
+  if (
+    url.pathname.startsWith('/api') || 
+    url.hostname.includes('googleapis') || 
+    url.hostname.includes('gnews.io') ||
+    url.hostname.includes('openweathermap')
+  ) {
+    return; // Let the browser handle these normally
   }
 
-  // 3. Stale-While-Revalidate for static assets
+  // 2. Cache First, Fallback to Network strategy for UI/Static assets
   event.respondWith(
-    caches.match(request).then((cachedResponse) => {
-      const fetchPromise = fetch(request).then((networkResponse) => {
-        if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
-          const responseToCache = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, responseToCache);
-          });
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      return fetch(event.request).catch(() => {
+        // Fallback for navigation requests when totally offline
+        if (event.request.mode === 'navigate') {
+          return caches.match('/index.html');
         }
-        return networkResponse;
-      }).catch(() => null);
-
-      return cachedResponse || fetchPromise;
+      });
     })
   );
 });

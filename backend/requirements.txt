@@ -1,0 +1,12 @@
+sentinelhub
+numpy
+httpx
+fastapi
+sqlmodel
+loguru
+python-dotenv
+pyjwt
+passlib[bcrypt]
+requests
+python-jose
+pydantic

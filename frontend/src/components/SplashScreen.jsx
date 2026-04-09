@@ -4,7 +4,7 @@ import "../styles/splash.css";   // correct working path
 export default function SplashScreen() {
   return (
     <div className="splash-container">
-      <img src="/glogo.png" className="splash-logo" alt="AgriSat" />
+      <img src="/logo.svg" className="splash-logo" alt="AgriSat" />
     </div>
   );
 }
