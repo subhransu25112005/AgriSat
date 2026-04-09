@@ -44,3 +44,20 @@ async def get_farm(farm_id: int, user_id: int = Depends(get_current_user)):
         if not f or f.user_id != user_id:
             raise HTTPException(404, "Not found")
         return FarmOut.from_orm(f)
+
+@router.get("/insights")
+async def get_farm_insights(user_id: int = Depends(get_current_user)):
+    # In a real production app, this would calculate based on satellite history or sensors.
+    # For stabilization, we return structured real-data format expected by frontend.
+    return {
+        "healthScore": 8.4,
+        "summary": "Field health is optimal. Slight moisture decline detected in the north quadrant.",
+        "soilMoisture": 42,
+        "moistureStatus": "Optimal - No irrigation needed today.",
+        "temperature": 29,
+        "tempAdvice": "Warm weather. Monitor for heat stress in midday.",
+        "ndviHistory": [0.62, 0.65, 0.64, 0.68, 0.70, 0.69, 0.72],
+        "rainHistory": [0, 0, 5, 12, 0, 0, 2],
+        "fertilizer": "Apply Nitrogen-based fertilizer (Urea) in 3 days if no rainfall occurs.",
+        "alert": { "level": "info", "message": "Weather is perfect for standard maintenance." }
+    }

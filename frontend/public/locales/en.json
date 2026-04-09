@@ -1,12 +1,10 @@
 {
   "appName": "AgriSat",
-
   "common": {
     "loading": "Loading...",
     "go_home": "Go home",
     "choose_state": "Choose State"
   },
-
   "menu": {
     "darkMode": "Dark Mode",
     "lightMode": "Light Mode",
@@ -14,20 +12,17 @@
     "feedback": "Give Feedback",
     "creator": "About Creator"
   },
-
   "languages": {
     "en": "English",
     "hi": "Hindi",
     "or": "Odia"
   },
-
   "navigation": {
     "your_crops": "Your Crops",
     "community": "Community",
     "market": "Market",
     "you": "You"
   },
-
   "auth": {
     "welcome": "Welcome to AgriSat",
     "email_placeholder": "Email",
@@ -40,7 +35,6 @@
     "login_failed": "Login failed — check credentials",
     "signup_failed": "Signup failed. Try a different email or phone."
   },
-
   "profile": {
     "title": "Profile",
     "name": "Name",
@@ -49,14 +43,12 @@
     "language": "Language",
     "logout": "Logout"
   },
-
   "settings": {
     "title": "Settings",
     "language": "Language",
     "receive_push": "Receive push notifications",
     "push_subtitle": "Weather & crop alerts"
   },
-
   "dashboard": {
     "weather": "Weather",
     "startPrecision": "Start precision farming",
@@ -71,7 +63,6 @@
     "ask_expert": "Ask an expert",
     "ask_expert_sub": "Talk to agronomist"
   },
-
   "crops": {
     "grapes": "Grapes",
     "papaya": "Papaya",
@@ -90,7 +81,6 @@
     "cabbage": "Cabbage",
     "add": "Add"
   },
-
   "weatherPage": {
     "todayWeather": "Weather",
     "feelsLike": "Feels like",
@@ -107,7 +97,6 @@
     "spray_moderate": "Moderate",
     "spray_unfavourable": "Unfavourable"
   },
-
   "ndvi": {
     "title": "NDVI Map",
     "farmList": "Your Farms",
@@ -119,7 +108,6 @@
     "source": "Source",
     "size": "Size"
   },
-
   "farmInsights": {
     "title": "Farm Insights",
     "soilMoisture": "Soil Moisture",
@@ -131,7 +119,6 @@
     "fertilizerRec": "Fertilizer Recommendation",
     "cropStressAlert": "Crop Stress Alert"
   },
-
   "selectCrops": {
     "title": "Select Your Crop",
     "subtitle": "Select up to {{max}} crops you are interested in",
@@ -140,7 +127,6 @@
     "next": "Save",
     "saved": "Saved"
   },
-
   "fertilizer": {
     "title": "Fertilizer Calculator",
     "subtitle": "Get accurate nutrient recommendation",
@@ -156,7 +142,6 @@
     "fertRequired": "Fertilizer Required",
     "estimatedCost": "Estimated Cost"
   },
-
   "pests": {
     "title": "Pests & Diseases",
     "subtitle": "Identify & get treatments instantly",
@@ -168,7 +153,6 @@
     "noResults": "No results yet",
     "readMore": "Read more"
   },
-
   "cultivationTips": {
     "title": "Cultivation Tips",
     "subtitle": "Best practices to grow healthy crops",
@@ -184,7 +168,6 @@
     "season": "Suitable Season",
     "harvesting": "Harvesting Tips"
   },
-
   "pestAlerts": {
     "title": "Pest Alerts",
     "subtitle": "Stay notified",
@@ -198,7 +181,6 @@
     "officialAdvisories": "Official advisories",
     "checkAdvisories": "For detailed, crop-wise guidance for your state, check:"
   },
-
   "marketPrices": {
     "title": "Market Prices",
     "subtitle": "Check latest mandi rates for your crop",
@@ -208,9 +190,32 @@
     "modal": "Modal Price",
     "updated": "Updated",
     "getPrices": "Get Prices",
-    "no_data": "No market data available for this state."
+    "no_data": "No market data available for this state.",
+    "profit_calc": "Profit Calculator",
+    "quantity": "Quantity",
+    "est_earning": "Estimated Earning",
+    "net_profit": "Net Profit",
+    "deductions": "After transport & commission (5%)",
+    "smart_insight": "Smart Advice",
+    "prediction_text": "Expected price: {{price}} in next few days",
+    "hold_now": "Hold for better price",
+    "sell_now": "Sell now",
+    "history": "Price History",
+    "hide_history": "Hide History",
+    "trend_label": "Price Trend (Avg)",
+    "sell_score": "Sell Score",
+    "volatility": "Market Risk",
+    "best_market": "Best Market",
+    "storage_advice": "Storage Advice",
+    "buyer_connect": "Nearby Buyers (beta)",
+    "set_alert": "Set Alert",
+    "vol_stable": "Stable",
+    "vol_risky": "Risky",
+    "vol_high": "High Risk",
+    "store_days": "You can store for 2–3 more days",
+    "sell_immediately": "Sell immediately — price is falling",
+    "store_neutral": "Monitor prices before deciding"
   },
-
   "govtSchemes": {
     "title": "Government Schemes",
     "subtitle": "Live updates from MyScheme & Govt portals",
@@ -223,7 +228,6 @@
     "apply": "Apply Now",
     "officialPortals": "Official Portals"
   },
-
   "knowledgeHub": {
     "title": "Knowledge Hub",
     "subtitle": "Learn crop practices, watch tutorials, and find detailed guides.",
@@ -236,7 +240,6 @@
     "watchVideos": "Watch videos",
     "pdfGuides": "PDF guides"
   },
-
   "diagnosis": {
     "title": "Crop Disease Diagnosis",
     "upload": "Upload Image",
@@ -249,9 +252,11 @@
     "confidence": "Confidence",
     "recommended": "Recommended Treatment",
     "error": "Error analyzing image",
-    "no_data": "No data received"
+    "no_data": "No data received",
+    "takePhoto": "Take a Photo",
+    "diagnose": "Diagnose Crop Disease",
+    "failed": "Detection failed. Try again."
   },
-
   "addField": {
     "title": "Add Field",
     "fieldName": "Field Name",
@@ -263,7 +268,6 @@
     "success": "Field added successfully",
     "failed": "Failed to add field"
   },
-
   "errors": {
     "network": "Network error. Please try again.",
     "locationDenied": "Location access denied.",
@@ -271,5 +275,15 @@
     "analysis_failed": "Analysis failed",
     "select_state": "Please select a state",
     "page_not_found": "Page not found"
+  },
+  "result": {
+    "title": "Diagnosis Result",
+    "confidence": "Confidence",
+    "treatment": "Treatment Steps",
+    "prevention": "Prevention Tips",
+    "symptoms": "Symptoms",
+    "listen": "Listen",
+    "stop": "Stop",
+    "diagnoseAnother": "Diagnose Another Image"
   }
 }

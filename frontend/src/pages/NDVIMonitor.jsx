@@ -18,9 +18,9 @@ export default function NDVIMonitor() {
   const [ndvi, setNdvi] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(()=>{ loadFarms(); }, []);
+  useEffect(() => { loadFarms(); }, []);
 
-  async function loadFarms(){
+  async function loadFarms() {
     try {
       const r = await api.get("/farms");
       setFarms(r.data || []);
@@ -44,7 +44,7 @@ export default function NDVIMonitor() {
       <div className="grid md:grid-cols-3 gap-4">
         <div className="md:col-span-2">
           <div className="card p-2">
-            <MapContainer center={[20.2961,85.8245]} zoom={6} style={{ height: "60vh", width: "100%" }}>
+            <MapContainer center={[20.2961, 85.8245]} zoom={6} style={{ height: "60vh", width: "100%" }}>
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               {/* If you have sentinel instance id and WMS endpoint, you can show NDVI overlay */}
               {sentinelInstance && (
@@ -64,7 +64,7 @@ export default function NDVIMonitor() {
                         <div className="font-semibold">{f.name}</div>
                         <div className="text-xs">{t("ndvi.size", "Size")}: {f.size_km} km</div>
                         <div className="mt-2">
-                          <button className="bg-brand text-white px-2 py-1 rounded text-xs" onClick={()=>analyze(f)}>{loading ? t("common.loading") : t("ndvi.analyze")}</button>
+                          <button className="bg-brand text-white px-2 py-1 rounded text-xs" onClick={() => analyze(f)}>{loading ? t("common.loading") : t("ndvi.analyze")}</button>
                         </div>
                       </div>
                     </Popup>
@@ -86,7 +86,7 @@ export default function NDVIMonitor() {
                     <div className="text-xs text-gray-500">{t("ndvi.size", "Size")}: {f.size_km} km</div>
                   </div>
                   <div>
-                    <button className="bg-brand text-white px-2 py-1 rounded text-xs" onClick={()=>{ setSelected(f); setNdvi(null); }}>{t("ndvi.analyze")}</button>
+                    <button className="bg-brand text-white px-2 py-1 rounded text-xs" onClick={() => { setSelected(f); setNdvi(null); }}>{t("ndvi.analyze")}</button>
                   </div>
                 </div>
               ))}

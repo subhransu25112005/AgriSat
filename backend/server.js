@@ -1,6 +1,9 @@
 import express from "express";
 import cors from "cors";
 import fetch from "node-fetch";
+import dotenv from "dotenv";
+
+dotenv.config({ path: "../.env" });
 
 const app = express();
 app.use(cors());
@@ -10,7 +13,7 @@ app.use(express.json());   // IMPORTANT
 let userFields = [];
 
 // Your REAL API KEY
-const API_KEY = "579b24cd66be62b3dd000000155c59f507c78c6ed47b7cbef58eda1dc5e2";
+const API_KEY = process.env.MARKET_API_KEY || "579b24cd66be62b3dd000000155c59f507c78c6ed47b7cbef58eda1dc5e2";
 
 // =============================
 // ⭐ LANGUAGE UPDATE API (fix for 404)
@@ -47,24 +50,26 @@ app.get("/api/mandi", async (req, res) => {
 });
 
 // =============================
-//  🏛 GOVT SCHEMES (PUBLIC JSON)
+//  🏛 GOVT SCHEMES (CURATED LOCAL DATA - Production Stable)
 // =============================
 app.get("/api/schemes", async (req, res) => {
   const q = (req.query.q || "").toLowerCase();
 
-  try {
-    const response = await fetch("https://www.myscheme.gov.in/assets/data/schemes.json");
-    const all = await response.json();
+  // Curated list for high stability in production
+  const curatedSchemes = [
+    { title: "PM-Kisan Samman Nidhi", description: "Direct income support of ₹6,000 per year to all landholding farmer families.", slug: "pm-kisan-samman-nidhi" },
+    { title: "Pradhan Mantri Fasal Bima Yojana", description: "Crop insurance against non-preventable natural risks.", slug: "pradhan-mantri-fasal-bima-yojana" },
+    { title: "Soil Health Card Scheme", description: "Information to farmers on nutrient status of their soil.", slug: "soil-health-card-scheme" },
+    { title: "Kisan Credit Card (KCC)", description: "Timely credit for the agriculture sector.", slug: "kisan-credit-card" },
+    { title: "Paramparagat Krishi Vikas Yojana", description: "Promoting organic farming and chemical-free produce.", slug: "paramparagat-krishi-vikas-yojana" }
+  ];
 
-    const filtered = all.data.filter(item =>
-      (item.title || "").toLowerCase().includes(q) ||
-      (item.description || "").toLowerCase().includes(q)
-    );
+  const filtered = curatedSchemes.filter(item =>
+    (item.title || "").toLowerCase().includes(q) ||
+    (item.description || "").toLowerCase().includes(q)
+  );
 
-    res.json({ data: filtered });
-  } catch (err) {
-    res.status(500).json({ error: "Failed to fetch schemes", details: err });
-  }
+  res.json({ data: filtered });
 });
 
 // =============================

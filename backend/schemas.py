@@ -20,6 +20,28 @@ class UserOut(BaseModel):
     name: Optional[str]
     language: str
 
+class SendOtpIn(BaseModel):
+    email: Optional[str] = None
+    phone: Optional[str] = None
+
+class VerifyOtpIn(BaseModel):
+    email: Optional[str] = None
+    phone: Optional[str] = None
+    code: str
+
+class ForgotPasswordIn(BaseModel):
+    email: str
+
+class ResetPasswordIn(BaseModel):
+    email: Optional[str] = None
+    phone: Optional[str] = None
+    token: str
+    new_password: str
+
+class GoogleAuthIn(BaseModel):
+    token: str
+    language: Optional[str] = "en"
+
 class FarmCreate(BaseModel):
     name: str
     geom: Optional[Any]

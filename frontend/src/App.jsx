@@ -6,6 +6,7 @@ import "./styles/splash.css";
 
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import SplashScreen from "./components/SplashScreen";
 
@@ -28,6 +29,14 @@ import PestAlerts from "./pages/PestAlerts";
 import MarketPrices from "./pages/MarketPrices";
 import GovtSchemes from "./pages/GovtSchemes";
 import KnowledgeHub from "./pages/KnowledgeHub";
+import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
+import Welcome from "./pages/Welcome";
+import Landing from "./pages/Landing";
+
+import OfflineBanner from "./components/OfflineBanner";
+import FarmHelperChat from "./components/FarmHelperChat";
+import UserPanel from "./components/UserPanel";
 
 import api, { setAuth } from "./api/api";
 import i18n from "./i18n";
@@ -87,77 +96,31 @@ export default function App() {
       {showUI && (
         <>
           {!token ? (
-            <Login
-              onLogin={(tk) => {
-                localStorage.setItem("token", tk);
-                setToken(tk);
-                setAuth(tk);
-              }}
-            />
+            <div className="min-h-screen">
+              <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route path="/login" element={<Login onLogin={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
+                <Route path="/signup" element={<Signup onSignedUp={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="*" element={<Landing />} />
+              </Routes>
+            </div>
           ) : (
             <div className="min-h-screen">
+              <OfflineBanner />
               {/* HEADER */}
               <header className="bg-white dark:bg-gray-900 shadow sticky top-0 z-50">
                 <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
                   <img src="/glogo.png" alt="AgriSat" className="h-10 w-auto" />
 
                   <button
+                    id="user-menu-btn"
                     onClick={() => setMenuOpen(!menuOpen)}
                     className="text-3xl px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
                   >
                     ⋮
                   </button>
                 </div>
-
-                {menuOpen && (
-                  <div className="absolute right-4 mt-1 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-xl p-2 text-sm">
-                    <button
-                      onClick={toggleDarkMode}
-                      className="block w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      {darkMode ? t("menu.lightMode") : t("menu.darkMode")}
-                    </button>
-
-                    <div className="px-3 pt-2 text-gray-500 text-xs">{t("menu.language")}</div>
-
-                    <button
-                      onClick={() => changeLanguage("en")}
-                      className="block w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      {t("languages.en")}
-                    </button>
-                    <button
-                      onClick={() => changeLanguage("hi")}
-                      className="block w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      {t("languages.hi")}
-                    </button>
-                    <button
-                      onClick={() => changeLanguage("or")}
-                      className="block w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      {t("languages.or")}
-                    </button>
-
-                    <hr className="my-2" />
-
-                    <button
-                      onClick={() =>
-                        (window.location.href = "mailto:subhransu25112005@gmail.com")
-                      }
-                      className="block w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      {t("menu.feedback")}
-                    </button>
-
-                    <button
-                      onClick={() => alert("Created by Subhranshu Nanda ❤")}
-                      className="block w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      {t("menu.creator")}
-                    </button>
-                  </div>
-                )}
               </header>
 
               {/* ROUTES */}
@@ -180,9 +143,25 @@ export default function App() {
                   <Route path="/market-prices" element={<MarketPrices />} />
                   <Route path="/govt-schemes" element={<GovtSchemes />} />
                   <Route path="/knowledge-hub" element={<KnowledgeHub />} />
+                  <Route path="/welcome" element={<Welcome />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
+
+              <FarmHelperChat />
+
+              {/* ANIMATED USER PANEL */}
+              <AnimatePresence>
+                {menuOpen && (
+                  <UserPanel
+                    onClose={() => setMenuOpen(false)}
+                    onLogout={() => { localStorage.removeItem("token"); setToken(null); }}
+                    onLanguageChange={changeLanguage}
+                    onThemeToggle={toggleDarkMode}
+                    darkMode={darkMode}
+                  />
+                )}
+              </AnimatePresence>
             </div>
           )}
         </>

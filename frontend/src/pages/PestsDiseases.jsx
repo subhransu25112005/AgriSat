@@ -7,10 +7,13 @@ export default function PestsDiseases() {
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const API_KEY = "AIzaSyDDI4lwBOfeh0mwFrWDEkAK-hHkMA6zlpI";     // ← Replace
-    const CX = "f711f46cd6a0c4603";            // ← Replace
+    const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
+    const CX = import.meta.env.VITE_GOOGLE_CX_ID;
 
     const searchGoogle = async () => {
+        if (!API_KEY || !CX) {
+            console.warn("⚠️ Google Custom Search APIs (VITE_GOOGLE_API_KEY / VITE_GOOGLE_CX_ID) are missing from frontend .env!");
+        }
         if (!query.trim()) return;
 
         setLoading(true);

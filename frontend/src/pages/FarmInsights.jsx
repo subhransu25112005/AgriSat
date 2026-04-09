@@ -10,7 +10,7 @@ export default function FarmInsights() {
   const [insights, setInsights] = useState(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/farm/insights")
+    fetch(`${import.meta.env.VITE_API_BASE}/farms/insights`)
       .then((res) => res.json())
       .then((data) => setInsights(data));
   }, []);

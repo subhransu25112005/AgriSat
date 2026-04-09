@@ -1,12 +1,10 @@
 {
   "appName": "AgriSat",
-
   "common": {
     "loading": "ଲୋଡ ହେଉଛି...",
     "go_home": "ହୋମ୍‌କୁ ଯାଅ",
     "choose_state": "ରାଜ୍ୟ ବାଛନ୍ତୁ"
   },
-
   "menu": {
     "darkMode": "ଡାର୍କ ମୋଡ୍",
     "lightMode": "ଲାଇଟ୍ ମୋଡ୍",
@@ -14,20 +12,17 @@
     "feedback": "ଫିଡ୍‌ବ୍ୟାକ୍ ଦିଅନ୍ତୁ",
     "creator": "ନିର୍ମାତା ବିଷୟରେ"
   },
-
   "languages": {
     "en": "English",
     "hi": "ହିନ୍ଦୀ",
     "or": "ଓଡ଼ିଆ"
   },
-
   "navigation": {
     "your_crops": "ଆପଣଙ୍କ ଫସଲ",
     "community": "ସମ୍ପ୍ରଦାୟ",
     "market": "ବଜାର",
     "you": "ଆପଣ"
   },
-
   "auth": {
     "welcome": "AgriSat ରେ ଆପଣଙ୍କୁ ସ୍ୱାଗତ",
     "email_placeholder": "ଇମେଲ",
@@ -40,7 +35,6 @@
     "login_failed": "ଲଗଇନ ବିଫଳ — ଆହ୍ୱାନ ଯାଞ୍ଚ କରନ୍ତୁ",
     "signup_failed": "ସାଇନଅପ ବିଫଳ। ଭିନ୍ନ ଇମେଲ ବା ଫୋନ ବ୍ୟବହାର କରନ୍ତୁ।"
   },
-
   "profile": {
     "title": "ପ୍ରୋଫାଇଲ",
     "name": "ନାମ",
@@ -49,14 +43,12 @@
     "language": "ଭାଷା",
     "logout": "ଲଗଆଉଟ"
   },
-
   "settings": {
     "title": "ସେଟିଂ",
     "language": "ଭାଷା",
     "receive_push": "ପୁଶ ବିଜ୍ଞପ୍ତି ପ୍ରାପ୍ତ କରନ୍ତୁ",
     "push_subtitle": "ପାଣିପାଗ ଓ ଫସଲ ସତର୍କ"
   },
-
   "dashboard": {
     "weather": "ଆବହାଅଵା",
     "startPrecision": "ସଠିକ ଚାଷ ଆରମ୍ଭ କରନ୍ତୁ",
@@ -71,7 +63,6 @@
     "ask_expert": "ବିଶେଷଜ୍ଞଙ୍କୁ ପଚାରନ୍ତୁ",
     "ask_expert_sub": "କୃଷି ବିଶେଷଜ୍ଞଙ୍କ ସହ କଥା ହୁଅ"
   },
-
   "crops": {
     "grapes": "ଦ୍ରାକ୍ଷା",
     "papaya": "ପପ୍ପା",
@@ -90,7 +81,6 @@
     "cabbage": "ବନ୍ଧାକୋବି",
     "add": "ଯୋଡ଼ନ୍ତୁ"
   },
-
   "weatherPage": {
     "todayWeather": "ଆବହାଅଵା",
     "feelsLike": "ଅନୁଭୂତ",
@@ -107,7 +97,6 @@
     "spray_moderate": "ଠିକ ଠିକ",
     "spray_unfavourable": "ଅନୁଚିତ"
   },
-
   "ndvi": {
     "title": "NDVI ମାନଚିତ୍ର",
     "farmList": "ଆପଣଙ୍କ ଖେତ",
@@ -119,7 +108,6 @@
     "source": "ସ୍ତ୍ରୋତ",
     "size": "ଆକାର"
   },
-
   "farmInsights": {
     "title": "ଖେତ ତଥ୍ୟ",
     "soilMoisture": "ମାଟିର ଆର୍ଦ୍ରତା",
@@ -131,7 +119,6 @@
     "fertilizerRec": "ସାର ସୁପାରିଶ",
     "cropStressAlert": "ଫସଲ ଚାପ ସତର୍କ"
   },
-
   "selectCrops": {
     "title": "ଫସଲ ଚୟନ",
     "subtitle": "ଆପଣ ଇଚ୍ଛା କରୁଥିବା {{max}}ଟି ଫସଲ ବାଛନ୍ତୁ",
@@ -140,7 +127,6 @@
     "next": "ସଞ୍ଚୟ",
     "saved": "ସଞ୍ଚୟ ହୋଇଛି"
   },
-
   "fertilizer": {
     "title": "ସାର ଗଣନା",
     "subtitle": "ସଠିକ ପୁଷ୍ଟିକର ଉପାଦାନ ସୁପାରିଶ ପାଅ",
@@ -156,7 +142,6 @@
     "fertRequired": "ଆବଶ୍ୟକ ସାର",
     "estimatedCost": "ଆନୁମାନିକ ଖର୍ଚ"
   },
-
   "pests": {
     "title": "ପୋକା ଓ ରୋଗ",
     "subtitle": "ତୁରନ୍ତ ଚିହ୍ନଟ ଓ ଚିକିତ୍ସା ପାଅ",
@@ -168,7 +153,6 @@
     "noResults": "ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଫଳ ନାହିଁ",
     "readMore": "ଆଉ ପଢ଼ନ୍ତୁ"
   },
-
   "cultivationTips": {
     "title": "ଚାଷ ସୁଝ",
     "subtitle": "ସୁସ୍ଥ ଫସଲ ଚାଷ ପାଇଁ ସର୍ବୋତ୍ତମ ଉପାୟ",
@@ -184,7 +168,6 @@
     "season": "ଉଚିତ ଋତୁ",
     "harvesting": "କଟାଇ ସୁଝ"
   },
-
   "pestAlerts": {
     "title": "ପୋକା ସତର୍କ",
     "subtitle": "ସୂଚିତ ରୁହନ୍ତୁ",
@@ -198,7 +181,6 @@
     "officialAdvisories": "ସରକାରୀ ପରାମର୍ଶ",
     "checkAdvisories": "ଆପଣଙ୍କ ରାଜ୍ୟ ପାଇଁ ବିସ୍ତୃତ ମାର୍ଗଦର୍ଶନ ଜାଣନ୍ତୁ:"
   },
-
   "marketPrices": {
     "title": "ବଜାର ଦର",
     "subtitle": "ଆପଣଙ୍କ ଫସଲର ତାଜା ମଣ୍ଡି ଦର ଦେଖନ୍ତୁ",
@@ -208,9 +190,32 @@
     "modal": "ମୋଡାଲ ଦର",
     "updated": "ଅଦ୍ୟତନ",
     "getPrices": "ଦର ଦେଖନ୍ତୁ",
-    "no_data": "ଏହି ରାଜ୍ୟ ପାଇଁ ବଜାର ତଥ୍ୟ ଉପଲବ୍ଧ ନୁହେଁ।"
+    "no_data": "ଏହି ରାଜ୍ୟ ପାଇଁ ବଜାର ତଥ୍ୟ ଉପଲବ୍ଧ ନୁହେଁ।",
+    "profit_calc": "ଲାଭ ଗଣନା",
+    "quantity": "ପରିମାଣ",
+    "est_earning": "ଆନୁମାନିକ ଆୟ",
+    "net_profit": "ନିଟ ଲାଭ",
+    "deductions": "ପରିବହନ ଓ କମିସନ ପରେ (5%)",
+    "smart_insight": "ସ୍ମାର୍ଟ ପରାମର୍ଶ",
+    "prediction_text": "ଆଗ ଆସୁଥିବା ଦିନରେ ଆଶା ଦର: {{price}}",
+    "hold_now": "ଭଲ ଦର ପାଇଁ ଅଟକାନ୍ତୁ",
+    "sell_now": "ଏବେ ବିକ୍ରୟ କରନ୍ତୁ",
+    "history": "ଦର ଇତିହାସ",
+    "hide_history": "ଇତିହାସ ଲୁଚାନ୍ତୁ",
+    "trend_label": "ଦର ଧାରା (ହାରାହାରି)",
+    "sell_score": "ବିକ୍ରୟ ସ୍କୋର",
+    "volatility": "ବଜାର ଜୋଖିମ",
+    "best_market": "ସର୍ବୋତ୍ତମ ମଣ୍ଡି",
+    "storage_advice": "ସଂଗ୍ରହ ପରାମର୍ଶ",
+    "buyer_connect": "ନିକଟ କ୍ରେତା (ବିଟା)",
+    "set_alert": "ସଚେତ ନିର୍ଧାରଣ",
+    "vol_stable": "ସ୍ଥିର",
+    "vol_risky": "ଜୋଖିମ",
+    "vol_high": "ଉଚ୍ଚ ଜୋଖିମ",
+    "store_days": "2–3 ଦିନ ଅଧିକ ରଖି ପାରିବେ",
+    "sell_immediately": "ତୁରନ୍ତ ବିକ୍ରୟ କରନ୍ତୁ — ଦର ପଡ଼ୁଛି",
+    "store_neutral": "ନିଷ୍ପତ୍ତି ଆଗରୁ ଦର ଯାଞ୍ଚ କରନ୍ତୁ"
   },
-
   "govtSchemes": {
     "title": "ସରକାରୀ ଯୋଜନା",
     "subtitle": "MyScheme ଓ ସରକାରୀ ପୋର୍ଟଲ ଥୁଁ ସ୍ୟ ସ୍ୟ",
@@ -223,7 +228,6 @@
     "apply": "ଏବେ ଦାଖଲ କରନ୍ତୁ",
     "officialPortals": "ସରକାରୀ ପୋର୍ଟଲ"
   },
-
   "knowledgeHub": {
     "title": "ଜ୍ଞାନ କେନ୍ଦ୍ର",
     "subtitle": "ଫସଲ ଅଭ୍ୟାସ, ଟ୍ୟୁଟୋରିୟାଲ ଓ ବିସ୍ତୃତ ମାର୍ଗଦର୍ଶିକା",
@@ -236,7 +240,6 @@
     "watchVideos": "ଭିଡ଼ିଓ ଦେଖନ୍ତୁ",
     "pdfGuides": "PDF ମାର୍ଗଦର୍ଶିକା"
   },
-
   "diagnosis": {
     "title": "ଫସଲ ରୋଗ ଚିହ୍ନଟ",
     "upload": "ଛବି ଅପଲୋଡ",
@@ -249,9 +252,11 @@
     "confidence": "ବିଶ୍ୱାସ ସ୍ତର",
     "recommended": "ସୁପାରିଶ ଚିକିତ୍ସା",
     "error": "ଛବି ବିଶ୍ଳେଷଣରେ ଭୁଲ",
-    "no_data": "କୌଣସି ତଥ୍ୟ ପ୍ରାପ୍ତ ହୋଇ ନାହିଁ"
+    "no_data": "କୌଣସି ତଥ୍ୟ ପ୍ରାପ୍ତ ହୋଇ ନାହିଁ",
+    "takePhoto": "ଫଟୋ ନିଅନ୍ତୁ",
+    "diagnose": "ଫସଲ ରୋଗ ଚିହ୍ନଟ କରନ୍ତୁ",
+    "failed": "ଅନୁସନ୍ଧାନ ବିଫଳ ହେଲା। ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।"
   },
-
   "addField": {
     "title": "ଖେତ ଯୋଡ଼ନ୍ତୁ",
     "fieldName": "ଖେତ ନାମ",
@@ -263,7 +268,6 @@
     "success": "ଖେତ ସଫଳ ଭାବରେ ଯୋଡ଼ା ହୋଇଛି",
     "failed": "ଖେତ ଯୋଡ଼ିବାରେ ବିଫଳ"
   },
-
   "errors": {
     "network": "ନେଟୱାର୍କ ତ୍ରୁଟି। ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।",
     "locationDenied": "ସ୍ଥାନ ଅଭିଗମ ଅସ୍ୱୀକୃତ।",
@@ -271,5 +275,15 @@
     "analysis_failed": "ବିଶ୍ଳେଷଣ ବିଫଳ",
     "select_state": "ଦୟାକରି ଏକ ରାଜ୍ୟ ବାଛନ୍ତୁ",
     "page_not_found": "ପୃଷ୍ଠା ମିଳୁ ନାହିଁ"
+  },
+  "result": {
+    "title": "ଚିହ୍ନଟ ଫଳାଫଳ",
+    "confidence": "ବିଶ୍ୱାସ ସ୍ତର",
+    "treatment": "ଚିକିତ୍ସା ପଦକ୍ଷେପ",
+    "prevention": "ପ୍ରତିରୋଧ ସୁଝାବ",
+    "symptoms": "ଲକ୍ଷଣ",
+    "listen": "ଶୁଣନ୍ତୁ",
+    "stop": "ଶୁଣିବା ବନ୍ଦ କରନ୍ତୁ",
+    "diagnoseAnother": "ଅନ୍ୟ ଚିତ୍ର ଚିହ୍ନଟ କରନ୍ତୁ"
   }
 }

@@ -20,7 +20,7 @@ print("Loaded DATABASE_URL:", os.getenv("DATABASE_URL"))
 from db import init_db
 
 # ✅ Import routers
-from routes import auth, farms, ndvi_extended, weather , predict
+from routes import auth, farms, ndvi_extended, weather , predict, market, schemes
 
 # ✅ Create FastAPI app
 app = FastAPI(title="AgriSat Backend")
@@ -40,6 +40,8 @@ app.include_router(farms.router)
 app.include_router(ndvi_extended.router)
 app.include_router(weather.router)
 app.include_router(predict.router)
+app.include_router(market.router)
+app.include_router(schemes.router)
 
 # ✅ Event: Initialize DB at startup
 @app.on_event("startup")

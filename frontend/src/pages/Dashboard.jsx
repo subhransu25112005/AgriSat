@@ -7,18 +7,22 @@ import WeatherIcon from "../components/icons/WeatherIcon";
 import NDVIIcon from "../components/icons/NDVIIcon";
 import SatelliteIcon from "../components/icons/SatelliteIcon";
 import FarmIcon from "../components/icons/FarmIcon";
+import FarmCard from "../components/FarmCard";
+import api from "../api/api";
 
 export default function Dashboard() {
   const { t } = useTranslation();
   const [weather, setWeather] = useState(null);
   const [location, setLocation] = useState("Your Field"); // or translate dynamically if needed
   const [selectedCrops, setSelectedCrops] = useState([]);
+  const [farms, setFarms] = useState([]);
+  const [farmsLoading, setFarmsLoading] = useState(true);
 
   const navigate = useNavigate();
 
   // ---- Fetch weather from your backend ----
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/weather/?lat=20.2961&lon=85.8245")
+      fetch(`${import.meta.env.VITE_API_BASE}/weather/?lat=20.2961&lon=85.8245`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Weather:", data);
@@ -28,6 +32,21 @@ export default function Dashboard() {
         }
       })
       .catch((e) => console.log("Weather Error:", e));
+  }, []);
+
+  // ---- Fetch farms from backend ----
+  useEffect(() => {
+    const loadFarms = async () => {
+      try {
+        const res = await api.get("/farms/");
+        setFarms(res.data);
+      } catch (err) {
+        console.error("Farms load error:", err);
+      } finally {
+        setFarmsLoading(false);
+      }
+    };
+    loadFarms();
   }, []);
 
   // ---- Crop chips at the top ----
@@ -152,24 +171,32 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* Precision Farming */}
-        <div className={glowCard}>
-          <h3 className="text-lg font-semibold text-gray-800">
-            {t("dashboard.startPrecision")}
-          </h3>
+        {/* YOUR FARMS SECTION */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between px-1">
+            <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+              {t("dashboard.yourFarms", "Your Farms")}
+            </h3>
+            {farms.length > 0 && (
+              <Link to="/add-field" className="text-sm font-bold text-green-600 hover:text-green-700">
+                + Add Farm
+              </Link>
+            )}
+          </div>
 
-          <p className="text-gray-600 text-sm mt-1">
-            {t("dashboard.startPrecisionSub")}
-          </p>
-
-          <Link to="/add-field">
-            <button
-              className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-medium shadow hover:bg-blue-700 active:scale-[0.98] transition"
-              type="button"
-            >
-              {t("dashboard.addField")}
-            </button>
-          </Link>
+          {farmsLoading ? (
+            <div className="flex justify-center p-8">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
+            </div>
+          ) : farms.length > 0 ? (
+            <div className="grid gap-4">
+              {farms.map((f) => (
+                <FarmCard key={f.id} farm={f} />
+              ))}
+            </div>
+          ) : (
+            <FarmCard farm={null} onAdd={() => navigate("/add-field")} />
+          )}
         </div>
 
         {/* MAIN TOOLS GRID (Weather, NDVI, Farm insights, Your fields) */}

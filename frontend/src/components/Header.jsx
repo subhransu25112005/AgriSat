@@ -16,6 +16,7 @@ export default function Header() {
   const changeLanguage = async (lng) => {
     try {
       i18n.changeLanguage(lng);
+      localStorage.setItem("lang", lng);
       await api.post("/auth/update-language", { language: lng }).catch(() => {});
     } catch (e) {
       console.error(e);

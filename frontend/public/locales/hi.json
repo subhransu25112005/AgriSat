@@ -1,12 +1,10 @@
 {
   "appName": "AgriSat",
-
   "common": {
     "loading": "लोड हो रहा है...",
     "go_home": "होम पर जाएं",
     "choose_state": "राज्य चुनें"
   },
-
   "menu": {
     "darkMode": "डार्क मोड",
     "lightMode": "लाइट मोड",
@@ -14,20 +12,17 @@
     "feedback": "फीडबैक दें",
     "creator": "निर्माता के बारे में"
   },
-
   "languages": {
     "en": "English",
     "hi": "हिन्दी",
     "or": "ओड़िया"
   },
-
   "navigation": {
     "your_crops": "आपकी फसलें",
     "community": "समुदाय",
     "market": "बाज़ार",
     "you": "आप"
   },
-
   "auth": {
     "welcome": "AgriSat में आपका स्वागत है",
     "email_placeholder": "ईमेल",
@@ -40,7 +35,6 @@
     "login_failed": "लॉगिन विफल — क्रेडेंशियल जांचें",
     "signup_failed": "साइनअप विफल। कोई अलग ईमेल या फोन आज़माएं।"
   },
-
   "profile": {
     "title": "प्रोफ़ाइल",
     "name": "नाम",
@@ -49,14 +43,12 @@
     "language": "भाषा",
     "logout": "लॉगआउट"
   },
-
   "settings": {
     "title": "सेटिंग्स",
     "language": "भाषा",
     "receive_push": "पुश सूचनाएं प्राप्त करें",
     "push_subtitle": "मौसम और फसल अलर्ट"
   },
-
   "dashboard": {
     "weather": "मौसम",
     "startPrecision": "सटीक खेती शुरू करें",
@@ -71,7 +63,6 @@
     "ask_expert": "विशेषज्ञ से पूछें",
     "ask_expert_sub": "कृषि विशेषज्ञ से बात करें"
   },
-
   "crops": {
     "grapes": "अंगूर",
     "papaya": "पपीता",
@@ -90,7 +81,6 @@
     "cabbage": "पत्तागोभी",
     "add": "जोड़ें"
   },
-
   "weatherPage": {
     "todayWeather": "मौसम",
     "feelsLike": "ऐसा लगता है",
@@ -107,7 +97,6 @@
     "spray_moderate": "ठीक-ठाक",
     "spray_unfavourable": "अनुचित"
   },
-
   "ndvi": {
     "title": "NDVI मानचित्र",
     "farmList": "आपके खेत",
@@ -119,7 +108,6 @@
     "source": "स्रोत",
     "size": "आकार"
   },
-
   "farmInsights": {
     "title": "खेत जानकारी",
     "soilMoisture": "मृदा नमी",
@@ -131,7 +119,6 @@
     "fertilizerRec": "उर्वरक सिफारिश",
     "cropStressAlert": "फसल तनाव चेतावनी"
   },
-
   "selectCrops": {
     "title": "अपनी फसल चुनें",
     "subtitle": "अपनी पसंद की {{max}} फसलें चुनें",
@@ -140,7 +127,6 @@
     "next": "सहेजें",
     "saved": "सहेजा गया"
   },
-
   "fertilizer": {
     "title": "उर्वरक कैलकुलेटर",
     "subtitle": "सटीक पोषक तत्व सिफारिश पाएं",
@@ -156,7 +142,6 @@
     "fertRequired": "आवश्यक उर्वरक",
     "estimatedCost": "अनुमानित लागत"
   },
-
   "pests": {
     "title": "कीट एवं रोग",
     "subtitle": "तुरंत पहचानें और उपचार पाएं",
@@ -168,7 +153,6 @@
     "noResults": "अभी कोई परिणाम नहीं",
     "readMore": "और पढ़ें"
   },
-
   "cultivationTips": {
     "title": "खेती सुझाव",
     "subtitle": "स्वस्थ फसल उगाने के सर्वोत्तम तरीके",
@@ -184,7 +168,6 @@
     "season": "उपयुक्त मौसम",
     "harvesting": "कटाई सुझाव"
   },
-
   "pestAlerts": {
     "title": "कीट चेतावनी",
     "subtitle": "सूचित रहें",
@@ -198,7 +181,6 @@
     "officialAdvisories": "आधिकारिक सलाह",
     "checkAdvisories": "अपने राज्य के लिए विस्तृत फसल-वार मार्गदर्शन के लिए जांचें:"
   },
-
   "marketPrices": {
     "title": "बाजार भाव",
     "subtitle": "अपनी फसल के ताजे मंडी भाव देखें",
@@ -208,9 +190,32 @@
     "modal": "मॉडल मूल्य",
     "updated": "अपडेटेड",
     "getPrices": "भाव देखें",
-    "no_data": "इस राज्य के लिए कोई बाजार डेटा उपलब्ध नहीं।"
+    "no_data": "इस राज्य के लिए कोई बाजार डेटा उपलब्ध नहीं।",
+    "profit_calc": "लाभ कैलकुलेटर",
+    "quantity": "मात्रा",
+    "est_earning": "अनुमानित आय",
+    "net_profit": "शुद्ध लाभ",
+    "deductions": "परिवहन और कमीशन के बाद (5%)",
+    "smart_insight": "स्मार्ट सलाह",
+    "prediction_text": "अपेक्षित मूल्य: अगले कुछ दिनों में {{price}}",
+    "hold_now": "बेहतर भाव के लिए रोकें",
+    "sell_now": "अभी बेचें",
+    "history": "मूल्य इतिहास",
+    "hide_history": "इतिहास छुपाएं",
+    "trend_label": "मूल्य रुझान (औसत)",
+    "sell_score": "बेचने का स्कोर",
+    "volatility": "बाज़ार जोखिम",
+    "best_market": "सर्वश्रेष्ठ मंडी",
+    "storage_advice": "भंडारण सलाह",
+    "buyer_connect": "नज़दीकी खरीदार (बीटा)",
+    "set_alert": "अलर्ट सेट करें",
+    "vol_stable": "स्थिर",
+    "vol_risky": "जोखिमपूर्ण",
+    "vol_high": "उच्च जोखिम",
+    "store_days": "2–3 दिन और रख सकते हैं",
+    "sell_immediately": "तुरंत बेचें — कीमत गिर रही है",
+    "store_neutral": "निर्णय से पहले कीमतें देखें"
   },
-
   "govtSchemes": {
     "title": "सरकारी योजनाएँ",
     "subtitle": "MyScheme और सरकारी पोर्टलों से लाइव अपडेट",
@@ -223,7 +228,6 @@
     "apply": "अभी आवेदन करें",
     "officialPortals": "आधिकारिक पोर्टल"
   },
-
   "knowledgeHub": {
     "title": "ज्ञान केंद्र",
     "subtitle": "फसल अभ्यास, ट्यूटोरियल और विस्तृत मार्गदर्शन",
@@ -236,7 +240,6 @@
     "watchVideos": "वीडियो देखें",
     "pdfGuides": "PDF मार्गदर्शन"
   },
-
   "diagnosis": {
     "title": "फसल रोग निदान",
     "upload": "छवि अपलोड करें",
@@ -249,9 +252,11 @@
     "confidence": "विश्वास स्तर",
     "recommended": "सुझाया गया उपचार",
     "error": "छवि विश्लेषण में त्रुटि",
-    "no_data": "कोई डेटा प्राप्त नहीं हुआ"
+    "no_data": "कोई डेटा प्राप्त नहीं हुआ",
+    "takePhoto": "एक फोटो लें",
+    "diagnose": "फसल रोग की जांच करें",
+    "failed": "पहचान विफल रही। फिर से प्रयास करें।"
   },
-
   "addField": {
     "title": "खेत जोड़ें",
     "fieldName": "खेत का नाम",
@@ -263,7 +268,6 @@
     "success": "खेत सफलतापूर्वक जोड़ा गया",
     "failed": "खेत जोड़ने में विफल"
   },
-
   "errors": {
     "network": "नेटवर्क त्रुटि। कृपया पुनः प्रयास करें।",
     "locationDenied": "स्थान पहुँच अस्वीकृत।",
@@ -271,5 +275,15 @@
     "analysis_failed": "विश्लेषण विफल",
     "select_state": "कृपया एक राज्य चुनें",
     "page_not_found": "पृष्ठ नहीं मिला"
+  },
+  "result": {
+    "title": "निदान परिणाम",
+    "confidence": "सटीकता",
+    "treatment": "उपचार के कदम",
+    "prevention": "बचाव के टिप्स",
+    "symptoms": "लक्षण",
+    "listen": "सुने",
+    "stop": "बोलना बंद करें",
+    "diagnoseAnother": "दूसरी छवि जांचें"
   }
 }
