@@ -12,64 +12,74 @@
 .insights-header h2 {
   font-size: 24px;
   font-weight: 700;
+  color: var(--text);
 }
 
 /* Summary Card */
 .summary-card {
-  background: #e7f7ee;
+  background: var(--card);
   padding: 18px;
   margin-top: 12px;
   border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
 }
 
 .summary-card .score {
   font-size: 28px;
   font-weight: bold;
-  color: #06763b;
+  color: #22C55E;
 }
 
 .summary-text {
   margin-top: 5px;
-  color: #444;
+  color: var(--text-secondary);
 }
 
 /* Info Cards */
 .info-card {
-  background: #f4f7fb;
+  background: var(--card);
   padding: 16px;
   margin-top: 14px;
   border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
 }
 
 .info-card h3 {
   font-size: 18px;
   margin-bottom: 6px;
+  color: var(--text);
 }
 
 .value {
   font-size: 24px;
   font-weight: bold;
-  color: #0059ff;
+  color: #22C55E;
 }
 
 .info-text {
   margin-top: 4px;
-  color: #555;
+  color: var(--text-secondary);
 }
 
 /* Charts */
 .chart-section {
-  background: #fff;
+  background: var(--card);
   padding: 14px;
   margin-top: 14px;
   border-radius: 14px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 /* Fertilizer card */
 .recommend {
-  background: #fcf6df;
-  border-left: 5px solid #f2c200;
+  background: var(--card);
+  border-left: 5px solid #22C55E;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+  border-left-width: 5px;
 }
 
 /* Alerts */
@@ -78,25 +88,31 @@
   padding: 16px;
   border-radius: 14px;
   font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
 }
 
 .alert-card.low {
-  background: #e2f3ff;
+  background: rgba(0, 148, 255, 0.05);
   border-left: 5px solid #0094ff;
+  color: var(--text);
 }
 
 .alert-card.medium {
-  background: #fff5e6;
+  background: rgba(255, 193, 7, 0.05);
   border-left: 5px solid #ffc107;
+  color: var(--text);
 }
 
 .alert-card.high {
-  background: #ffe5e5;
+  background: rgba(255, 77, 77, 0.05);
   border-left: 5px solid #ff4d4d;
+  color: var(--text);
 }
 
 .loading {
   text-align: center;
   padding: 40px;
   font-size: 18px;
+  color: var(--text);
 }

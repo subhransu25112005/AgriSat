@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function CultivationTips() {
+  const { t } = useTranslation();
   // --- Crops from your app ---
   const crops = [
     "Grapes",
@@ -158,11 +160,11 @@ export default function CultivationTips() {
 
   return (
     <div className="p-5 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold text-gray-800 mb-1">Cultivation Tips</h1>
-      <p className="text-gray-500 mb-6">Best practices to grow healthy crops</p>
+      <h1 className="text-2xl font-bold text-gray-800 mb-1">{t("cultivationTips.title")}</h1>
+      <p className="text-gray-500 mb-6">{t("cultivationTips.subtitle", "Best practices to grow healthy crops")}</p>
 
       {/* Crop Picker */}
-      <label className="block text-gray-600 mb-2 font-medium">Select Crop</label>
+      <label className="block text-gray-600 mb-2 font-medium">{t("cultivationTips.selectCrop")}</label>
       <select
         value={crop}
         onChange={(e) => setCrop(e.target.value)}
@@ -178,15 +180,15 @@ export default function CultivationTips() {
       {/* Tips Section */}
       {data && (
         <div className="mt-6 space-y-4">
-          <TipCard title="🌱 Soil Requirement" text={data.soil} />
-          <TipCard title="💧 Watering Schedule" text={data.watering} />
-          <TipCard title="🌾 Fertilizer Advice" text={data.fertilizer} />
-          <TipCard title="🐛 Pest Prevention" text={data.pests} />
-          <TipCard title="🌤️ Suitable Season" text={data.season} />
-          <TipCard title="🧺 Harvesting Tips" text={data.harvest} />
+          <TipCard title={`🌱 ${t("cultivationTips.soilPrep")}`} text={data.soil} />
+          <TipCard title={`💧 ${t("cultivationTips.watering", "Watering Schedule")}`} text={data.watering} />
+          <TipCard title={`🌾 ${t("cultivationTips.fertilizer")}`} text={data.fertilizer} />
+          <TipCard title={`🐛 ${t("cultivationTips.pestPrevention", "Pest Prevention")}`} text={data.pests} />
+          <TipCard title={`🌤️ ${t("cultivationTips.season", "Suitable Season")}`} text={data.season} />
+          <TipCard title={`🧺 ${t("cultivationTips.harvesting")}`} text={data.harvest} />
 
           {/* Video tutorial card */}
-          <VideoCard crop={crop} videoUrl={videoUrl} />
+          <VideoCard crop={crop} videoUrl={videoUrl} t={t} />
         </div>
       )}
     </div>
@@ -204,15 +206,15 @@ function TipCard({ title, text }) {
 }
 
 // Video tutorial card
-function VideoCard({ crop, videoUrl }) {
+function VideoCard({ crop, videoUrl, t }) {
   return (
     <div className="bg-blue-50 border border-blue-200 p-4 rounded-xl flex items-center justify-between">
       <div>
         <h2 className="text-lg font-semibold text-blue-800">
-          🎥 Video tutorial
+          🎞️ {t ? t("cultivationTips.videoTutorial") : "Video tutorial"}
         </h2>
         <p className="text-sm text-blue-700">
-          Watch {crop} cultivation tips on YouTube
+          {t ? t("cultivationTips.watchOn", { crop }) : `Watch ${crop} cultivation tips on YouTube`}
         </p>
       </div>
       <a
@@ -221,7 +223,7 @@ function VideoCard({ crop, videoUrl }) {
         rel="noreferrer"
         className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700"
       >
-        Open video
+        {t ? t("cultivationTips.openVideo", "Open video") : "Open video"}
       </a>
     </div>
   );

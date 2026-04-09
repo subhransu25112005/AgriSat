@@ -10,16 +10,18 @@
 }
 
 .today-card {
-  background: #eaf1ff;
+  background: var(--card);
   padding: 18px;
   margin-top: 14px;
   border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Light default, dark override in index.css */
+  border: 1px solid var(--border);
 }
 
 .temp {
   font-size: 36px;
   font-weight: bold;
-  color: #0059ff;
+  color: var(--text);
 }
 
 .details-row {
@@ -38,10 +40,13 @@
 
 .forecast-card {
   min-width: 90px;
-  background: #f6f9ff;
+  background: var(--card);
   border-radius: 12px;
   padding: 14px;
   text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+  color: var(--text);
 }
 
 .f-temp {
@@ -52,12 +57,15 @@
 .chart-section {
   margin-top: 20px;
   padding: 14px;
-  background: #fff;
+  background: var(--card);
   border-radius: 14px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  color: var(--text);
 }
 
 .loading {
   text-align: center;
   padding: 40px;
+  color: var(--text);
 }

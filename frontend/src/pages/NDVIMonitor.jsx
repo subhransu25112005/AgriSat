@@ -33,7 +33,7 @@ export default function NDVIMonitor() {
       const res = await api.post(`/ndvi/analyze?farm_id=${farm.id}`);
       setNdvi(res.data);
       setSelected(farm);
-    } catch (e) { console.error(e); alert("Analysis failed"); }
+    } catch (e) { console.error(e); alert(t("errors.analysis_failed", "Analysis failed")); }
     finally { setLoading(false); }
   };
 
@@ -62,9 +62,9 @@ export default function NDVIMonitor() {
                     <Popup>
                       <div className="w-44">
                         <div className="font-semibold">{f.name}</div>
-                        <div className="text-xs">Size: {f.size_km} km</div>
+                        <div className="text-xs">{t("ndvi.size", "Size")}: {f.size_km} km</div>
                         <div className="mt-2">
-                          <button className="bg-brand text-white px-2 py-1 rounded text-xs" onClick={()=>analyze(f)}>{loading ? "..." : "Analyze"}</button>
+                          <button className="bg-brand text-white px-2 py-1 rounded text-xs" onClick={()=>analyze(f)}>{loading ? t("common.loading") : t("ndvi.analyze")}</button>
                         </div>
                       </div>
                     </Popup>
@@ -77,16 +77,16 @@ export default function NDVIMonitor() {
 
         <div className="space-y-3">
           <div className="card p-3">
-            <h4 className="font-semibold mb-2">Farms</h4>
+            <h4 className="font-semibold mb-2">{t("ndvi.farmList")}</h4>
             <div className="space-y-2 max-h-[60vh] overflow-auto">
               {farms.map(f => (
                 <div key={f.id} className="p-2 border rounded flex items-center justify-between">
                   <div>
                     <div className="font-medium">{f.name}</div>
-                    <div className="text-xs text-gray-500">Size: {f.size_km} km</div>
+                    <div className="text-xs text-gray-500">{t("ndvi.size", "Size")}: {f.size_km} km</div>
                   </div>
                   <div>
-                    <button className="bg-brand text-white px-2 py-1 rounded text-xs" onClick={()=>{ setSelected(f); setNdvi(null); }}>{t("analyze")}</button>
+                    <button className="bg-brand text-white px-2 py-1 rounded text-xs" onClick={()=>{ setSelected(f); setNdvi(null); }}>{t("ndvi.analyze")}</button>
                   </div>
                 </div>
               ))}
@@ -94,14 +94,14 @@ export default function NDVIMonitor() {
           </div>
 
           <div className="card p-3">
-            <h4 className="font-semibold">NDVI Result</h4>
+            <h4 className="font-semibold">{t("ndvi.result")}</h4>
             {ndvi ? (
               <div>
                 <div className="text-2xl font-bold text-brand">{ndvi.ndvi_mean ?? "N/A"}</div>
-                <div className="text-sm text-gray-600 mt-1">Source: {ndvi.source}</div>
+                <div className="text-sm text-gray-600 mt-1">{t("ndvi.source")}: {ndvi.source}</div>
               </div>
             ) : (
-              <div className="text-sm text-gray-500">No analysis yet. Select a farm and click Analyze.</div>
+              <div className="text-sm text-gray-500">{t("ndvi.noResult")}</div>
             )}
           </div>
         </div>

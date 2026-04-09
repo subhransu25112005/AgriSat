@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function KnowledgeHub() {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("All");
 
@@ -182,15 +184,13 @@ export default function KnowledgeHub() {
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
-      <h1 className="text-2xl font-bold text-slate-800">Knowledge Hub</h1>
-      <p className="text-slate-600 mb-4">
-        Learn crop practices, watch tutorials, and find detailed guides.
-      </p>
+      <h1 className="text-2xl font-bold text-slate-800">{t("knowledgeHub.title")}</h1>
+      <p className="text-slate-600 mb-4">{t("knowledgeHub.subtitle", "Learn crop practices, watch tutorials, and find detailed guides.")}</p>
 
       {/* Search */}
       <input
         type="text"
-        placeholder="Search crop (e.g. Grapes, Banana, Brinjal)…"
+        placeholder={t("knowledgeHub.search", "Search crop (e.g. Grapes, Banana)…")}
         className="w-full p-2 border rounded-lg mb-3"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -216,7 +216,7 @@ export default function KnowledgeHub() {
       {/* Cards */}
       {filtered.length === 0 && (
         <p className="text-center text-slate-500 mt-6">
-          No crops found. Try another name.
+          {t("knowledgeHub.noFound", "No crops found. Try another name.")}
         </p>
       )}
 
@@ -235,7 +235,7 @@ export default function KnowledgeHub() {
               />
             ) : (
               <div className="h-28 mb-3 flex items-center justify-center bg-slate-100 rounded-lg text-slate-400 text-sm">
-                No image
+                {t("knowledgeHub.noImage", "No image")}
               </div>
             )}
 
@@ -262,7 +262,7 @@ export default function KnowledgeHub() {
                 rel="noreferrer"
                 className="flex-1 text-center px-3 py-2 rounded-lg bg-emerald-600 text-white text-sm font-semibold"
               >
-                ▶ Watch videos
+                ▶ {t("knowledgeHub.watchVideos", "Watch videos")}
               </a>
               <a
                 href={getPdfUrl(crop.name)}
@@ -270,7 +270,7 @@ export default function KnowledgeHub() {
                 rel="noreferrer"
                 className="flex-1 text-center px-3 py-2 rounded-lg bg-blue-600 text-white text-sm font-semibold"
               >
-                📄 PDF guides
+                📄 {t("knowledgeHub.pdfGuides", "PDF guides")}
               </a>
             </div>
           </div>

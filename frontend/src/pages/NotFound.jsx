@@ -10,9 +10,9 @@ export default function NotFound() {
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="card p-6 text-center">
         <h2 className="text-2xl font-semibold mb-2">404</h2>
-        <p className="text-sm text-gray-600">Page not found</p>
+        <p className="text-sm text-gray-600">{t("errors.page_not_found", "Page not found")}</p>
         <div className="mt-4">
-          <a href="/" className="text-brand underline">Go home</a>
+          <a href="/" className="text-brand underline">{t("common.go_home", "Go home")}</a>
         </div>
       </div>
     </div>

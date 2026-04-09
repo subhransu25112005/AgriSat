@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function FertilizerCalculator() {
   // ---------------------------
@@ -25,6 +26,7 @@ export default function FertilizerCalculator() {
     NPK: { N: 16, P: 16, K: 16, price: 32 },
   };
 
+  const { t } = useTranslation();
   const [selectedCrop, setSelectedCrop] = useState("Grapes");
   const [selectedFert, setSelectedFert] = useState("DAP");
   const [trees, setTrees] = useState(1);
@@ -85,11 +87,11 @@ export default function FertilizerCalculator() {
   return (
     <div className="p-5 max-w-xl mx-auto">
 
-      <h1 className="text-2xl font-bold">Fertilizer Calculator</h1>
-      <p className="text-gray-600 mb-6">Get accurate nutrient recommendation</p>
+      <h1 className="text-2xl font-bold">{t("fertilizer.title")}</h1>
+      <p className="text-gray-600 mb-6">{t("fertilizer.subtitle", "Get accurate nutrient recommendation")}</p>
 
       {/* CROP SELECTION */}
-      <label className="font-medium">Select Crop</label>
+      <label className="font-medium">{t("fertilizer.selectCrop", "Select Crop")}</label>
       <div className="bg-gray-100 p-3 rounded-xl mb-5 flex justify-between items-center">
         <div className="flex items-center gap-3">
           <img src={cropData.icon} className="w-8 h-8" />
@@ -110,7 +112,7 @@ export default function FertilizerCalculator() {
       </div>
 
       {/* FERTILIZER TYPE */}
-      <label className="font-medium">Fertilizer Type</label>
+      <label className="font-medium">{t("fertilizer.fertType", "Fertilizer Type")}</label>
       <select
         className="w-full bg-gray-100 p-3 rounded-xl mb-6 font-medium"
         value={selectedFert}
@@ -145,7 +147,7 @@ export default function FertilizerCalculator() {
       </div>
 
       {/* Tree Counter */}
-      <label className="font-medium">Number of Trees</label>
+      <label className="font-medium">{t("fertilizer.numTrees", "Number of Trees")}</label>
       <div className="flex items-center justify-between bg-gray-100 p-4 rounded-xl">
         <button
           onClick={() => setTrees(Math.max(1, trees - 1))}
@@ -154,7 +156,7 @@ export default function FertilizerCalculator() {
           –
         </button>
 
-        <p className="text-xl font-semibold">{trees} Trees</p>
+        <p className="text-xl font-semibold">{trees} {t("fertilizer.trees", "Trees")}</p>
 
         <button
           onClick={() => setTrees(trees + 1)}
@@ -169,24 +171,24 @@ export default function FertilizerCalculator() {
         onClick={calculate}
         className="w-full py-3 rounded-xl text-lg bg-green-600 text-white font-semibold mt-5 hover:bg-green-700"
       >
-        Calculate
+        {t("fertilizer.calculate")}
       </button>
 
       {/* RESULT BLOCK */}
       {result && (
         <div className="mt-8 bg-gray-100 p-5 rounded-xl">
-          <h3 className="text-lg font-bold mb-3">Result</h3>
+          <h3 className="text-lg font-bold mb-3">{t("fertilizer.result", "Result")}</h3>
 
-          <p className="font-medium">Total N: {result.N} g</p>
-          <p className="font-medium">Total P: {result.P} g</p>
-          <p className="font-medium">Total K: {result.K} g</p>
+          <p className="font-medium">{t("fertilizer.nitrogen")} (N): {result.N} g</p>
+          <p className="font-medium">{t("fertilizer.phosphorus")} (P): {result.P} g</p>
+          <p className="font-medium">{t("fertilizer.potassium")} (K): {result.K} g</p>
 
           <p className="font-semibold mt-3">
-            Fertilizer Required: {result.fertRequired} kg
+            {t("fertilizer.fertRequired", "Fertilizer Required")}: {result.fertRequired} kg
           </p>
 
           <p className="font-bold text-green-700 mt-1">
-            Estimated Cost: ₹{result.cost}
+            {t("fertilizer.estimatedCost", "Estimated Cost")}: ₹{result.cost}
           </p>
         </div>
       )}

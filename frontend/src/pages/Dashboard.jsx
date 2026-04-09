@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import WeatherCard from "../components/Cards/weathercard";
 import WeatherIcon from "../components/icons/WeatherIcon";
@@ -8,8 +9,9 @@ import SatelliteIcon from "../components/icons/SatelliteIcon";
 import FarmIcon from "../components/icons/FarmIcon";
 
 export default function Dashboard() {
+  const { t } = useTranslation();
   const [weather, setWeather] = useState(null);
-  const [location, setLocation] = useState("Your Field");
+  const [location, setLocation] = useState("Your Field"); // or translate dynamically if needed
   const [selectedCrops, setSelectedCrops] = useState([]);
 
   const navigate = useNavigate();
@@ -30,12 +32,12 @@ export default function Dashboard() {
 
   // ---- Crop chips at the top ----
   const crops = [
-    { name: "Grapes", icon: "/assets/illustrations/grapes.png" },
-    { name: "Papaya", icon: "/assets/illustrations/papaya.png" },
-    { name: "Olive", icon: "/assets/illustrations/olive.png" },
-    { name: "Rose", icon: "/assets/illustrations/rose.png" },
-    { name: "Sugarcane", icon: "/assets/illustrations/sugarcane.png" },
-    { name: "Add", icon: "add" }
+    { name: "grapes", label: t("crops.grapes", "Grapes"), icon: "/assets/illustrations/grapes.png" },
+    { name: "papaya", label: t("crops.papaya", "Papaya"), icon: "/assets/illustrations/papaya.png" },
+    { name: "olive", label: t("crops.olive", "Olive"), icon: "/assets/illustrations/olive.png" },
+    { name: "rose", label: t("crops.rose", "Rose"), icon: "/assets/illustrations/rose.png" },
+    { name: "sugarcane", label: t("crops.sugarcane", "Sugarcane"), icon: "/assets/illustrations/sugarcane.png" },
+    { name: "Add", label: t("crops.add", "Add"), icon: "add" }
   ];
 
   // Common glow style for cards
@@ -104,7 +106,7 @@ export default function Dashboard() {
                   )}
                 </div>
 
-                <p className="mt-1 text-xs text-center text-gray-700">{crop.name}</p>
+                <p className="mt-1 text-xs text-center text-gray-700">{crop.label}</p>
               </button>
             );
           })}
@@ -117,27 +119,27 @@ export default function Dashboard() {
         {/* HEAL YOUR CROP */}
         <div className={glowCard}>
           <h3 className="text-lg font-semibold text-gray-800 mb-3">
-            Heal your crop
+            {t("dashboard.healCrop")}
           </h3>
 
           <div className="flex items-center justify-between mb-3">
             <div className="flex flex-col items-center text-center">
               <span className="text-3xl">📷</span>
-              <p className="text-sm">Take a picture</p>
+              <p className="text-sm">{t("dashboard.takePicture")}</p>
             </div>
 
             <span className="text-2xl text-gray-400">›</span>
 
             <div className="flex flex-col items-center text-center">
               <span className="text-3xl">📄</span>
-              <p className="text-sm">See diagnosis</p>
+              <p className="text-sm">{t("dashboard.seeDiagnosis")}</p>
             </div>
 
             <span className="text-2xl text-gray-400">›</span>
 
             <div className="flex flex-col items-center text-center">
               <span className="text-3xl">💊</span>
-              <p className="text-sm">Get medicine</p>
+              <p className="text-sm">{t("dashboard.getMedicine")}</p>
             </div>
           </div>
 
@@ -146,18 +148,18 @@ export default function Dashboard() {
             className="bg-green-600 text-white w-full py-3 rounded-lg font-semibold hover:bg-green-700 active:scale-[0.98] transition-all"
             type="button"
           >
-            Take a picture
+            {t("dashboard.takePicture")}
           </button>
         </div>
 
         {/* Precision Farming */}
         <div className={glowCard}>
           <h3 className="text-lg font-semibold text-gray-800">
-            Start precision farming
+            {t("dashboard.startPrecision")}
           </h3>
 
           <p className="text-gray-600 text-sm mt-1">
-            Add your field to receive tailored insights & NDVI crop health.
+            {t("dashboard.startPrecisionSub")}
           </p>
 
           <Link to="/add-field">
@@ -165,7 +167,7 @@ export default function Dashboard() {
               className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-medium shadow hover:bg-blue-700 active:scale-[0.98] transition"
               type="button"
             >
-              + Add field
+              {t("dashboard.addField")}
             </button>
           </Link>
         </div>
@@ -175,35 +177,35 @@ export default function Dashboard() {
           <div className="grid grid-cols-2 gap-4">
             <Link
               to="/weather"
-              className="flex flex-col items-center justify-center py-4 rounded-xl bg-slate-50 hover:bg-slate-100 hover:-translate-y-0.5 hover:shadow-md border border-transparent hover:border-emerald-400 transition-all"
+              className="flex flex-col items-center justify-center py-4 rounded-xl bg-slate-50 dark:bg-[#121821] text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-[#1A2330] hover:-translate-y-0.5 hover:shadow-md border border-transparent dark:border-gray-700 hover:border-emerald-400 transition-all"
             >
               <WeatherIcon size={32} />
-              <p className="mt-2 text-sm font-medium">Weather</p>
+              <p className="mt-2 text-sm font-medium">{t("dashboard.weather")}</p>
             </Link>
 
             <Link
               to="/ndvi"
               onClick={() => navigate("/ndvi-map")}
-              className="flex flex-col items-center justify-center py-4 rounded-xl bg-slate-50 hover:bg-slate-100 hover:-translate-y-0.5 hover:shadow-md border border-transparent hover:border-emerald-400 transition-all"
+              className="flex flex-col items-center justify-center py-4 rounded-xl bg-slate-50 dark:bg-[#121821] text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-[#1A2330] hover:-translate-y-0.5 hover:shadow-md border border-transparent dark:border-gray-700 hover:border-emerald-400 transition-all"
             >
               <NDVIIcon size={32} />
-              <p className="mt-2 text-sm font-medium">NDVI Map</p>
+              <p className="mt-2 text-sm font-medium">{t("ndvi.title")}</p>
             </Link>
 
             <Link
               to="/farm-insights"
-              className="flex flex-col items-center justify-center py-4 rounded-xl bg-slate-50 hover:bg-slate-100 hover:-translate-y-0.5 hover:shadow-md border border-transparent hover:border-emerald-400 transition-all"
+              className="flex flex-col items-center justify-center py-4 rounded-xl bg-slate-50 dark:bg-[#121821] text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-[#1A2330] hover:-translate-y-0.5 hover:shadow-md border border-transparent dark:border-gray-700 hover:border-emerald-400 transition-all"
             >
               <SatelliteIcon size={32} />
-              <p className="mt-2 text-sm font-medium">Farm Insights</p>
+              <p className="mt-2 text-sm font-medium">{t("farmInsights.title")}</p>
             </Link>
 
             <Link
               to="/profile"
-              className="flex flex-col items-center justify-center py-4 rounded-xl bg-slate-50 hover:bg-slate-100 hover:-translate-y-0.5 hover:shadow-md border border-transparent hover:border-emerald-400 transition-all"
+              className="flex flex-col items-center justify-center py-4 rounded-xl bg-slate-50 dark:bg-[#121821] text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-[#1A2330] hover:-translate-y-0.5 hover:shadow-md border border-transparent dark:border-gray-700 hover:border-emerald-400 transition-all"
             >
               <FarmIcon size={32} />
-              <p className="mt-2 text-sm font-medium">Your fields</p>
+              <p className="mt-2 text-sm font-medium">{t("ndvi.farmList")}</p>
             </Link>
           </div>
         </div>
@@ -211,7 +213,7 @@ export default function Dashboard() {
         {/* EXTRA FEATURE CARDS (like Plantix section – 4 cards) */}
         <div className={glowCard}>
           <h3 className="text-base font-semibold text-gray-800 mb-3">
-            Smart farming tools
+            {t("dashboard.smart_farming", "Smart farming tools")}
           </h3>
 
           <div className="grid grid-cols-2 gap-3 text-sm">
@@ -224,11 +226,11 @@ export default function Dashboard() {
               <span className="text-xl mb-1"></span>
 
               <span className="font-semibold text-slate-800">
-                Fertilizer calculator
+                {t("fertilizer.title")}
               </span>
 
               <span className="text-xs text-slate-600 mt-1">
-                Get dose per acre
+                {t("fertilizer.subtitle", "Get dose per acre")}
               </span>
             </button>
 
@@ -240,10 +242,10 @@ export default function Dashboard() {
             >
               <span className="text-xl mb-1">🪲</span>
               <span className="font-semibold text-slate-800">
-                Pests &amp; diseases
+                {t("pests.title")}
               </span>
               <span className="text-xs text-slate-600 mt-1">
-                Identify &amp; prevent
+                {t("pests.subtitle", "Identify & prevent")}
               </span>
             </button>
 
@@ -255,14 +257,13 @@ export default function Dashboard() {
             >
               <span className="text-xl mb-1">🌱</span>
               <span className="font-semibold text-slate-800">
-                Cultivation tips
+                {t("cultivationTips.title")}
               </span>
               <span className="text-xs text-slate-600 mt-1">
-                Best practices
+                {t("cultivationTips.subtitle", "Best practices")}
               </span>
             </button>
 
-            {/* 4. Pest & disease alerts */}
             {/* 4. Pest alerts */}
             <button
               type="button"
@@ -270,8 +271,8 @@ export default function Dashboard() {
               className="flex flex-col items-start justify-between px-3 py-3 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-transparent hover:border-emerald-400 hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
               <span className="text-xl mb-1">⚠️</span>
-              <span className="font-semibold text-slate-800">Pest alerts</span>
-              <span className="text-xs text-slate-600 mt-1">Stay notified</span>
+              <span className="font-semibold text-slate-800">{t("pestAlerts.title")}</span>
+              <span className="text-xs text-slate-600 mt-1">{t("pestAlerts.subtitle", "Stay notified")}</span>
             </button>
 
           </div>
@@ -288,10 +289,10 @@ export default function Dashboard() {
             >
               <span className="text-xl mb-1">💹</span>
               <span className="font-semibold text-slate-800">
-                Market prices
+                {t("marketPrices.title")}
               </span>
               <span className="text-xs text-slate-600 mt-1">
-                Check mandi rates
+                {t("marketPrices.subtitle", "Check mandi rates")}
               </span>
             </button>
 
@@ -303,10 +304,10 @@ export default function Dashboard() {
             >
               <span className="text-xl mb-1">📜</span>
               <span className="font-semibold text-slate-800">
-                Govt schemes
+                {t("govtSchemes.title")}
               </span>
               <span className="text-xs text-slate-600 mt-1">
-                Know your benefits
+                {t("govtSchemes.subtitle", "Know your benefits")}
               </span>
             </button>
 
@@ -318,10 +319,10 @@ export default function Dashboard() {
             >
               <span className="text-xl mb-1">📚</span>
               <span className="font-semibold text-slate-800">
-                Knowledge hub
+                {t("knowledgeHub.title")}
               </span>
               <span className="text-xs text-slate-600 mt-1">
-                Guides &amp; videos
+                {t("knowledgeHub.subtitle", "Guides & videos")}
               </span>
             </button>
 
@@ -332,10 +333,10 @@ export default function Dashboard() {
             >
               <span className="text-xl mb-1">👨‍🌾</span>
               <span className="font-semibold text-slate-800">
-                Ask an expert
+                {t("dashboard.ask_expert", "Ask an expert")}
               </span>
               <span className="text-xs text-slate-600 mt-1">
-                Talk to agronomist
+                {t("dashboard.ask_expert_sub", "Talk to agronomist")}
               </span>
             </button>
           </div>

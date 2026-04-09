@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function GovtSchemes() {
+    const { t } = useTranslation();
     const [state, setState] = useState("");
     const [loading, setLoading] = useState(false);
     const [schemes, setSchemes] = useState([]);
@@ -32,13 +34,13 @@ export default function GovtSchemes() {
             console.log("LIVE SCHEMES:", json);
 
             if (!json.data || json.data.length === 0) {
-                setError("No schemes found for this state.");
+                setError(t("govtSchemes.noSchemes"));
                 setSchemes([]);
             } else {
                 setSchemes(json.data);
             }
         } catch (err) {
-            setError("Failed to load schemes.");
+            setError(t("errors.network"));
         }
 
         setLoading(false);
@@ -47,17 +49,17 @@ export default function GovtSchemes() {
 
     return (
         <div className="p-4 max-w-3xl mx-auto">
-            <h1 className="text-2xl font-bold mb-2">Government Schemes</h1>
-            <p className="text-gray-600 mb-6">Live updates from MyScheme & Govt portals</p>
+            <h1 className="text-2xl font-bold mb-2">{t("govtSchemes.title")}</h1>
+            <p className="text-gray-600 mb-6">{t("govtSchemes.subtitle", "Live updates from MyScheme & Govt portals")}</p>
 
             {/* State selector */}
-            <label className="font-medium text-gray-800">Select State</label>
+            <label className="font-medium text-gray-800">{t("govtSchemes.state")}</label>
             <select
                 value={state}
                 onChange={(e) => setState(e.target.value)}
                 className="w-full bg-gray-100 p-3 rounded-lg mt-2"
             >
-                <option value="">Choose State</option>
+                <option value="">{t("common.choose_state", "Choose State")}</option>
                 {indianStates.map((s) => (
                     <option key={s} value={s}>
                         {s}
@@ -71,7 +73,7 @@ export default function GovtSchemes() {
                     onClick={fetchLiveSchemes}
                     className="w-full mt-4 bg-green-600 text-white py-3 rounded-xl font-semibold"
                 >
-                    {loading ? "Loading..." : "View Schemes"}
+                    {loading ? t("govtSchemes.loading") : t("govtSchemes.viewSchemes", "View Schemes")}
                 </button>
             )}
 
@@ -89,7 +91,7 @@ export default function GovtSchemes() {
                     >
                         <h2 className="font-bold text-lg">{item.title}</h2>
                         <p className="text-gray-600 mt-1">
-                            {item.shortDescription || "No description provided"}
+                            {item.shortDescription || t("govtSchemes.noDesc", "No description provided")}
                         </p>
 
                         <a
@@ -97,7 +99,7 @@ export default function GovtSchemes() {
                             target="_blank"
                             className="text-blue-600 font-semibold mt-2 inline-block"
                         >
-                            View details →
+                            {t("govtSchemes.details")} →
                         </a>
                     </div>
                 ))}
@@ -105,7 +107,7 @@ export default function GovtSchemes() {
 
             {/* Direct Govt Portals */}
             <div className="bg-blue-50 rounded-xl p-4 border mt-8">
-                <h2 className="font-semibold">Official Portals</h2>
+                <h2 className="font-semibold">{t("govtSchemes.officialPortals", "Official Portals")}</h2>
                 <ul className="list-disc ml-5 mt-2 text-blue-700">
                     <li>
                         <a href="https://myscheme.gov.in" target="_blank">

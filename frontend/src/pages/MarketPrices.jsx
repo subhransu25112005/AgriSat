@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function MarketPrices() {
+  const { t } = useTranslation();
   const [state, setState] = useState("");
   const [loading, setLoading] = useState(false);
   const [prices, setPrices] = useState([]);
@@ -12,7 +14,7 @@ export default function MarketPrices() {
   ];
 
   const fetchPrices = async () => {
-    if (!state) return alert("Please select a state");
+    if (!state) return alert(t("errors.select_state", "Please select a state"));
 
     setLoading(true);
     setError("");
@@ -24,14 +26,14 @@ export default function MarketPrices() {
       console.log("PRICE DATA:", data);
 
       if (!data.records || data.records.length === 0) {
-        setError("No market data available for this state.");
+        setError(t("marketPrices.no_data", "No market data available for this state."));
         setPrices([]);
       } else {
         setPrices(data.records);
       }
 
     } catch (err) {
-      setError("Error fetching market prices.");
+      setError(t("errors.network"));
     }
 
     setLoading(false);
@@ -39,17 +41,17 @@ export default function MarketPrices() {
 
   return (
     <div className="p-4 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-semibold">Market Prices</h1>
-      <p className="text-gray-600 mb-6">Check latest mandi rates for your crop</p>
+      <h1 className="text-2xl font-semibold">{t("marketPrices.title")}</h1>
+      <p className="text-gray-600 mb-6">{t("marketPrices.subtitle", "Check latest mandi rates for your crop")}</p>
 
       {/* Select State */}
-      <label className="font-medium">Select State</label>
+      <label className="font-medium">{t("govtSchemes.state")}</label>
       <select
         className="w-full mt-2 p-3 border rounded-lg"
         value={state}
         onChange={(e) => setState(e.target.value)}
       >
-        <option value="">Choose State</option>
+        <option value="">{t("common.choose_state", "Choose State")}</option>
         {states.map((s) => (
           <option key={s} value={s}>{s}</option>
         ))}
@@ -59,11 +61,11 @@ export default function MarketPrices() {
         onClick={fetchPrices}
         className="w-full bg-green-600 text-white py-3 rounded-xl mt-4 font-semibold"
       >
-        Get Prices
+        {t("marketPrices.getPrices", "Get Prices")}
       </button>
 
       {/* Loading */}
-      {loading && <p className="text-center mt-4">Fetching prices...</p>}
+      {loading && <p className="text-center mt-4">{t("common.loading")}</p>}
 
       {/* Error */}
       {error && (
@@ -78,13 +80,13 @@ export default function MarketPrices() {
             <p className="text-sm text-gray-600">{item.market}, {item.state}</p>
 
             <div className="mt-2">
-              <p><span className="font-semibold">Min Price:</span> ₹{item.min_price}</p>
-              <p><span className="font-semibold">Max Price:</span> ₹{item.max_price}</p>
-              <p><span className="font-semibold">Modal Price:</span> ₹{item.modal_price}</p>
+              <p><span className="font-semibold">{t("marketPrices.lowest")}:</span> ₹{item.min_price}</p>
+              <p><span className="font-semibold">{t("marketPrices.highest")}:</span> ₹{item.max_price}</p>
+              <p><span className="font-semibold">{t("marketPrices.modal", "Modal Price")}:</span> ₹{item.modal_price}</p>
             </div>
 
             <p className="text-xs text-gray-500 mt-2">
-              Updated: {item.arrival_date}
+              {t("marketPrices.updated")}: {item.arrival_date}
             </p>
           </div>
         ))}

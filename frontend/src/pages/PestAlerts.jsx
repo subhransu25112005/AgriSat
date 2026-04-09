@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 // Simple mapping: state -> coordinates for NASA POWER
 const LOCATION_OPTIONS = {
@@ -10,6 +11,7 @@ const LOCATION_OPTIONS = {
 };
 
 export default function PestAlerts() {
+  const { t } = useTranslation();
   const [stateName, setStateName] = useState("Odisha");
   const [alerts, setAlerts] = useState([]);
   const [weather, setWeather] = useState(null);
@@ -64,7 +66,7 @@ export default function PestAlerts() {
       setAlerts(derivedAlerts);
     } catch (e) {
       console.error(e);
-      setError("Unable to load live pest risk right now.");
+      setError(t("pestAlerts.fetchError", "Unable to load live pest risk right now."));
     }
 
     setLoading(false);
@@ -146,14 +148,14 @@ export default function PestAlerts() {
 
   return (
     <div className="p-5 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold text-gray-800">Pest alerts</h1>
+      <h1 className="text-2xl font-bold text-gray-800">{t("pestAlerts.title")}</h1>
       <p className="text-gray-600 mb-4">
-        Live pest risk based on NASA weather + ICAR / IMD advisories
+        {t("pestAlerts.subtitle_detail", "Live pest risk based on NASA weather + ICAR / IMD advisories")}
       </p>
 
       {/* State selector */}
       <label className="block text-gray-600 mb-2 font-medium">
-        Select state
+        {t("govtSchemes.state")}
       </label>
       <select
         value={stateName}
@@ -177,7 +179,7 @@ export default function PestAlerts() {
       )}
 
       {loading && (
-        <p className="text-gray-600 mt-4">Fetching live pest risk...</p>
+        <p className="text-gray-600 mt-4">{t("common.loading")}</p>
       )}
       {error && (
         <p className="text-red-600 mt-4 text-sm">
@@ -194,14 +196,14 @@ export default function PestAlerts() {
           >
             <h2 className="text-lg font-semibold text-gray-800">{a.name}</h2>
             <p className="text-sm text-gray-500 mt-1">
-              🔥 <b>Risk:</b> {a.risk}
+              🔥 <b>{t("pestAlerts.risk", "Risk")}:</b> {a.risk}
             </p>
             <p className="text-sm text-gray-500">
-              📍 <b>Area:</b> {a.district}
+              📍 <b>{t("pestAlerts.area", "Area")}:</b> {a.district}
             </p>
             <p className="text-sm text-gray-600 mt-2">{a.reason}</p>
             <p className="text-gray-700 mt-2">
-              <b>What to do:</b> {a.prevention}
+              <b>{t("pestAlerts.whatToDo", "What to do")}:</b> {a.prevention}
             </p>
           </div>
         ))}
@@ -209,12 +211,12 @@ export default function PestAlerts() {
 
       {/* Official advisories section */}
       <div className="mt-6 bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-sm">
-        <h2 className="text-md font-semibold text-emerald-800 mb-1">
-          📑 Official advisories
-        </h2>
-        <p className="text-emerald-800">
-          For detailed, crop-wise guidance for your state, check:
-        </p>
+         <h2 className="text-md font-semibold text-emerald-800 mb-1">
+           📑 {t("pestAlerts.officialAdvisories", "Official advisories")}
+         </h2>
+         <p className="text-emerald-800">
+           {t("pestAlerts.checkAdvisories", "For detailed, crop-wise guidance for your state, check:")}
+         </p>
         <ul className="list-disc list-inside mt-2 space-y-1">
           <li>
             <a

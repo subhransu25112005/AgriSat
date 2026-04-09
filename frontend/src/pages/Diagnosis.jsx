@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function Diagnosis() {
+  const { t } = useTranslation();
   const fileInputRef = useRef(null);
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
@@ -37,14 +39,14 @@ export default function Diagnosis() {
       navigate("/diagnosis/result", { state: data });
 
     } catch (error) {
-      alert("Error analyzing image");
+      alert(t("diagnosis.error", "Error analyzing image"));
     }
   };
 
   return (
     <div className="p-5 max-w-lg mx-auto">
       <h1 className="text-2xl font-bold text-center mb-6">
-        Crop Disease Diagnosis
+        {t("diagnosis.title")}
       </h1>
 
       {/* Preview */}
@@ -63,14 +65,14 @@ export default function Diagnosis() {
         onClick={openCamera}
         className="w-full bg-blue-600 text-white py-3 rounded-xl mb-3 shadow hover:bg-blue-700"
       >
-        Take a Photo
+        {t("diagnosis.take_photo", "Take a Photo")}
       </button>
 
       <button
         onClick={() => fileInputRef.current.click()}
         className="w-full bg-green-600 text-white py-3 rounded-xl shadow hover:bg-green-700"
       >
-        Upload from Gallery
+        {t("diagnosis.upload_gallery", "Upload from Gallery")}
       </button>
 
       <input
@@ -87,7 +89,7 @@ export default function Diagnosis() {
           onClick={diagnose}
           className="w-full bg-black text-white py-3 mt-4 rounded-xl shadow hover:bg-gray-800"
         >
-          Diagnose Crop Disease
+          {t("diagnosis.diagnose_btn", "Diagnose Crop Disease")}
         </button>
       )}
     </div>

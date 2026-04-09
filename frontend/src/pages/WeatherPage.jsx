@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import WeatherGraph from "../components/weather/WeatherGraph";
 import AQICard from "../components/weather/AQICard";
+import { useTranslation } from "react-i18next";
 
 export default function WeatherPage() {
+  const { t, i18n } = useTranslation();
   const [current, setCurrent] = useState(null);
   const [forecast, setForecast] = useState([]);
   const [hourly, setHourly] = useState([]);
@@ -49,7 +51,7 @@ export default function WeatherPage() {
     load();
   }, []);
 
-  if (loading) return <div className="text-center p-10 text-lg">Loading…</div>;
+  if (loading) return <div className="text-center p-10 text-lg">{t("common.loading")}</div>;
 
   const sunrise = new Date(current.sys.sunrise * 1000).toLocaleTimeString();
   const sunset = new Date(current.sys.sunset * 1000).toLocaleTimeString();
@@ -59,7 +61,7 @@ export default function WeatherPage() {
 
       {/* TITLE */}
       <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-gray-800">
-        {current.name} Weather
+        {current.name} {t("weatherPage.todayWeather")}
       </h1>
 
       {/* CURRENT CARD */}
@@ -72,7 +74,7 @@ export default function WeatherPage() {
             {current.weather[0].description}
           </div>
           <div className="mt-1 text-gray-500">
-            Feels like {Math.round(current.main.feels_like)}°C
+            {t("weatherPage.feelsLike", "Feels like")} {Math.round(current.main.feels_like)}°C
           </div>
         </div>
 
@@ -85,12 +87,12 @@ export default function WeatherPage() {
       {/* METRICS */}
       <div className="grid grid-cols-2 gap-4 mb-10">
         {[
-          { label: "Humidity", value: current.main.humidity + "%" },
-          { label: "Wind", value: current.wind.speed + " m/s" },
-          { label: "Pressure", value: current.main.pressure + " hPa" },
-          { label: "Visibility", value: current.visibility / 1000 + " km" },
-          { label: "Sunrise", value: sunrise },
-          { label: "Sunset", value: sunset },
+          { label: t("weatherPage.humidity"), value: current.main.humidity + "%" },
+          { label: t("weatherPage.wind"), value: current.wind.speed + " m/s" },
+          { label: t("weatherPage.pressure"), value: current.main.pressure + " hPa" },
+          { label: t("weatherPage.visibility", "Visibility"), value: current.visibility / 1000 + " km" },
+          { label: t("weatherPage.sunrise"), value: sunrise },
+          { label: t("weatherPage.sunset"), value: sunset },
         ].map((m, i) => (
           <div
             key={i}
@@ -112,7 +114,7 @@ export default function WeatherPage() {
 
       {/* NEXT 6 DAYS */}
       <h2 className="text-xl font-semibold mb-3 mt-10 text-gray-800">
-        Next 6 Days
+        {t("weatherPage.weeklyForecast")}
       </h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -122,7 +124,7 @@ export default function WeatherPage() {
             className="bg-white/80 p-4 rounded-xl border shadow text-center"
           >
             <div className="text-gray-600 text-sm font-medium">
-              {new Date(d.dt * 1000).toLocaleDateString("en-US", {
+              {new Date(d.dt * 1000).toLocaleDateString(i18n.language === "en" ? "en-US" : i18n.language === "hi" ? "hi-IN" : "or-IN", {
                 weekday: "short",
               })}
             </div>
@@ -141,7 +143,7 @@ export default function WeatherPage() {
 
       {/* SPRAYING TIME */}
       <h2 className="text-xl font-semibold mt-10 mb-3 text-gray-800">
-        Spraying Time (Next Few Hours)
+        {t("weatherPage.sprayingTime", "Spraying Time (Next Few Hours)")}
       </h2>
 
       <div className="space-y-3 mb-10">
@@ -150,10 +152,10 @@ export default function WeatherPage() {
 
           let status =
             temp >= 18 && temp <= 28
-              ? "Optimal"
+              ? t("weatherPage.spray_optimal", "Optimal")
               : temp <= 32
-              ? "Moderate"
-              : "Unfavourable";
+              ? t("weatherPage.spray_moderate", "Moderate")
+              : t("weatherPage.spray_unfavourable", "Unfavourable");
 
           let color =
             status === "Optimal"

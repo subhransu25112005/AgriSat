@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function PestsDiseases() {
+    const { t } = useTranslation();
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -34,14 +36,14 @@ export default function PestsDiseases() {
 
     return (
         <div className="p-5 max-w-2xl mx-auto">
-            <h1 className="text-2xl font-bold mb-3">Pests & Diseases</h1>
-            <p className="text-gray-600 mb-5">Identify & get treatments instantly</p>
+            <h1 className="text-2xl font-bold mb-3">{t("pests.title")}</h1>
+            <p className="text-gray-600 mb-5">{t("pests.subtitle", "Identify & get treatments instantly")}</p>
 
             {/* Search box */}
             <div className="bg-gray-100 p-3 rounded-xl flex items-center">
                 <input
                     className="bg-transparent w-full outline-none text-lg"
-                    placeholder="Enter disease name (e.g., Powdery Mildew)"
+                    placeholder={t("pests.search")}
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && searchGoogle()}
@@ -50,16 +52,16 @@ export default function PestsDiseases() {
                     onClick={searchGoogle}
                     className="bg-blue-600 text-white px-5 py-2 rounded-xl ml-3"
                 >
-                    Search
+                    {t("pests.searchBtn", "Search")}
                 </button>
             </div>
             <div className="mt-6">
                 {loading && (
-                    <p className="text-gray-600 text-sm">Searching...</p>
+                    <p className="text-gray-600 text-sm">{t("common.loading")}</p>
                 )}
 
                 {!loading && results.length === 0 && (
-                    <p className="text-gray-500 text-sm">No results yet</p>
+                    <p className="text-gray-500 text-sm">{t("pests.noResults", "No results yet")}</p>
                 )}
 
                 <div className="space-y-4 mt-4">
@@ -93,7 +95,7 @@ export default function PestsDiseases() {
                                     target="_blank"
                                     className="text-blue-600 text-sm font-semibold mt-2 inline-block"
                                 >
-                                    Read more →
+                                    {t("pests.readMore", "Read more")} →
                                 </a>
                             </div>
                         </div>
@@ -103,7 +105,7 @@ export default function PestsDiseases() {
 
 
             {/* Loading */}
-            {loading && <p className="text-center mt-5">Fetching information…</p>}
+            {loading && <p className="text-center mt-5">{t("common.loading")}</p>}
 
             {/* Results */}
             <div className="mt-6 space-y-5">
@@ -125,7 +127,7 @@ export default function PestsDiseases() {
                             target="_blank"
                             className="text-blue-600 font-semibold mt-3 block"
                         >
-                            Read more →
+                            {t("pests.readMore", "Read more")} →
                         </a>
                     </div>
                 ))}

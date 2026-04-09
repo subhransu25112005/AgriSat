@@ -36,19 +36,19 @@ export default function Profile({ onLogout }) {
   return (
     <div className="max-w-xl mx-auto">
       <div className="card p-4">
-        <h2 className="font-semibold text-lg mb-2">{t("profile") || "Profile"}</h2>
+        <h2 className="font-semibold text-lg mb-2">{t("profile.title")}</h2>
         {profile ? (
           <div className="space-y-2">
-            <div><strong>Name:</strong> {profile.name || "-"}</div>
-            <div><strong>Email:</strong> {profile.email || "-"}</div>
-            <div><strong>Phone:</strong> {profile.phone || "-"}</div>
-            <div><strong>Language:</strong> {profile.language || "en"}</div>
+            <div><strong>{t("profile.name", "Name")}:</strong> {profile.name || "-"}</div>
+            <div><strong>{t("profile.email", "Email")}:</strong> {profile.email || "-"}</div>
+            <div><strong>{t("profile.phone", "Phone")}:</strong> {profile.phone || "-"}</div>
+            <div><strong>{t("profile.language", "Language")}:</strong> {profile.language || "en"}</div>
             <div className="mt-3">
-              <button className="bg-brand text-white px-3 py-1 rounded" onClick={doLogout}>{t("logout") || "Logout"}</button>
+              <button className="bg-brand text-white px-3 py-1 rounded" onClick={doLogout}>{t("profile.logout")}</button>
             </div>
           </div>
         ) : (
-          <div className="text-sm text-gray-500">Loading...</div>
+          <div className="text-sm text-gray-500">{t("common.loading")}</div>
         )}
       </div>
     </div>

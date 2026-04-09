@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import api from "../api/api";
 
 export default function Header() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.classList.add(savedTheme);
+    setDarkMode(savedTheme === "dark");
+  }, []);
 
   const changeLanguage = async (lng) => {
     try {
@@ -16,9 +22,18 @@ export default function Header() {
     }
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle("dark");
+  const toggleTheme = () => {
+    const isDark = document.documentElement.className.includes("dark");
+
+    if (isDark) {
+      document.documentElement.className = "light";
+      localStorage.setItem("theme", "light");
+      setDarkMode(false);
+    } else {
+      document.documentElement.className = "dark";
+      localStorage.setItem("theme", "dark");
+      setDarkMode(true);
+    }
   };
 
   return (
@@ -43,11 +58,11 @@ export default function Header() {
 
           {/* DROPDOWN MENU */}
           {menuOpen && (
-            <div className="absolute right-0 mt-2 w-44 bg-white shadow-lg rounded-lg border p-2 space-y-2 animate-fadeIn">
+            <div className="language-panel absolute right-0 mt-2 w-44 rounded-lg p-2 space-y-2 animate-fadeIn z-50">
               
               {/* Change Language */}
               <div className="px-3 py-2 text-sm font-semibold text-gray-700">
-                Change Language
+                {t("menu.language")}
               </div>
               <div className="flex gap-2 px-3 pb-2">
                 <button
@@ -72,10 +87,10 @@ export default function Header() {
 
               {/* Dark Mode Toggle */}
               <button
-                onClick={toggleDarkMode}
+                onClick={toggleTheme}
                 className="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 rounded"
               >
-                {darkMode ? "Light Mode" : "Dark Mode"}
+                {darkMode ? t("menu.lightMode") : t("menu.darkMode")}
               </button>
 
               {/* Feedback */}
@@ -83,7 +98,7 @@ export default function Header() {
                 onClick={() => alert("Feedback page coming soon")}
                 className="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 rounded"
               >
-                Give Feedback
+                {t("menu.feedback")}
               </button>
 
               {/* About Creator */}
@@ -91,7 +106,7 @@ export default function Header() {
                 onClick={() => alert("Created by Subhranshu Nanda ❤️")}
                 className="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 rounded"
               >
-                About Creator
+                {t("menu.creator")}
               </button>
 
             </div>

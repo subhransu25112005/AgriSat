@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  background: #f8f9fc;
+  background: var(--surface);
   min-height: 100vh;
 }
 
@@ -21,7 +21,7 @@
 .dashboard-title {
   font-size: 1.7rem;
   font-weight: bold;
-  color: #2c3e50;
+  color: var(--text);
 }
 
 /* Cards Grid */
@@ -32,39 +32,43 @@
 }
 
 .dashboard-card {
-  background: white;
+  background: var(--card);
   border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Light mode shadow, dark overrides handled centrally */
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  color: var(--text);
 }
 
 .dashboard-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
 .dashboard-card-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #34495e;
+  color: var(--text-secondary);
 }
 
 .dashboard-card-value {
   font-size: 1.4rem;
-  color: #2c3e50;
+  color: var(--text);
   font-weight: bold;
 }
 
 /* Weather Section */
 .weather-section {
-  background: white;
+  background: var(--card);
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
 }
 
 .weather-top {
@@ -76,6 +80,7 @@
 .weather-info {
   font-size: 1.2rem;
   font-weight: bold;
+  color: var(--text);
 }
 
 /* Insights grid */
@@ -86,10 +91,11 @@
 }
 
 .insight-box {
-  background: white;
+  background: var(--card);
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
 }
 
 /* Icons */

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function SelectCrops() {
   const allCrops = [
@@ -20,6 +21,7 @@ export default function SelectCrops() {
     {name: "Add" , icon: "add"}
   ];
 
+  const { t } = useTranslation();
   const [selectedCrops, setSelectedCrops] = useState([]);
 
   // Handle add/remove logic
@@ -36,14 +38,14 @@ export default function SelectCrops() {
   // What happens when saving
   const saveCrops = () => {
     console.log("Selected crops:", selectedCrops);
-    alert("Saved: " + selectedCrops.join(", "));
+    alert(t("selectCrops.saved", "Saved") + ": " + selectedCrops.join(", "));
   };
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-semibold text-center">Select crops</h2>
+      <h2 className="text-2xl font-semibold text-center">{t("selectCrops.title")}</h2>
       <p className="text-center text-gray-500 mb-6">
-        Select up to <b>8 crops</b> you are interested in
+        {t("selectCrops.subtitle", { max: 8 }, "Select up to 8 crops you are interested in")}
       </p>
 
       {/* Grid */}
@@ -78,7 +80,7 @@ export default function SelectCrops() {
           onClick={saveCrops}
           className="bg-blue-600 text-white px-8 py-3 rounded-xl shadow-md hover:bg-blue-700 transition"
         >
-          Save
+          {t("selectCrops.next")}
         </button>
       </div>
     </div>
