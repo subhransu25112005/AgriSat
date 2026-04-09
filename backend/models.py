@@ -1,5 +1,5 @@
 # models.py
-from typing import Optional
+from typing import Optional, Any
 from sqlmodel import SQLModel, Field, Column, JSON
 from datetime import datetime
 
@@ -45,4 +45,40 @@ class FarmPhoto(SQLModel, table=True):
     user_id: int = Field(index=True)
     filename: str
     caption: Optional[str] = None
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+class SavedInsight(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    user_id: int = Field(index=True)
+    farm_id: Optional[int] = Field(default=None)
+    type: str = Field(default="general")  # 'ndvi', 'market', 'weather', 'general'
+    title: str
+    content: Optional[Any] = Field(sa_column=Column(JSON), default=None)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+class Notification(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    user_id: int = Field(index=True)
+    title: str
+    message: str
+    type: str = Field(default="info")  # 'info', 'warning', 'error', 'success'
+    is_read: bool = Field(default=False)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+class SupportRequest(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    user_id: Optional[int] = Field(default=None)
+    name: str
+    email: str
+    subject: str
+    message: str
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+class KnowledgeArticle(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    title: str
+    category: str = Field(default="general")  # 'crops', 'fertilizer', 'pest'
+    summary: str
+    content: str
+    author: Optional[str] = Field(default="AgriSat Team")
     created_at: datetime = Field(default_factory=datetime.utcnow)
