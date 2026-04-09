@@ -1,6 +1,12 @@
 {
   "appName": "AgriSat",
 
+  "common": {
+    "loading": "लोड हो रहा है...",
+    "go_home": "होम पर जाएं",
+    "choose_state": "राज्य चुनें"
+  },
+
   "menu": {
     "darkMode": "डार्क मोड",
     "lightMode": "लाइट मोड",
@@ -15,6 +21,42 @@
     "or": "ओड़िया"
   },
 
+  "navigation": {
+    "your_crops": "आपकी फसलें",
+    "community": "समुदाय",
+    "market": "बाज़ार",
+    "you": "आप"
+  },
+
+  "auth": {
+    "welcome": "AgriSat में आपका स्वागत है",
+    "email_placeholder": "ईमेल",
+    "password_placeholder": "पासवर्ड",
+    "name_placeholder": "पूरा नाम",
+    "phone_placeholder": "फोन (वैकल्पिक)",
+    "login_btn": "लॉगिन",
+    "signup_btn": "साइन अप",
+    "signup_title": "खाता बनाएं",
+    "login_failed": "लॉगिन विफल — क्रेडेंशियल जांचें",
+    "signup_failed": "साइनअप विफल। कोई अलग ईमेल या फोन आज़माएं।"
+  },
+
+  "profile": {
+    "title": "प्रोफ़ाइल",
+    "name": "नाम",
+    "email": "ईमेल",
+    "phone": "फोन",
+    "language": "भाषा",
+    "logout": "लॉगआउट"
+  },
+
+  "settings": {
+    "title": "सेटिंग्स",
+    "language": "भाषा",
+    "receive_push": "पुश सूचनाएं प्राप्त करें",
+    "push_subtitle": "मौसम और फसल अलर्ट"
+  },
+
   "dashboard": {
     "weather": "मौसम",
     "startPrecision": "सटीक खेती शुरू करें",
@@ -24,18 +66,46 @@
     "takePicture": "तस्वीर लें",
     "seeDiagnosis": "निदान देखें",
     "getMedicine": "दवा प्राप्त करें",
-    "yourCrops": "आपकी फसलें"
+    "yourCrops": "आपकी फसलें",
+    "smart_farming": "स्मार्ट खेती उपकरण",
+    "ask_expert": "विशेषज्ञ से पूछें",
+    "ask_expert_sub": "कृषि विशेषज्ञ से बात करें"
+  },
+
+  "crops": {
+    "grapes": "अंगूर",
+    "papaya": "पपीता",
+    "olive": "जैतून",
+    "rose": "गुलाब",
+    "sugarcane": "गन्ना",
+    "banana": "केला",
+    "almond": "बादाम",
+    "apple": "सेब",
+    "apricot": "खुबानी",
+    "barley": "जौ",
+    "bean": "बीन",
+    "bitter_gourd": "करेला",
+    "black_bean": "काली दाल",
+    "brinjal": "बैंगन",
+    "cabbage": "पत्तागोभी",
+    "add": "जोड़ें"
   },
 
   "weatherPage": {
-    "todayWeather": "आज का मौसम",
+    "todayWeather": "मौसम",
+    "feelsLike": "ऐसा लगता है",
     "humidity": "नमी",
     "wind": "हवा",
     "pressure": "दबाव",
+    "visibility": "दृश्यता",
     "sunrise": "सूर्योदय",
     "sunset": "सूर्यास्त",
     "hourlyForecast": "प्रति घंटे का पूर्वानुमान",
-    "weeklyForecast": "साप्ताहिक पूर्वानुमान"
+    "weeklyForecast": "साप्ताहिक पूर्वानुमान",
+    "sprayingTime": "छिड़काव का समय (अगले कुछ घंटे)",
+    "spray_optimal": "उचित",
+    "spray_moderate": "ठीक-ठाक",
+    "spray_unfavourable": "अनुचित"
   },
 
   "ndvi": {
@@ -46,88 +116,140 @@
     "result": "NDVI परिणाम",
     "noResult": "अभी कोई परिणाम नहीं। विश्लेषण के लिए खेत चुनें।",
     "mean": "NDVI औसत",
-    "source": "स्रोत"
+    "source": "स्रोत",
+    "size": "आकार"
   },
 
   "farmInsights": {
     "title": "खेत जानकारी",
     "soilMoisture": "मृदा नमी",
     "rainfall": "वर्षा",
-    "cropHealth": "फसल स्वास्थ्य",
-    "temperature": "तापमान",
-    "noData": "इस खेत के लिए कोई जानकारी उपलब्ध नहीं।"
+    "cropHealth": "कुल खेत स्वास्थ्य",
+    "temperature": "तापमान प्रभाव",
+    "noData": "इस खेत के लिए कोई जानकारी उपलब्ध नहीं।",
+    "ndviTrend": "NDVI रुझान (पिछले 7 दिन)",
+    "fertilizerRec": "उर्वरक सिफारिश",
+    "cropStressAlert": "फसल तनाव चेतावनी"
   },
 
   "selectCrops": {
     "title": "अपनी फसल चुनें",
+    "subtitle": "अपनी पसंद की {{max}} फसलें चुनें",
     "selected": "चयनित",
     "chooseCrop": "फसल चुनें",
-    "next": "आगे बढ़ें"
+    "next": "सहेजें",
+    "saved": "सहेजा गया"
   },
 
   "fertilizer": {
     "title": "उर्वरक कैलकुलेटर",
-    "nitrogen": "नाइट्रोजन (N)",
-    "phosphorus": "फॉस्फोरस (P)",
-    "potassium": "पोटैशियम (K)",
-    "calculate": "गणना करें"
+    "subtitle": "सटीक पोषक तत्व सिफारिश पाएं",
+    "selectCrop": "फसल चुनें",
+    "fertType": "उर्वरक प्रकार",
+    "numTrees": "पेड़ों की संख्या",
+    "trees": "पेड़",
+    "nitrogen": "नाइट्रोजन",
+    "phosphorus": "फॉस्फोरस",
+    "potassium": "पोटैशियम",
+    "calculate": "गणना करें",
+    "result": "परिणाम",
+    "fertRequired": "आवश्यक उर्वरक",
+    "estimatedCost": "अनुमानित लागत"
   },
 
   "pests": {
     "title": "कीट एवं रोग",
-    "search": "कीट खोजें",
+    "subtitle": "तुरंत पहचानें और उपचार पाएं",
+    "search": "रोग का नाम डालें (जैसे, चूर्णी फफूंद)",
+    "searchBtn": "खोजें",
     "commonPests": "सामान्य कीट",
     "symptoms": "लक्षण",
-    "treatment": "उपचार"
+    "treatment": "उपचार",
+    "noResults": "अभी कोई परिणाम नहीं",
+    "readMore": "और पढ़ें"
   },
 
   "cultivationTips": {
     "title": "खेती सुझाव",
+    "subtitle": "स्वस्थ फसल उगाने के सर्वोत्तम तरीके",
     "selectCrop": "फसल चुनें",
     "videoTutorial": "वीडियो ट्यूटोरियल",
-    "soilPrep": "मृदा तैयारी",
+    "watchOn": "YouTube पर {{crop}} खेती के सुझाव देखें",
+    "openVideo": "वीडियो खोलें",
+    "soilPrep": "मृदा आवश्यकता",
+    "watering": "सिंचाई अनुसूची",
     "irrigation": "सिंचाई",
-    "fertilizer": "उर्वरक मार्गदर्शन",
+    "fertilizer": "उर्वरक सलाह",
+    "pestPrevention": "कीट रोकथाम",
+    "season": "उपयुक्त मौसम",
     "harvesting": "कटाई सुझाव"
   },
 
   "pestAlerts": {
     "title": "कीट चेतावनी",
-    "noAlerts": "आपके क्षेत्र में कोई कीट चेतावनी नहीं है।",
-    "viewDetails": "विवरण देखें"
+    "subtitle": "सूचित रहें",
+    "subtitle_detail": "NASA मौसम + ICAR/IMD सलाह के आधार पर लाइव कीट जोखिम",
+    "noAlerts": "आपके क्षेत्र में कोई सक्रिय कीट चेतावनी नहीं है।",
+    "viewDetails": "विवरण देखें",
+    "risk": "जोखिम",
+    "area": "क्षेत्र",
+    "whatToDo": "क्या करें",
+    "fetchError": "अभी लाइव कीट जोखिम लोड नहीं हो सका।",
+    "officialAdvisories": "आधिकारिक सलाह",
+    "checkAdvisories": "अपने राज्य के लिए विस्तृत फसल-वार मार्गदर्शन के लिए जांचें:"
   },
 
   "marketPrices": {
     "title": "बाजार भाव",
+    "subtitle": "अपनी फसल के ताजे मंडी भाव देखें",
     "searchCrop": "फसल खोजें",
-    "highest": "सबसे अधिक",
-    "lowest": "सबसे कम",
-    "updated": "अपडेटेड"
+    "highest": "अधिकतम मूल्य",
+    "lowest": "न्यूनतम मूल्य",
+    "modal": "मॉडल मूल्य",
+    "updated": "अपडेटेड",
+    "getPrices": "भाव देखें",
+    "no_data": "इस राज्य के लिए कोई बाजार डेटा उपलब्ध नहीं।"
   },
 
   "govtSchemes": {
     "title": "सरकारी योजनाएँ",
+    "subtitle": "MyScheme और सरकारी पोर्टलों से लाइव अपडेट",
     "state": "राज्य चुनें",
-    "loading": "योजनाएँ लोड हो रही हैं...",
+    "loading": "लोड हो रही हैं...",
+    "viewSchemes": "योजनाएं देखें",
     "noSchemes": "कोई योजना नहीं मिली",
-    "details": "विवरण",
-    "apply": "अभी आवेदन करें"
+    "noDesc": "कोई विवरण उपलब्ध नहीं",
+    "details": "विवरण देखें",
+    "apply": "अभी आवेदन करें",
+    "officialPortals": "आधिकारिक पोर्टल"
   },
 
   "knowledgeHub": {
     "title": "ज्ञान केंद्र",
+    "subtitle": "फसल अभ्यास, ट्यूटोरियल और विस्तृत मार्गदर्शन",
+    "search": "फसल खोजें (जैसे अंगूर, केला)…",
     "articles": "लेख",
     "videos": "वीडियो",
-    "guides": "मार्गदर्शन"
+    "guides": "मार्गदर्शन",
+    "noFound": "कोई फसल नहीं मिली। दूसरा नाम आज़माएं।",
+    "noImage": "कोई चित्र नहीं",
+    "watchVideos": "वीडियो देखें",
+    "pdfGuides": "PDF मार्गदर्शन"
   },
 
   "diagnosis": {
-    "title": "फसल निदान",
+    "title": "फसल रोग निदान",
     "upload": "छवि अपलोड करें",
+    "take_photo": "फोटो लें",
+    "upload_gallery": "गैलरी से अपलोड करें",
+    "diagnose_btn": "फसल रोग पहचानें",
+    "diagnose_another": "दूसरी छवि पहचानें",
     "loading": "रोग पहचाना जा रहा है...",
     "result": "निदान परिणाम",
     "confidence": "विश्वास स्तर",
-    "recommended": "सुझाया गया उपचार"
+    "recommended": "सुझाया गया उपचार",
+    "error": "छवि विश्लेषण में त्रुटि",
+    "no_data": "कोई डेटा प्राप्त नहीं हुआ"
   },
 
   "addField": {
@@ -136,6 +258,18 @@
     "latitude": "अक्षांश",
     "longitude": "देशांतर",
     "size": "आकार (किमी)",
-    "submit": "खेत जोड़ें"
+    "submit": "खेत जोड़ें",
+    "required": "कृपया नाम और निर्देशांक प्रदान करें",
+    "success": "खेत सफलतापूर्वक जोड़ा गया",
+    "failed": "खेत जोड़ने में विफल"
+  },
+
+  "errors": {
+    "network": "नेटवर्क त्रुटि। कृपया पुनः प्रयास करें।",
+    "locationDenied": "स्थान पहुँच अस्वीकृत।",
+    "tryAgain": "कृपया पुनः प्रयास करें।",
+    "analysis_failed": "विश्लेषण विफल",
+    "select_state": "कृपया एक राज्य चुनें",
+    "page_not_found": "पृष्ठ नहीं मिला"
   }
 }

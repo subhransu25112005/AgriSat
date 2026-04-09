@@ -1,6 +1,12 @@
 {
   "appName": "AgriSat",
 
+  "common": {
+    "loading": "ଲୋଡ ହେଉଛି...",
+    "go_home": "ହୋମ୍‌କୁ ଯାଅ",
+    "choose_state": "ରାଜ୍ୟ ବାଛନ୍ତୁ"
+  },
+
   "menu": {
     "darkMode": "ଡାର୍କ ମୋଡ୍",
     "lightMode": "ଲାଇଟ୍ ମୋଡ୍",
@@ -12,130 +18,258 @@
   "languages": {
     "en": "English",
     "hi": "ହିନ୍ଦୀ",
-    "or": "ଓଡିଆ"
+    "or": "ଓଡ଼ିଆ"
+  },
+
+  "navigation": {
+    "your_crops": "ଆପଣଙ୍କ ଫସଲ",
+    "community": "ସମ୍ପ୍ରଦାୟ",
+    "market": "ବଜାର",
+    "you": "ଆପଣ"
+  },
+
+  "auth": {
+    "welcome": "AgriSat ରେ ଆପଣଙ୍କୁ ସ୍ୱାଗତ",
+    "email_placeholder": "ଇମେଲ",
+    "password_placeholder": "ପାସୱାର୍ଡ",
+    "name_placeholder": "ପୂରା ନାମ",
+    "phone_placeholder": "ଫୋନ (ଐଚ୍ଛିକ)",
+    "login_btn": "ଲଗଇନ",
+    "signup_btn": "ସାଇନ ଅପ",
+    "signup_title": "ଆକାଉଣ୍ଟ ତିଆରି କରନ୍ତୁ",
+    "login_failed": "ଲଗଇନ ବିଫଳ — ଆହ୍ୱାନ ଯାଞ୍ଚ କରନ୍ତୁ",
+    "signup_failed": "ସାଇନଅପ ବିଫଳ। ଭିନ୍ନ ଇମେଲ ବା ଫୋନ ବ୍ୟବହାର କରନ୍ତୁ।"
+  },
+
+  "profile": {
+    "title": "ପ୍ରୋଫାଇଲ",
+    "name": "ନାମ",
+    "email": "ଇମେଲ",
+    "phone": "ଫୋନ",
+    "language": "ଭାଷା",
+    "logout": "ଲଗଆଉଟ"
+  },
+
+  "settings": {
+    "title": "ସେଟିଂ",
+    "language": "ଭାଷା",
+    "receive_push": "ପୁଶ ବିଜ୍ଞପ୍ତି ପ୍ରାପ୍ତ କରନ୍ତୁ",
+    "push_subtitle": "ପାଣିପାଗ ଓ ଫସଲ ସତର୍କ"
   },
 
   "dashboard": {
     "weather": "ଆବହାଅଵା",
-    "startPrecision": "ସଠିକ୍ ଚାଷ ଆରମ୍ଭ କରନ୍ତୁ",
-    "startPrecisionSub": "NDVI ଓ ଖେତର ସ୍ୱାସ୍ଥ୍ୟ ଦେଖିବାକୁ ଖେତ ଯୋଡନ୍ତୁ।",
-    "addField": "+ ଖେତ ଯୋଡନ୍ତୁ",
-    "healCrop": "ଫସଲ ଠିକ୍ କରନ୍ତୁ",
+    "startPrecision": "ସଠିକ ଚାଷ ଆରମ୍ଭ କରନ୍ତୁ",
+    "startPrecisionSub": "NDVI ଓ ଖେତର ସ୍ୱାସ୍ଥ୍ୟ ଦେଖିବାକୁ ଖେତ ଯୋଡ଼ନ୍ତୁ।",
+    "addField": "+ ଖେତ ଯୋଡ଼ନ୍ତୁ",
+    "healCrop": "ଫସଲ ଠିକ କରନ୍ତୁ",
     "takePicture": "ଫଟୋ ନିଅନ୍ତୁ",
     "seeDiagnosis": "ରୋଗ ଚିହ୍ନଟ",
     "getMedicine": "ଔଷଧ ନିଅନ୍ତୁ",
-    "yourCrops": "ଆପଣଙ୍କର ଫସଲ"
+    "yourCrops": "ଆପଣଙ୍କ ଫସଲ",
+    "smart_farming": "ସ୍ମାର୍ଟ ଚାଷ ଉପକରଣ",
+    "ask_expert": "ବିଶେଷଜ୍ଞଙ୍କୁ ପଚାରନ୍ତୁ",
+    "ask_expert_sub": "କୃଷି ବିଶେଷଜ୍ଞଙ୍କ ସହ କଥା ହୁଅ"
+  },
+
+  "crops": {
+    "grapes": "ଦ୍ରାକ୍ଷା",
+    "papaya": "ପପ୍ପା",
+    "olive": "ଅଲିଭ",
+    "rose": "ଗୋଲାପ",
+    "sugarcane": "ଆଖୁ",
+    "banana": "କଦଳୀ",
+    "almond": "ବାଦାମ",
+    "apple": "ଆପ୍ପଲ",
+    "apricot": "ଖୁବାଣି",
+    "barley": "ଯବ",
+    "bean": "ଶିମ୍ବ",
+    "bitter_gourd": "କଲରା",
+    "black_bean": "କଳା ଡ଼ାଲ",
+    "brinjal": "ବାଇଗଣ",
+    "cabbage": "ବନ୍ଧାକୋବି",
+    "add": "ଯୋଡ଼ନ୍ତୁ"
   },
 
   "weatherPage": {
-    "todayWeather": "ଆଜିର ଆବହାଅଵା",
+    "todayWeather": "ଆବହାଅଵା",
+    "feelsLike": "ଅନୁଭୂତ",
     "humidity": "ଆର୍ଦ୍ରତା",
     "wind": "ପବନ",
     "pressure": "ଦବନ",
+    "visibility": "ଦୃଶ୍ୟମାନତା",
     "sunrise": "ସୂର୍ଯ୍ୟୋଦୟ",
     "sunset": "ସୂର୍ଯ୍ୟାସ୍ତ",
     "hourlyForecast": "ପ୍ରତିଘଣ୍ଟା ପୂର୍ବାଭାସ",
-    "weeklyForecast": "ସାପ୍ତାହିକ ପୂର୍ବାଭାସ"
+    "weeklyForecast": "ସାପ୍ତାହିକ ପୂର୍ବାଭାସ",
+    "sprayingTime": "ଛିଞ୍ଚିବା ସମୟ (ଅଗ୍ରବର୍ତ୍ତୀ ଘଣ୍ଟା)",
+    "spray_optimal": "ଉଚିତ",
+    "spray_moderate": "ଠିକ ଠିକ",
+    "spray_unfavourable": "ଅନୁଚିତ"
   },
 
   "ndvi": {
     "title": "NDVI ମାନଚିତ୍ର",
-    "farmList": "ଆପଣଙ୍କର ଖେତ",
+    "farmList": "ଆପଣଙ୍କ ଖେତ",
     "selectFarm": "ଖେତ ଚୟନ କରନ୍ତୁ",
     "analyze": "NDVI ବିଶ୍ଳେଷଣ",
     "result": "NDVI ଫଳାଫଳ",
-    "noResult": "ଏଯାବତ୍ କୌଣସି ଫଳ ନାହିଁ। ଖେତ ଚୟନ କରି ବିଶ୍ଳେଷଣ କରନ୍ତୁ।",
+    "noResult": "ଏଯାବତ କୌଣସି ଫଳ ନାହିଁ। ଖେତ ଚୟନ କରି ବିଶ୍ଳେଷଣ କରନ୍ତୁ।",
     "mean": "NDVI ମଧ୍ୟମ",
-    "source": "ସତ୍ୟ ସ୍ତ୍ରୋତ"
+    "source": "ସ୍ତ୍ରୋତ",
+    "size": "ଆକାର"
   },
 
   "farmInsights": {
     "title": "ଖେତ ତଥ୍ୟ",
     "soilMoisture": "ମାଟିର ଆର୍ଦ୍ରତା",
     "rainfall": "ବର୍ଷା",
-    "cropHealth": "ଫସଲ ସ୍ୱାସ୍ଥ୍ୟ",
-    "temperature": "ତାପମାତ୍ରା",
-    "noData": "ଏହି ଖେତ ପାଇଁ କୌଣସି ତଥ୍ୟ ନାହିଁ।"
+    "cropHealth": "ସମୁଦାୟ ଖେତ ସ୍ୱାସ୍ଥ୍ୟ",
+    "temperature": "ତାପମାତ୍ରା ପ୍ରଭାବ",
+    "noData": "ଏହି ଖେତ ପାଇଁ କୌଣସି ତଥ୍ୟ ନାହିଁ।",
+    "ndviTrend": "NDVI ଧାରା (ଶେଷ ୭ ଦିନ)",
+    "fertilizerRec": "ସାର ସୁପାରିଶ",
+    "cropStressAlert": "ଫସଲ ଚାପ ସତର୍କ"
   },
 
   "selectCrops": {
     "title": "ଫସଲ ଚୟନ",
+    "subtitle": "ଆପଣ ଇଚ୍ଛା କରୁଥିବା {{max}}ଟି ଫସଲ ବାଛନ୍ତୁ",
     "selected": "ଚୟନିତ",
     "chooseCrop": "ଫସଲ ବାଛନ୍ତୁ",
-    "next": "ଆଗକୁ"
+    "next": "ସଞ୍ଚୟ",
+    "saved": "ସଞ୍ଚୟ ହୋଇଛି"
   },
 
   "fertilizer": {
     "title": "ସାର ଗଣନା",
-    "nitrogen": "ନାଇଟ୍ରୋଜେନ୍ (N)",
-    "phosphorus": "ଫସ୍‌ଫୋରସ୍ (P)",
-    "potassium": "ପୋଟାସିଅମ୍ (K)",
-    "calculate": "ଗଣନା କରନ୍ତୁ"
+    "subtitle": "ସଠିକ ପୁଷ୍ଟିକର ଉପାଦାନ ସୁପାରିଶ ପାଅ",
+    "selectCrop": "ଫସଲ ବାଛନ୍ତୁ",
+    "fertType": "ସାର ପ୍ରକାର",
+    "numTrees": "ଗଛ ସଂଖ୍ୟା",
+    "trees": "ଗଛ",
+    "nitrogen": "ନାଇଟ୍ରୋଜେନ",
+    "phosphorus": "ଫସ୍‌ଫୋରସ",
+    "potassium": "ପୋଟାସିଅମ",
+    "calculate": "ଗଣନା କରନ୍ତୁ",
+    "result": "ଫଳାଫଳ",
+    "fertRequired": "ଆବଶ୍ୟକ ସାର",
+    "estimatedCost": "ଆନୁମାନିକ ଖର୍ଚ"
   },
 
   "pests": {
     "title": "ପୋକା ଓ ରୋଗ",
-    "search": "ପୋକା ଖୋଜନ୍ତୁ",
+    "subtitle": "ତୁରନ୍ତ ଚିହ୍ନଟ ଓ ଚିକିତ୍ସା ପାଅ",
+    "search": "ରୋଗ ନାମ ଦିଅ (ଯଥା, ଚୂର୍ଣ୍ଣ ରୋଗ)",
+    "searchBtn": "ଖୋଜ",
     "commonPests": "ସାଧାରଣ ପୋକା",
     "symptoms": "ଲକ୍ଷଣ",
-    "treatment": "ଚିକିତ୍ସା"
+    "treatment": "ଚିକିତ୍ସା",
+    "noResults": "ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଫଳ ନାହିଁ",
+    "readMore": "ଆଉ ପଢ଼ନ୍ତୁ"
   },
 
   "cultivationTips": {
-    "title": "ଚାଷ ସୁପରିସ୍",
+    "title": "ଚାଷ ସୁଝ",
+    "subtitle": "ସୁସ୍ଥ ଫସଲ ଚାଷ ପାଇଁ ସର୍ବୋତ୍ତମ ଉପାୟ",
     "selectCrop": "ଫସଲ ବାଛନ୍ତୁ",
-    "videoTutorial": "ଭିଡିଓ ଶିକ୍ଷା",
-    "soilPrep": "ମାଟି ପ୍ରସ୍ତୁତି",
-    "irrigation": "ସିଚାଇ",
+    "videoTutorial": "ଭିଡ଼ିଓ ଶିକ୍ଷା",
+    "watchOn": "YouTube ରେ {{crop}} ଚାଷ ସୁଝ ଦେଖନ୍ତୁ",
+    "openVideo": "ଭିଡ଼ିଓ ଖୋଲନ୍ତୁ",
+    "soilPrep": "ମାଟିର ଆବଶ୍ୟକତା",
+    "watering": "ସିଞ୍ଚାଇ ଅନୁସୂଚୀ",
+    "irrigation": "ସିଞ୍ଚାଇ",
     "fertilizer": "ସାର ପରାମର୍ଶ",
-    "harvesting": "କଟାଇ ସୁପରିସ୍"
+    "pestPrevention": "ପୋକା ପ୍ରତିରୋଧ",
+    "season": "ଉଚିତ ଋତୁ",
+    "harvesting": "କଟାଇ ସୁଝ"
   },
 
   "pestAlerts": {
     "title": "ପୋକା ସତର୍କ",
-    "noAlerts": "ଆପଣଙ୍କ ଅଞ୍ଚଳରେ କୌଣସି ସତର୍କବାଣୀ ନାହିଁ।",
-    "viewDetails": "ବିବରଣୀ ଦେଖନ୍ତୁ"
+    "subtitle": "ସୂଚିତ ରୁହନ୍ତୁ",
+    "subtitle_detail": "NASA ଆବହାୱା + ICAR/IMD ପରାମର୍ଶ ଆଧାରରେ ଲାଇଭ ଜୋଖିମ",
+    "noAlerts": "ଆପଣଙ୍କ ଅଞ୍ଚଳରେ କୌଣସି ସକ୍ରିୟ ସତର୍କ ନାହିଁ।",
+    "viewDetails": "ବିବରଣୀ ଦେଖନ୍ତୁ",
+    "risk": "ଜୋଖିମ",
+    "area": "ଅଞ୍ଚଳ",
+    "whatToDo": "କଣ କରିବ",
+    "fetchError": "ଏବେ ଲାଇଭ ଜୋଖିମ ଲୋଡ ହୋଇ ନାହିଁ।",
+    "officialAdvisories": "ସରକାରୀ ପରାମର୍ଶ",
+    "checkAdvisories": "ଆପଣଙ୍କ ରାଜ୍ୟ ପାଇଁ ବିସ୍ତୃତ ମାର୍ଗଦର୍ଶନ ଜାଣନ୍ତୁ:"
   },
 
   "marketPrices": {
     "title": "ବଜାର ଦର",
+    "subtitle": "ଆପଣଙ୍କ ଫସଲର ତାଜା ମଣ୍ଡି ଦର ଦେଖନ୍ତୁ",
     "searchCrop": "ଫସଲ ଖୋଜନ୍ତୁ",
-    "highest": "ସର୍ବାଧିକ",
-    "lowest": "ସର୍ବନିମ୍ନ",
-    "updated": "ଅଦ୍ୟତନ"
+    "highest": "ସର୍ବୋଚ୍ଚ ଦର",
+    "lowest": "ସର୍ବନିମ୍ନ ଦର",
+    "modal": "ମୋଡାଲ ଦର",
+    "updated": "ଅଦ୍ୟତନ",
+    "getPrices": "ଦର ଦେଖନ୍ତୁ",
+    "no_data": "ଏହି ରାଜ୍ୟ ପାଇଁ ବଜାର ତଥ୍ୟ ଉପଲବ୍ଧ ନୁହେଁ।"
   },
 
   "govtSchemes": {
     "title": "ସରକାରୀ ଯୋଜନା",
+    "subtitle": "MyScheme ଓ ସରକାରୀ ପୋର୍ଟଲ ଥୁଁ ସ୍ୟ ସ୍ୟ",
     "state": "ରାଜ୍ୟ ବାଛନ୍ତୁ",
-    "loading": "ଯୋଜନା ଲୋଡ୍ ହେଉଛି...",
-    "noSchemes": "କୌଣସି ଯୋଜନା ମିଳିଲା ନାହିଁ",
-    "details": "ବିବରଣୀ",
-    "apply": "ଦାଖଲ କରନ୍ତୁ"
+    "loading": "ଯୋଜନା ଲୋଡ ହେଉଛି...",
+    "viewSchemes": "ଯୋଜନା ଦେଖନ୍ତୁ",
+    "noSchemes": "କୌଣସି ଯୋଜନା ମିଳୁ ନାହିଁ",
+    "noDesc": "କୌଣସି ବିବରଣ ଉପଲବ୍ଧ ନୁହଁ",
+    "details": "ବିବରଣ ଦେଖନ୍ତୁ",
+    "apply": "ଏବେ ଦାଖଲ କରନ୍ତୁ",
+    "officialPortals": "ସରକାରୀ ପୋର୍ଟଲ"
   },
 
   "knowledgeHub": {
     "title": "ଜ୍ଞାନ କେନ୍ଦ୍ର",
+    "subtitle": "ଫସଲ ଅଭ୍ୟାସ, ଟ୍ୟୁଟୋରିୟାଲ ଓ ବିସ୍ତୃତ ମାର୍ଗଦର୍ଶିକା",
+    "search": "ଫସଲ ଖୋଜନ୍ତୁ (ଯଥା ଦ୍ରାକ୍ଷା, କଦଳୀ)…",
     "articles": "ଲେଖା",
-    "videos": "ଭିଡିଓ",
-    "guides": "ମାର୍ଗଦର୍ଶିକା"
+    "videos": "ଭିଡ଼ିଓ",
+    "guides": "ମାର୍ଗଦର୍ଶିକା",
+    "noFound": "କୌଣସି ଫସଲ ମିଳୁ ନାହିଁ। ଅନ୍ୟ ନାମ ଚେଷ୍ଟା କରନ୍ତୁ।",
+    "noImage": "କୌଣସି ଛବି ନାହିଁ",
+    "watchVideos": "ଭିଡ଼ିଓ ଦେଖନ୍ତୁ",
+    "pdfGuides": "PDF ମାର୍ଗଦର୍ଶିକା"
   },
 
   "diagnosis": {
-    "title": "ରୋଗ ଚିହ୍ନଟ",
-    "upload": "ଛବି ଅପଲୋଡ୍",
+    "title": "ଫସଲ ରୋଗ ଚିହ୍ନଟ",
+    "upload": "ଛବି ଅପଲୋଡ",
+    "take_photo": "ଫଟୋ ନିଅ",
+    "upload_gallery": "ଗ୍ୟାଲେରୀ ଥୁଁ ଅପଲୋଡ",
+    "diagnose_btn": "ଫସଲ ରୋଗ ଚିହ୍ନଟ କରନ୍ତୁ",
+    "diagnose_another": "ଅନ୍ୟ ଛବି ଚିହ୍ନଟ",
     "loading": "ରୋଗ ଚିହ୍ନଟ ହେଉଛି...",
     "result": "ଫଳାଫଳ",
     "confidence": "ବିଶ୍ୱାସ ସ୍ତର",
-    "recommended": "ସୁପରିସ୍ କରାଯାଇଥିବା ଚିକିତ୍ସା"
+    "recommended": "ସୁପାରିଶ ଚିକିତ୍ସା",
+    "error": "ଛବି ବିଶ୍ଳେଷଣରେ ଭୁଲ",
+    "no_data": "କୌଣସି ତଥ୍ୟ ପ୍ରାପ୍ତ ହୋଇ ନାହିଁ"
   },
 
   "addField": {
-    "title": "ଖେତ ଯୋଡନ୍ତୁ",
-    "fieldName": "ଖେତର ନାମ",
-    "latitude": "ଲାଟିଟ୍ୟୁଡ୍",
-    "longitude": "ଲଙ୍ଗିଟ୍ୟୁଡ୍",
+    "title": "ଖେତ ଯୋଡ଼ନ୍ତୁ",
+    "fieldName": "ଖେତ ନାମ",
+    "latitude": "ଲାଟ",
+    "longitude": "ଲଂ",
     "size": "ଆକାର (କି.ମି.)",
-    "submit": "ଖେତ ଯୋଡନ୍ତୁ"
+    "submit": "ଖେତ ଯୋଡ଼ନ୍ତୁ",
+    "required": "ଦୟାକରି ନାମ ଓ ସ୍ଥାନ ପ୍ରଦାନ କରନ୍ତୁ",
+    "success": "ଖେତ ସଫଳ ଭାବରେ ଯୋଡ଼ା ହୋଇଛି",
+    "failed": "ଖେତ ଯୋଡ଼ିବାରେ ବିଫଳ"
+  },
+
+  "errors": {
+    "network": "ନେଟୱାର୍କ ତ୍ରୁଟି। ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।",
+    "locationDenied": "ସ୍ଥାନ ଅଭିଗମ ଅସ୍ୱୀକୃତ।",
+    "tryAgain": "ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।",
+    "analysis_failed": "ବିଶ୍ଳେଷଣ ବିଫଳ",
+    "select_state": "ଦୟାକରି ଏକ ରାଜ୍ୟ ବାଛନ୍ତୁ",
+    "page_not_found": "ପୃଷ୍ଠା ମିଳୁ ନାହିଁ"
   }
 }

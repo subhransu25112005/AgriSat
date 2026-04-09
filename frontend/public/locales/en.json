@@ -1,6 +1,12 @@
 {
   "appName": "AgriSat",
 
+  "common": {
+    "loading": "Loading...",
+    "go_home": "Go home",
+    "choose_state": "Choose State"
+  },
+
   "menu": {
     "darkMode": "Dark Mode",
     "lightMode": "Light Mode",
@@ -15,6 +21,42 @@
     "or": "Odia"
   },
 
+  "navigation": {
+    "your_crops": "Your Crops",
+    "community": "Community",
+    "market": "Market",
+    "you": "You"
+  },
+
+  "auth": {
+    "welcome": "Welcome to AgriSat",
+    "email_placeholder": "Email",
+    "password_placeholder": "Password",
+    "name_placeholder": "Full name",
+    "phone_placeholder": "Phone (optional)",
+    "login_btn": "Login",
+    "signup_btn": "Sign up",
+    "signup_title": "Create account",
+    "login_failed": "Login failed — check credentials",
+    "signup_failed": "Signup failed. Try a different email or phone."
+  },
+
+  "profile": {
+    "title": "Profile",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "language": "Language",
+    "logout": "Logout"
+  },
+
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "receive_push": "Receive push notifications",
+    "push_subtitle": "Weather & crop alerts"
+  },
+
   "dashboard": {
     "weather": "Weather",
     "startPrecision": "Start precision farming",
@@ -24,18 +66,46 @@
     "takePicture": "Take a picture",
     "seeDiagnosis": "See diagnosis",
     "getMedicine": "Get medicine",
-    "yourCrops": "Your Crops"
+    "yourCrops": "Your Crops",
+    "smart_farming": "Smart farming tools",
+    "ask_expert": "Ask an expert",
+    "ask_expert_sub": "Talk to agronomist"
+  },
+
+  "crops": {
+    "grapes": "Grapes",
+    "papaya": "Papaya",
+    "olive": "Olive",
+    "rose": "Rose",
+    "sugarcane": "Sugarcane",
+    "banana": "Banana",
+    "almond": "Almond",
+    "apple": "Apple",
+    "apricot": "Apricot",
+    "barley": "Barley",
+    "bean": "Bean",
+    "bitter_gourd": "Bitter Gourd",
+    "black_bean": "Black Bean",
+    "brinjal": "Brinjal",
+    "cabbage": "Cabbage",
+    "add": "Add"
   },
 
   "weatherPage": {
-    "todayWeather": "Today's Weather",
+    "todayWeather": "Weather",
+    "feelsLike": "Feels like",
     "humidity": "Humidity",
     "wind": "Wind",
     "pressure": "Pressure",
+    "visibility": "Visibility",
     "sunrise": "Sunrise",
     "sunset": "Sunset",
     "hourlyForecast": "Hourly Forecast",
-    "weeklyForecast": "Weekly Forecast"
+    "weeklyForecast": "Weekly Forecast",
+    "sprayingTime": "Spraying Time (Next Few Hours)",
+    "spray_optimal": "Optimal",
+    "spray_moderate": "Moderate",
+    "spray_unfavourable": "Unfavourable"
   },
 
   "ndvi": {
@@ -46,88 +116,140 @@
     "result": "NDVI Result",
     "noResult": "No analysis yet. Select a farm and click Analyze.",
     "mean": "NDVI Mean",
-    "source": "Source"
+    "source": "Source",
+    "size": "Size"
   },
 
   "farmInsights": {
     "title": "Farm Insights",
     "soilMoisture": "Soil Moisture",
     "rainfall": "Rainfall",
-    "cropHealth": "Crop Health",
-    "temperature": "Temperature",
-    "noData": "No insights available for this field."
+    "cropHealth": "Overall Field Health",
+    "temperature": "Temperature Impact",
+    "noData": "No insights available for this field.",
+    "ndviTrend": "NDVI Trend (Last 7 Days)",
+    "fertilizerRec": "Fertilizer Recommendation",
+    "cropStressAlert": "Crop Stress Alert"
   },
 
   "selectCrops": {
     "title": "Select Your Crop",
+    "subtitle": "Select up to {{max}} crops you are interested in",
     "selected": "Selected",
     "chooseCrop": "Choose crop",
-    "next": "Next"
+    "next": "Save",
+    "saved": "Saved"
   },
 
   "fertilizer": {
     "title": "Fertilizer Calculator",
-    "nitrogen": "Nitrogen (N)",
-    "phosphorus": "Phosphorus (P)",
-    "potassium": "Potassium (K)",
-    "calculate": "Calculate"
+    "subtitle": "Get accurate nutrient recommendation",
+    "selectCrop": "Select Crop",
+    "fertType": "Fertilizer Type",
+    "numTrees": "Number of Trees",
+    "trees": "Trees",
+    "nitrogen": "Nitrogen",
+    "phosphorus": "Phosphorus",
+    "potassium": "Potassium",
+    "calculate": "Calculate",
+    "result": "Result",
+    "fertRequired": "Fertilizer Required",
+    "estimatedCost": "Estimated Cost"
   },
 
   "pests": {
     "title": "Pests & Diseases",
-    "search": "Search pests",
+    "subtitle": "Identify & get treatments instantly",
+    "search": "Enter disease name (e.g., Powdery Mildew)",
+    "searchBtn": "Search",
     "commonPests": "Common Pests",
     "symptoms": "Symptoms",
-    "treatment": "Treatment"
+    "treatment": "Treatment",
+    "noResults": "No results yet",
+    "readMore": "Read more"
   },
 
   "cultivationTips": {
     "title": "Cultivation Tips",
+    "subtitle": "Best practices to grow healthy crops",
     "selectCrop": "Select crop to view tips",
-    "videoTutorial": "Video Tutorial",
-    "soilPrep": "Soil Preparation",
+    "videoTutorial": "Video tutorial",
+    "watchOn": "Watch {{crop}} cultivation tips on YouTube",
+    "openVideo": "Open video",
+    "soilPrep": "Soil Requirement",
+    "watering": "Watering Schedule",
     "irrigation": "Irrigation",
-    "fertilizer": "Fertilizer Guide",
+    "fertilizer": "Fertilizer Advice",
+    "pestPrevention": "Pest Prevention",
+    "season": "Suitable Season",
     "harvesting": "Harvesting Tips"
   },
 
   "pestAlerts": {
     "title": "Pest Alerts",
+    "subtitle": "Stay notified",
+    "subtitle_detail": "Live pest risk based on NASA weather + ICAR / IMD advisories",
     "noAlerts": "No active pest alerts in your region.",
-    "viewDetails": "View Details"
+    "viewDetails": "View Details",
+    "risk": "Risk",
+    "area": "Area",
+    "whatToDo": "What to do",
+    "fetchError": "Unable to load live pest risk right now.",
+    "officialAdvisories": "Official advisories",
+    "checkAdvisories": "For detailed, crop-wise guidance for your state, check:"
   },
 
   "marketPrices": {
     "title": "Market Prices",
+    "subtitle": "Check latest mandi rates for your crop",
     "searchCrop": "Search crop",
-    "highest": "Highest",
-    "lowest": "Lowest",
-    "updated": "Updated"
+    "highest": "Max Price",
+    "lowest": "Min Price",
+    "modal": "Modal Price",
+    "updated": "Updated",
+    "getPrices": "Get Prices",
+    "no_data": "No market data available for this state."
   },
 
   "govtSchemes": {
     "title": "Government Schemes",
+    "subtitle": "Live updates from MyScheme & Govt portals",
     "state": "Select State",
-    "loading": "Loading schemes...",
+    "loading": "Loading...",
+    "viewSchemes": "View Schemes",
     "noSchemes": "No schemes found",
-    "details": "Details",
-    "apply": "Apply Now"
+    "noDesc": "No description provided",
+    "details": "View details",
+    "apply": "Apply Now",
+    "officialPortals": "Official Portals"
   },
 
   "knowledgeHub": {
     "title": "Knowledge Hub",
+    "subtitle": "Learn crop practices, watch tutorials, and find detailed guides.",
+    "search": "Search crop (e.g. Grapes, Banana, Brinjal)…",
     "articles": "Articles",
     "videos": "Videos",
-    "guides": "Guides"
+    "guides": "Guides",
+    "noFound": "No crops found. Try another name.",
+    "noImage": "No image",
+    "watchVideos": "Watch videos",
+    "pdfGuides": "PDF guides"
   },
 
   "diagnosis": {
-    "title": "Crop Diagnosis",
+    "title": "Crop Disease Diagnosis",
     "upload": "Upload Image",
+    "take_photo": "Take a Photo",
+    "upload_gallery": "Upload from Gallery",
+    "diagnose_btn": "Diagnose Crop Disease",
+    "diagnose_another": "Diagnose Another Image",
     "loading": "Detecting disease...",
     "result": "Diagnosis Result",
     "confidence": "Confidence",
-    "recommended": "Recommended Treatment"
+    "recommended": "Recommended Treatment",
+    "error": "Error analyzing image",
+    "no_data": "No data received"
   },
 
   "addField": {
@@ -136,12 +258,18 @@
     "latitude": "Latitude",
     "longitude": "Longitude",
     "size": "Size (km)",
-    "submit": "Add Field"
+    "submit": "Add Field",
+    "required": "Please provide name and coordinates",
+    "success": "Field added successfully",
+    "failed": "Failed to add field"
   },
 
   "errors": {
     "network": "Network error. Please try again.",
     "locationDenied": "Location access denied.",
-    "tryAgain": "Please try again."
+    "tryAgain": "Please try again.",
+    "analysis_failed": "Analysis failed",
+    "select_state": "Please select a state",
+    "page_not_found": "Page not found"
   }
 }
