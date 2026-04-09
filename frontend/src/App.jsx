@@ -22,7 +22,7 @@ const AddField = lazy(() => import("./pages/AddField"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Diagnosis = lazy(() => import("./pages/Diagnosis"));
 const DiagnosisResult = lazy(() => import("./pages/DiagnosisResult"));
-const SelectCrops = lazy(() => import("./pages/selectcrops"));
+const SelectCrops = lazy(() => import("./pages/SelectCrops"));
 const FertilizerCalculator = lazy(() => import("./pages/FertilizerCalculator"));
 const PestsDiseases = lazy(() => import("./pages/PestsDiseases"));
 const CultivationTips = lazy(() => import("./pages/CultivationTips"));
