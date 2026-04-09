@@ -115,28 +115,28 @@ export default function App() {
                       onClick={toggleDarkMode}
                       className="block w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      {darkMode ? t("Light Mode") : t("Dark Mode")}
+                      {darkMode ? t("menu.lightMode") : t("menu.darkMode")}
                     </button>
 
-                    <div className="px-3 pt-2 text-gray-500 text-xs">{t("Language")}</div>
+                    <div className="px-3 pt-2 text-gray-500 text-xs">{t("menu.language")}</div>
 
                     <button
                       onClick={() => changeLanguage("en")}
                       className="block w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      {t("English")}
+                      {t("languages.en")}
                     </button>
                     <button
                       onClick={() => changeLanguage("hi")}
                       className="block w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                     {t("हिन्दी")}
+                      {t("languages.hi")}
                     </button>
                     <button
                       onClick={() => changeLanguage("or")}
                       className="block w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      {t("ଓଡିଆ")}
+                      {t("languages.or")}
                     </button>
 
                     <hr className="my-2" />
@@ -147,14 +147,14 @@ export default function App() {
                       }
                       className="block w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      {t("Give Feedback")}
+                      {t("menu.feedback")}
                     </button>
 
                     <button
                       onClick={() => alert("Created by Subhranshu Nanda ❤")}
                       className="block w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      {t("About Creator")}
+                      {t("menu.creator")}
                     </button>
                   </div>
                 )}
