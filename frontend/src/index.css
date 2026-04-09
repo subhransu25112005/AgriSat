@@ -1,10 +1,193 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --bg: #ffffff;
+    --surface: #f8fafc;
+    --card: #ffffff;
+    --input: #ffffff;
+    --text: #0f172a;
+    --border: rgba(0,0,0,0.08);
+  }
 
+  .dark {
+    --bg: #0B0F14;
+    --surface: #0F141B;
+    --card: #121821;
+    --input: #1A2330;
+    --text: #E6EDF3;
+    --border: rgba(255,255,255,0.08);
+  }
 
+  body, html {
+    background-color: var(--bg);
+    color: var(--text);
+  }
+
+  /* Custom Scrollbar fixing */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(128, 128, 128, 0.4);
+    border-radius: 10px;
+  }
+}
+
+@layer components {
+  /* LIGHT MODE BASE COMPONENTS (Optional defaults, primarily relying on current component styling) */
+  input:focus, select:focus, textarea:focus {
+    border-color: #22C55E;
+    outline: none;
+  }
+
+  /* ====== DARK MODE SPECIFIC STYLES ====== */
+
+  /* STEP 3: SPECIFIC TARGETS FOR COMPONENTS ONLY IN DARK MODE */
+  .dark .card,
+  .dark .box,
+  .dark .panel,
+  .dark .container,
+  .dark .dashboard-card, 
+  .dark .summary-card, 
+  .dark .info-card, 
+  .dark .alert-card, 
+  .dark .today-card, 
+  .dark .forecast-card, 
+  .dark .chart-section, 
+  .dark .insight-box, 
+  .dark .recommend,
+  .dark .language-panel {
+    background-color: #121821;
+    color: #E6EDF3;
+    border-color: rgba(255,255,255,0.08);
+  }
+
+  .dark input,
+  .dark select,
+  .dark textarea,
+  .dark .input,
+  .dark .select,
+  .dark .dropdown,
+  .dark .form-control {
+    background-color: #1A2330;
+    color: #E6EDF3;
+    border-color: rgba(255,255,255,0.1);
+  }
+
+  /* Button text visibility */
+  .dark button {
+    color: #E6EDF3;
+  }
+
+  /* Visual Depth enhancements for Dark Mode */
+  .dark .card, 
+  .dark .dashboard-card, 
+  .dark .summary-card, 
+  .dark .info-card, 
+  .dark .alert-card, 
+  .dark .today-card, 
+  .dark .forecast-card, 
+  .dark .chart-section, 
+  .dark .insight-box, 
+  .dark .recommend {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  }
+  
+  .dark header, .dark .top-bar, .dark footer, .dark .bottom-nav {
+    background-color: #121821;
+    border-color: rgba(255,255,255,0.08);
+  }
+  
+  .dark .section, .dark .dashboard-container, .dark .splash-container {
+    background-color: #0F141B;
+  }
+}
+
+@layer utilities {
+  /* STEP 4 & 5: TAILWIND FIXES FOR DARK MODE */
+  .dark .bg-white,
+  .dark .bg-\[\#fff\],
+  .dark .bg-\[\#ffffff\],
+  .dark .bg-gray-50,
+  .dark .bg-gray-100 {
+    background-color: #121821 !important;
+  }
+
+  .dark .text-black,
+  .dark .text-gray-800,
+  .dark .text-gray-900 {
+    color: #E6EDF3 !important;
+  }
+  
+  .dark .bg-white\/70,
+  .dark .bg-white\/80,
+  .dark .bg-white\/90,
+  .dark .glass {
+    background-color: #121821 !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* ======== PWA & MOBILE RESPONSIVENESS ======== */
+  @media (max-width: 768px) {
+    /* STEP 7: APP-LIKE SCROLL */
+    body, html {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    /* STEP 1: REMOVE CENTERED LAYOUT */
+    .max-w-md, .max-w-lg, .max-w-xl, .max-w-screen-md, .mx-auto {
+      max-width: none !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    /* STEP 2 & 8: FULL WIDTH APP LAYOUT + SAFE AREA */
+    #root, .main-content, .container, main, div[class*="min-h-screen"], .bg-gradient-to-b {
+      width: 100vw !important;
+      min-height: 100vh !important;
+      padding: 12px !important;
+      padding-bottom: env(safe-area-inset-bottom) !important;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    /* STEP 3 & 4: EDGE-TO-EDGE DESIGN + FIX CARD SPACING */
+    .card, .panel, .dashboard-card, section, div[class*="bg-white/90"] {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-bottom: 12px !important;
+      box-sizing: border-box;
+    }
+
+    /* STEP 6: FIX TOP SPACING (Override Tailwind spacing) */
+    .space-y-6 > :not([hidden]) ~ :not([hidden]),
+    .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+      margin-top: 8px !important;
+    }
+
+    /* STEP 5: GRID FIX */
+    .grid.grid-cols-2 {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+    }
+
+    button, .btn {
+      width: 100% !important;
+      min-height: 44px !important;
+    }
+  }
+}
+
+/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
@@ -13,4 +196,3 @@
 .animate-fadeIn {
   animation: fadeIn 0.15s ease-in-out;
 }
-
