@@ -4,10 +4,12 @@ sys.path.append(os.path.dirname(__file__))
 
 # backend/main.py
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from pathlib import Path
+from loguru import logger
 import os
 
 # ✅ Load .env file from project root (AgriSat/.env)
@@ -20,10 +22,18 @@ print("Loaded DATABASE_URL:", os.getenv("DATABASE_URL"))
 from db import init_db
 
 # ✅ Import routers
-from routes import auth, farms, ndvi_extended, weather , predict, market, schemes
+from routes import auth, farms, ndvi_extended, weather , predict, market, schemes, insights, notifications, support
 
 # ✅ Create FastAPI app
 app = FastAPI(title="AgriSat Backend")
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    logger.error(f"Global Error Hook: {exc} | URL: {request.url}")
+    return JSONResponse(
+        status_code=500,
+        content={"error": "Something went wrong on our end.", "detail": str(exc)},
+    )
 
 # ✅ Enable CORS (for frontend connection)
 app.add_middleware(
@@ -42,6 +52,9 @@ app.include_router(weather.router)
 app.include_router(predict.router)
 app.include_router(market.router)
 app.include_router(schemes.router)
+app.include_router(insights.router)
+app.include_router(notifications.router)
+app.include_router(support.router)
 
 # ✅ Event: Initialize DB at startup
 @app.on_event("startup")
