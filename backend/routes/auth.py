@@ -3,9 +3,10 @@ from fastapi import APIRouter, HTTPException, Depends, Header
 from sqlmodel import select
 from db import async_session
 from models import User
-from schemas import UserCreate, Token, UserOut, SendOtpIn, VerifyOtpIn, ForgotPasswordIn, ResetPasswordIn, GoogleAuthIn
+from schemas import UserCreate, Token, UserOut, SendOtpIn, VerifyOtpIn, ForgotPasswordIn, ResetPasswordIn, GoogleAuthIn, UserUpdate
 from passlib.context import CryptContext
 from jose import jwt
+from loguru import logger
 from pydantic import BaseModel
 from typing import Optional
 import os
@@ -204,3 +205,34 @@ async def get_me(authorization: str = Header(None)):
         if not user:
             raise HTTPException(404, "User not found")
         return user
+
+@router.put("/me", response_model=UserOut)
+async def update_me(payload: UserUpdate, authorization: str = Header(None)):
+    if not authorization:
+        raise HTTPException(401, "Missing auth token")
+    token = authorization.replace("Bearer ", "")
+    try:
+        p = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+        user_id = p.get("user_id")
+    except Exception:
+        raise HTTPException(401, "Invalid token")
+    
+    try:
+        async with async_session() as session:
+            user = await session.get(User, user_id)
+            if not user:
+                raise HTTPException(404, "User not found")
+            
+            if payload.name is not None: user.name = payload.name
+            if payload.email is not None: user.email = payload.email
+            if payload.phone is not None: user.phone = payload.phone
+            if payload.language is not None: user.language = payload.language
+            
+            session.add(user)
+            await session.commit()
+            await session.refresh(user)
+            logger.info(f"User {user_id} updated their profile.")
+            return user
+    except Exception as e:
+        logger.error(f"Error updating user : {e}")
+        raise HTTPException(500, "Failed to update profile")
