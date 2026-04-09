@@ -20,6 +20,12 @@ class UserOut(BaseModel):
     name: Optional[str]
     language: str
 
+class UserUpdate(BaseModel):
+    name: Optional[str] = None
+    email: Optional[str] = None
+    phone: Optional[str] = None
+    language: Optional[str] = None
+
 class SendOtpIn(BaseModel):
     email: Optional[str] = None
     phone: Optional[str] = None
@@ -90,3 +96,41 @@ class UploadOut(BaseModel):
     id: int
     filename: str
     caption: Optional[str]
+
+class InsightCreate(BaseModel):
+    farm_id: Optional[int] = None
+    type: str
+    title: str
+    content: Optional[Any] = None
+
+class InsightOut(BaseModel):
+    id: int
+    user_id: int
+    farm_id: Optional[int]
+    type: str
+    title: str
+    content: Optional[Any]
+    created_at: Any
+
+class NotificationOut(BaseModel):
+    id: int
+    title: str
+    message: str
+    type: str
+    is_read: bool
+    created_at: Any
+
+class SupportIn(BaseModel):
+    name: str
+    email: str
+    subject: str
+    message: str
+
+class KnowledgeArticleOut(BaseModel):
+    id: int
+    title: str
+    category: str
+    summary: str
+    content: str
+    author: Optional[str]
+    created_at: Any
