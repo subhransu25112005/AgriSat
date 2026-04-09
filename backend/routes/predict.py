@@ -1,6 +1,7 @@
 import os
 import httpx
-from fastapi import APIRouter, UploadFile, File
+from fastapi import APIRouter, UploadFile, File, HTTPException
+from loguru import logger
 from dotenv import load_dotenv
 
 # Try loading from backend and root dir
@@ -84,41 +85,64 @@ def get_treatment_info(plant_name: str, disease_name: str):
 
 @router.post("/")
 async def predict(file: UploadFile = File(...)):
+    # 1. Logging
+    logger.info(f"Incoming prediction request: {file.filename} ({file.content_type})")
+    
+    # 2. Validation
+    if not file.content_type.startswith("image/"):
+        logger.error(f"Invalid file type: {file.content_type}")
+        raise HTTPException(status_code=400, detail="Invalid file type. Please upload an image (JPEG/PNG).")
+
     contents = await file.read()
     
     if not PLANTNET_API_KEY:
+        logger.error("PLANTNET_API_KEY is missing from configuration.")
         return {
-            "plant": "Unknown",
-            "disease": "API Key Missing",
-            "confidence": 0.0,
-            "symptoms": "Backend configuration issue.",
-            "treatment": ["Contact administrator."],
-            "prevention": "N/A",
-            "failed": True
+            "status": "error",
+            "message": "Backend configuration issue. API Key missing."
         }
 
+    # 3. Correct Multipart Format for PlantNet
+    # PlantNet expects 'images' as the form field name
     files = {
-        'images': (file.filename, contents, file.content_type)
+        "images": (file.filename, contents, file.content_type)
     }
+    data = {"organs": ["leaf"]} 
     
     try:
-        async with httpx.AsyncClient() as client:
-            response = await client.post(
-                f"{PLANTNET_API_URL}?api-key={PLANTNET_API_KEY}",
-                files=files
-            )
-            response.raise_for_status()
-            data = response.json()
+        async with httpx.AsyncClient(timeout=20.0) as client:
+            try:
+                # Use params for API Key for better security/cleanliness
+                response = await client.post(
+                    PLANTNET_API_URL,
+                    params={"api-key": PLANTNET_API_KEY},
+                    files=files,
+                    data=data
+                )
+                
+                if response.status_code == 400:
+                    logger.warning(f"PlantNet 400: {response.text}")
+                    return {
+                        "status": "error",
+                        "message": "Image analysis failed, try another image (ensure it's JPEG/PNG and clear).",
+                        "failed": True
+                    }
+
+                response.raise_for_status()
+                res_data = response.json()
+            except Exception as e:
+                logger.error(f"PlantNet Connection Failure: {e}")
+                return {
+                    "status": "error",
+                    "message": "Image analysis failed, try another image",
+                    "failed": True
+                }
             
-            results = data.get("results", [])
+            results = res_data.get("results", [])
             if not results:
                 return {
-                    "plant": "Unknown",
-                    "disease": "Detection Failed",
-                    "confidence": 0.0,
-                    "symptoms": "Could not identify any plant or disease from the image.",
-                    "treatment": ["Try taking a clearer picture of the affected leaf."],
-                    "prevention": "Take photo in good lighting.",
+                    "status": "error",
+                    "message": "Image analysis failed, no matching plant found. Try another image.",
                     "failed": True
                 }
             
@@ -129,46 +153,25 @@ async def predict(file: UploadFile = File(...)):
             common_names = species.get("commonNames", [])
             
             plant_name = common_names[0] if common_names else scientific_name
-            
             treatment_info = get_treatment_info(plant_name, plant_name)
-            
-            disease_display = treatment_info["disease"]
-            if "Healthy" in disease_display and score < 0.3:
-                # Override if extremely low confidence
-                disease_display = "Indeterminate State"
             
             return {
                 "plant": plant_name,
-                "disease": disease_display,
+                "disease": treatment_info["disease"],
                 "confidence": score,
                 "cause": treatment_info.get("cause", "N/A"),
                 "medicine": treatment_info.get("medicine", "N/A"),
                 "dosage": treatment_info.get("dosage", "N/A"),
-                "symptoms": f"Visual match identified properties associated with {plant_name}.",
+                "symptoms": f"Detected characteristics of {plant_name}.",
                 "treatment": treatment_info["treatment"],
                 "prevention": treatment_info["prevention"],
                 "failed": False
             }
             
-    except httpx.HTTPStatusError as e:
-        print(f"PlantNet HTTP Error: {e}")
-        return {
-            "plant": "Unknown",
-            "disease": "API Error",
-            "confidence": 0.0,
-            "symptoms": "Failed to connect to PlantNet API.",
-            "treatment": ["Try again later.", "Check network connection."],
-            "prevention": "N/A",
-            "failed": True
-        }
     except Exception as e:
-        print(f"PlantNet Exception: {e}")
+        logger.error(f"Unexpected PlantNet Exception: {e}")
         return {
-            "plant": "Unknown",
-            "disease": "Processing Error",
-            "confidence": 0.0,
-            "symptoms": "An unexpected error occurred during prediction.",
-            "treatment": ["Try uploading a different image.", "Check backend logs."],
-            "prevention": "N/A",
+            "status": "error",
+            "message": "An unexpected error occurred during prediction. Please try again.",
             "failed": True
         }
