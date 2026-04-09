@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import WeatherCard from "../components/Cards/weathercard";
+import WeatherCard from "../components/Cards/WeatherCard";
 import WeatherIcon from "../components/icons/WeatherIcon";
 import NDVIIcon from "../components/icons/NDVIIcon";
 import SatelliteIcon from "../components/icons/SatelliteIcon";
