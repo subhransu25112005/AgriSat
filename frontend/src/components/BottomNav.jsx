@@ -1,12 +1,14 @@
 // src/components/BottomNav.jsx
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function BottomNav({ active="home", onChange }) {
+  const { t } = useTranslation();
   const tabs = [
-    {key:'home', label:'Your crops', icon:'🌾'},
-    {key:'community', label:'Community', icon:'💬'},
-    {key:'market', label:'Market', icon:'🛒'},
-    {key:'you', label:'You', icon:'👤'},
+    {key:'home', label: t("navigation.your_crops"), icon:'🌾'},
+    {key:'community', label: t("navigation.community"), icon:'💬'},
+    {key:'market', label: t("navigation.market"), icon:'🛒'},
+    {key:'you', label: t("navigation.you"), icon:'👤'},
   ];
 
   return (
