@@ -28,7 +28,7 @@ export default function Diagnosis() {
     formData.append("file", image);
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE}/predict/`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/predict/`, {
         method: "POST",
         body: formData,
       });

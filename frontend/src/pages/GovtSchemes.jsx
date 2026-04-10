@@ -33,7 +33,7 @@ export default function GovtSchemes() {
         setError("");
 
         try {
-            const url = `${import.meta.env.VITE_API_BASE}/api/schemes?q=${encodeURIComponent(
+            const url = `${import.meta.env.VITE_API_URL}/api/schemes?q=${encodeURIComponent(
                 state + " farmer agriculture"
             )}`;
 

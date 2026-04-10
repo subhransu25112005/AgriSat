@@ -50,7 +50,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 # ✅ Enable CORS (for frontend connection)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Change this to your frontend domain in production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -70,9 +70,9 @@ async def on_startup():
 # ✅ Default route for testing
 @app.get("/")
 def root():
-    return {"message": "AgriSat Backend is running 🚀"}
+    return {"status": "API running"}
 
 # ✅ Run the app
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("backend.main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=10000, reload=True)

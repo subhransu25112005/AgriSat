@@ -23,7 +23,7 @@ export default function Dashboard() {
 
   // ---- Fetch weather from your backend ----
   useEffect(() => {
-      fetch(`${import.meta.env.VITE_API_BASE}/weather/?lat=20.2961&lon=85.8245`)
+      fetch(`${import.meta.env.VITE_API_URL}/weather?lat=20.2961&lon=85.8245`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Weather:", data);
