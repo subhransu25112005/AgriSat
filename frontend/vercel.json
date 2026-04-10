@@ -1,41 +1,14 @@
 {
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/manifest.json", "dest": "/manifest.json" },
-    { "src": "/sw.js", "dest": "/sw.js" },
     { "src": "/.*", "dest": "/index.html" }
   ],
   "headers": [
     {
-      "source": "/index.html",
+      "source": "/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
-        }
+        { "key": "Cache-Control", "value": "no-store" }
       ]
-    },
-    {
-      "source": "/manifest.json",
-      "headers": [
-         {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Content-Type",
-          "value": "application/manifest+json"
-        }
-      ]
-    },
-    {
-       "source": "/(.*).(js|css|png|jpg|svg|webp|woff2)",
-       "headers": [
-         {
-           "key": "Cache-Control",
-           "value": "public, max-age=31536000, immutable"
-         }
-       ]
     }
   ]
 }

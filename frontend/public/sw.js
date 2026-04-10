@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'agrisat-v1.0.0';
+const CACHE_VERSION = 'agrisat-v2.0.0'; // Updated to v2 for the news proxy deploy
 const CACHE_NAME = `agrisat-cache-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [
@@ -18,7 +18,7 @@ self.addEventListener('install', (event) => {
       return cache.addAll(STATIC_ASSETS);
     })
   );
-  self.skipWaiting();
+  self.skipWaiting(); // ✅ ENSURES NEW SERVICE WORKER TAKES OVER IMMEDIATELY
 });
 
 // Activate: Purge old caches and claim clients
@@ -35,25 +35,28 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
+  // ✅ ENSURES SERVICE WORKER CONTROLS ALL PAGES WITHOUT REFRESH
   self.clients.claim();
 });
 
-// Fetch: Optimized Strategy
+// Fetch: Production Strategy
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // 1. Bypass all API calls - Always fresh from network
+  // 1. Bypass all API calls - Network-Only (Protect against stale news/weather)
+  // We explicitly skip caching for any response from Render or News/Weather platforms
   if (
     url.hostname.includes('onrender.com') || 
     url.hostname.includes('googleapis') || 
     url.hostname.includes('gnews.io') ||
     url.hostname.includes('openweathermap') ||
-    url.pathname.startsWith('/api')
+    url.pathname.startsWith('/api') ||
+    url.pathname.startsWith('/auth')
   ) {
     return;
   }
 
-  // 2. index.html - Network-First (Crucial to prevent white screen issues)
+  // 2. index.html - Network-First (Crucial for preventing White Screen Mismatch)
   if (event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request)
@@ -62,14 +65,13 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 3. Static Assets (JS/CSS/Images) - Cache-First, then Network
-  // Vite uses hashes for JS/CSS, so they are safe to cache forever until a new version
+  // 3. Static Assets (JS/CSS/Images) - Cache-First for Performance
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) return cachedResponse;
 
       return fetch(event.request).then((networkResponse) => {
-        // Only cache valid successful GET responses
+        // ✅ DO NOT cache failed API responses or opaque requests
         if (
           !networkResponse || 
           networkResponse.status !== 200 || 

@@ -20,6 +20,7 @@ print("Loaded DATABASE_URL:", os.getenv("DATABASE_URL"))
 
 # ✅ Import database initializer
 from db import init_db
+from routes.news import router as news_router
 
 # Dynamic Router Inclusions (Error-safe for missing API files)
 route_modules = [
@@ -57,6 +58,7 @@ app.add_middleware(
 )
 
 # ✅ Safely Include Routers
+app.include_router(news_router, prefix="/api")
 for name, router in routers.items():
     app.include_router(router)
     logger.info(f"✅ Loaded {name} API routes")

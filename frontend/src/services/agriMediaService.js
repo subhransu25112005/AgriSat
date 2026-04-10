@@ -38,33 +38,18 @@ export const getAgriVideos = async () => {
 };
 
 export const getAgriNews = async () => {
-  const apiKey = import.meta.env.VITE_GNEWS_API_KEY;
-  if (!apiKey) {
-    throw new Error("MISSING_API_KEY");
-  }
-
-  // Using GNews API for better global coverage / free tier without localhost restrictions
+  const API_BASE = import.meta.env.VITE_API_URL;
+  
   try {
-    const res = await axios.get("https://gnews.io/api/v4/search", {
-      params: {
-        q: "agriculture OR farming OR crops OR mandi india",
-        lang: "en",
-        country: "in",
-        max: 10,
-        apikey: apiKey,
-      }
-    });
+    const res = await axios.get(`${API_BASE}/api/news`, { timeout: 15000 });
 
-    return res.data.articles.map(article => ({
-      title: article.title,
-      description: article.description,
-      image: article.image,
-      source: article.source.name,
-      publishedAt: article.publishedAt,
-      url: article.url
-    }));
+    if (res.data && res.data.articles) {
+      return res.data.articles;
+    }
+    
+    return []; // Return empty array if structure is unexpected
   } catch (error) {
-    console.error("News API Error:", error);
-    throw new Error("API_ERROR");
+    console.error("News API Proxy Error:", error);
+    return []; // CRITICAL: Prevent UI crash by returning empty array
   }
 };
