@@ -21,8 +21,20 @@ print("Loaded DATABASE_URL:", os.getenv("DATABASE_URL"))
 # ✅ Import database initializer
 from db import init_db
 
-# ✅ Import routers
-from routes import auth, farms, ndvi_extended, weather , predict, market, schemes, insights, notifications, support
+# Dynamic Router Inclusions (Error-safe for missing API files)
+route_modules = [
+    "auth", "farms", "ndvi_extended", "weather", 
+    "predict", "market", "schemes", "insights", 
+    "notifications", "support"
+]
+
+routers = {}
+for module_name in route_modules:
+    try:
+        module = __import__(f"routes.{module_name}", fromlist=["router"])
+        routers[module_name] = module.router
+    except ImportError as e:
+        logger.warning(f"⚠️ Could not load router {module_name}: {e}")
 
 # ✅ Create FastAPI app
 app = FastAPI(title="AgriSat Backend")
@@ -44,17 +56,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ✅ Include routers
-app.include_router(auth.router)
-app.include_router(farms.router)
-app.include_router(ndvi_extended.router)
-app.include_router(weather.router)
-app.include_router(predict.router)
-app.include_router(market.router)
-app.include_router(schemes.router)
-app.include_router(insights.router)
-app.include_router(notifications.router)
-app.include_router(support.router)
+# ✅ Safely Include Routers
+for name, router in routers.items():
+    app.include_router(router)
+    logger.info(f"✅ Loaded {name} API routes")
 
 # ✅ Event: Initialize DB at startup
 @app.on_event("startup")

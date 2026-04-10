@@ -4,21 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#0F7A3A" />
+    <meta name="theme-color" content="#22c55e" />
+    <meta name="description" content="AgriSat - Precision Agriculture and Satellite Intelligence Hub for Smart Farmers." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>AgriSat</title>
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <title>AgriSat | Satellite Intelligence for Farmers</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/sw.js").catch(err => {
-            console.error("Service worker registration failed:", err);
-          });
-        });
-      }
-    </script>
   </body>
 </html>

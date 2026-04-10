@@ -73,7 +73,7 @@ export default function Dashboard() {
         <div className="w-full sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
           <div className="max-w-md mx-auto flex items-center justify-center px-4 py-3">
             <img
-              src="/public/logo.png"
+              src="/logo.png"
               alt="AgriSat Logo"
               className="h-12 object-contain"
             />
