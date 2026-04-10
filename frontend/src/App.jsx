@@ -39,6 +39,7 @@ const Landing = lazy(() => import("./pages/Landing"));
 import OfflineBanner from "./components/OfflineBanner";
 import FarmHelperChat from "./components/FarmHelperChat";
 import UserPanel from "./components/UserPanel";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 import api, { setAuth } from "./api/api";
 import i18n from "./i18n";
@@ -100,89 +101,91 @@ export default function App() {
   const showUI = !loading;
 
   return (
-    <BrowserRouter>
-      {/* SPLASH OVERLAY */}
-      {!showUI && <SplashScreen />}
+    <ErrorBoundary>
+      <BrowserRouter>
+        {/* SPLASH OVERLAY */}
+        {!showUI && <SplashScreen />}
 
-      {/* MAIN APP CONTENT */}
-      {showUI && (
-        <>
-          {!token ? (
-            <div className="min-h-screen">
-              <Suspense fallback={<RouteLoader />}>
-                <Routes>
-                  <Route path="/" element={<Landing />} />
-                  <Route path="/login" element={<Login onLogin={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
-                  <Route path="/signup" element={<Signup onSignedUp={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
-                  <Route path="/forgot-password" element={<ForgotPassword />} />
-                  <Route path="*" element={<Landing />} />
-                </Routes>
-              </Suspense>
-            </div>
-          ) : (
-            <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-              <OfflineBanner />
-              {/* HEADER */}
-              <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-100 dark:border-gray-800 sticky top-0 z-[45]">
-                <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between">
-                  <div className="w-10"></div>
-
-                  <button
-                    id="user-menu-btn"
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    className="w-12 h-12 flex items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-green-900/40 text-gray-700 dark:text-gray-200 transition-all font-black text-xl"
-                  >
-                    ⋮
-                  </button>
-                </div>
-              </header>
-
-              {/* ROUTES */}
-              <main className="max-w-[1440px] mx-auto p-6 min-h-[calc(100vh-80px)]">
+        {/* MAIN APP CONTENT */}
+        {showUI && (
+          <>
+            {!token ? (
+              <div className="min-h-screen">
                 <Suspense fallback={<RouteLoader />}>
                   <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/weather" element={<WeatherPage />} />
-                    <Route path="/ndvi" element={<NDVIMonitor />} />
-                    <Route path="/farm-insights" element={<FarmInsights />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/add-field" element={<AddField />} />
-                    <Route path="/settings" element={<Settings />} />
-                    <Route path="/diagnosis" element={<Diagnosis />} />
-                    <Route path="/diagnosis/result" element={<DiagnosisResult />} />
-                    <Route path="/select-crops" element={<SelectCrops />} />
-                    <Route path="/fertilizer" element={<FertilizerCalculator />} />
-                    <Route path="/pests" element={<PestsDiseases />} />
-                    <Route path="/cultivation-tips" element={<CultivationTips />} />
-                    <Route path="/pest-alerts" element={<PestAlerts />} />
-                    <Route path="/market-prices" element={<MarketPrices />} />
-                    <Route path="/govt-schemes" element={<GovtSchemes />} />
-                    <Route path="/knowledge-hub" element={<KnowledgeHub />} />
-                    <Route path="/welcome" element={<Welcome />} />
-                    {/* Fallback for logged-in users */}
-                    <Route path="*" element={<Dashboard />} />
+                    <Route path="/" element={<Landing />} />
+                    <Route path="/login" element={<Login onLogin={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
+                    <Route path="/signup" element={<Signup onSignedUp={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
+                    <Route path="*" element={<Landing />} />
                   </Routes>
                 </Suspense>
-              </main>
+              </div>
+            ) : (
+              <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+                <OfflineBanner />
+                {/* HEADER */}
+                <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-100 dark:border-gray-800 sticky top-0 z-[45]">
+                  <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between">
+                    <div className="w-10"></div>
 
-              <FarmHelperChat />
+                    <button
+                      id="user-menu-btn"
+                      onClick={() => setMenuOpen(!menuOpen)}
+                      className="w-12 h-12 flex items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-green-900/40 text-gray-700 dark:text-gray-200 transition-all font-black text-xl"
+                    >
+                      ⋮
+                    </button>
+                  </div>
+                </header>
 
-              {/* ANIMATED USER PANEL */}
-              <AnimatePresence>
-                {menuOpen && (
-                  <UserPanel
-                    onClose={() => setMenuOpen(false)}
-                    onLogout={() => { localStorage.removeItem("token"); setToken(null); }}
-                    onLanguageChange={changeLanguage}
-                    onThemeToggle={toggleDarkMode}
-                    darkMode={darkMode}
-                  />
-                )}
-              </AnimatePresence>
-            </div>
-          )}
-        </>
-      )}
-    </BrowserRouter>
+                {/* ROUTES */}
+                <main className="max-w-[1440px] mx-auto p-6 min-h-[calc(100vh-80px)]">
+                  <Suspense fallback={<RouteLoader />}>
+                    <Routes>
+                      <Route path="/" element={<Dashboard />} />
+                      <Route path="/weather" element={<WeatherPage />} />
+                      <Route path="/ndvi" element={<NDVIMonitor />} />
+                      <Route path="/farm-insights" element={<FarmInsights />} />
+                      <Route path="/profile" element={<Profile />} />
+                      <Route path="/add-field" element={<AddField />} />
+                      <Route path="/settings" element={<Settings />} />
+                      <Route path="/diagnosis" element={<Diagnosis />} />
+                      <Route path="/diagnosis/result" element={<DiagnosisResult />} />
+                      <Route path="/select-crops" element={<SelectCrops />} />
+                      <Route path="/fertilizer" element={<FertilizerCalculator />} />
+                      <Route path="/pests" element={<PestsDiseases />} />
+                      <Route path="/cultivation-tips" element={<CultivationTips />} />
+                      <Route path="/pest-alerts" element={<PestAlerts />} />
+                      <Route path="/market-prices" element={<MarketPrices />} />
+                      <Route path="/govt-schemes" element={<GovtSchemes />} />
+                      <Route path="/knowledge-hub" element={<KnowledgeHub />} />
+                      <Route path="/welcome" element={<Welcome />} />
+                      {/* Fallback for logged-in users */}
+                      <Route path="*" element={<Dashboard />} />
+                    </Routes>
+                  </Suspense>
+                </main>
+
+                <FarmHelperChat />
+
+                {/* ANIMATED USER PANEL */}
+                <AnimatePresence>
+                  {menuOpen && (
+                    <UserPanel
+                      onClose={() => setMenuOpen(false)}
+                      onLogout={() => { localStorage.removeItem("token"); setToken(null); }}
+                      onLanguageChange={changeLanguage}
+                      onThemeToggle={toggleDarkMode}
+                      darkMode={darkMode}
+                    />
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
+          </>
+        )}
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 }
