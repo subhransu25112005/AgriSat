@@ -209,5 +209,5 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 <p align="center">
   Made with ❤️ for the Global Farming Community by <strong>Subhranshu Nanda</strong><br/>
-  <sub>AgriSat — Where Satellites Meet the Soil 🌾</sub>
+  <sub>AgriSat — Where Satellites Meet the Soil </sub>
 </p>
