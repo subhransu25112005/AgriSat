@@ -1,5 +1,11 @@
 # 🛰️ AgriSat: Next-Gen Agricultural Intelligence Platform
 
+<p align="center">
+  <img src="frontend/public/logo.png" alt="AgriSat Logo" width="200" />
+  <br>
+  <b>Official Logo: favicon.ico</b>
+</p>
+
 ![AgriSat Banner](https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200)
 
 > **Empowering farmers with Satellite Precision, AI-Driven Diagnostics, and Real-Time Market Intelligence.**
