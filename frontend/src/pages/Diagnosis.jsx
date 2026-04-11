@@ -44,7 +44,7 @@ export default function Diagnosis() {
   };
 
   return (
-    <div className="p-5 max-w-lg mx-auto">
+    <div className="p-5 w-full max-w-screen-xl mx-auto">
       <h1 className="text-2xl font-bold text-center mb-6">
         {t("diagnosis.title")}
       </h1>

@@ -237,7 +237,7 @@ export default function DiagnosisResult() {
   if (!state) return <p>No data received</p>;
 
   return (
-    <div className="p-5 max-w-lg mx-auto pb-24">
+    <div className="p-5 w-full max-w-screen-xl mx-auto pb-24">
       {/* ── ORIGINAL HEADER ──────────────────────────────────────────── */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">{t("result.title")}</h1>

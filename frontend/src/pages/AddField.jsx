@@ -39,7 +39,7 @@ export default function AddField({ onAdded }) {
   };
 
   return (
-    <div className="max-w-lg mx-auto">
+    <div className="w-full max-w-screen-xl mx-auto">
       <form onSubmit={handleAdd} className="card p-4 space-y-3">
         <h3 className="font-semibold">{t("addField.title")}</h3>
         <input className="border p-2 rounded w-full" placeholder={t("addField.fieldName")} value={name} onChange={(e)=>setName(e.target.value)} />

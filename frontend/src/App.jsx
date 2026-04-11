@@ -126,7 +126,7 @@ export default function App() {
                 <OfflineBanner />
                 {/* HEADER */}
                 <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-100 dark:border-gray-800 sticky top-0 z-[45]">
-                  <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between">
+                  <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8 py-4 flex items-center justify-between">
                     <div className="w-10"></div>
 
                     <button
@@ -140,7 +140,7 @@ export default function App() {
                 </header>
 
                 {/* ROUTES */}
-                <main className="max-w-[1440px] mx-auto px-4 sm:px-6 pb-safe" style={{minHeight:'calc(100dvh - 72px)'}}>
+                <main className="w-full max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8" style={{minHeight:'calc(100dvh - 72px)'}}>
                   <Suspense fallback={<RouteLoader />}>
                     <Routes>
                       <Route path="/" element={<Dashboard />} />

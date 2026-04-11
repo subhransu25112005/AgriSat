@@ -39,7 +39,7 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow sticky top-0 z-50">
-      <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="w-full max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
 
         <div className="w-10"></div>
 

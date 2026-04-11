@@ -128,6 +128,13 @@
 }
 
 @layer utilities {
+  .container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
 
   /* STEP 4 & 5: TAILWIND FIXES FOR DARK MODE */
   .dark .bg-white,
