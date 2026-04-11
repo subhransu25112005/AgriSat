@@ -41,9 +41,8 @@ function getResponse(question, current) {
     return "📡 No rain detected currently. Check the 7-day forecast section below for upcoming rain events.";
   }
 
-  return `📡 Analyzing: Temp ${Math.round(temp)}°C, Humidity ${humidity}%, Wind ${wind.toFixed(1)} m/s. ${
-    temp > 33 ? "⚠️ Heat stress risk." : humidity > 70 ? "⚠️ High moisture conditions." : "✅ Conditions appear stable."
-  }`;
+  return `📡 Analyzing: Temp ${Math.round(temp)}°C, Humidity ${humidity}%, Wind ${wind.toFixed(1)} m/s. ${temp > 33 ? "⚠️ Heat stress risk." : humidity > 70 ? "⚠️ High moisture conditions." : "✅ Conditions appear stable."
+    }`;
 }
 
 export default function AIChatAssistant({ current }) {
@@ -104,11 +103,10 @@ export default function AIChatAssistant({ current }) {
                   animate={{ opacity: 1, y: 0 }}
                   className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  <div className={`max-w-[85%] text-xs font-bold leading-relaxed p-3 rounded-2xl ${
-                    m.from === "user"
+                  <div className={`max-w-[85%] text-xs font-bold leading-relaxed p-3 rounded-2xl ${m.from === "user"
                       ? "bg-emerald-600 text-white rounded-br-sm"
                       : "bg-white/8 text-white/80 border border-white/10 rounded-bl-sm"
-                  }`}>
+                    }`}>
                     {m.text}
                   </div>
                 </motion.div>

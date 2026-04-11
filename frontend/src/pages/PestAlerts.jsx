@@ -211,12 +211,12 @@ export default function PestAlerts() {
 
       {/* Official advisories section */}
       <div className="mt-6 bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-sm">
-         <h2 className="text-md font-semibold text-emerald-800 mb-1">
-           📑 {t("pestAlerts.officialAdvisories", "Official advisories")}
-         </h2>
-         <p className="text-emerald-800">
-           {t("pestAlerts.checkAdvisories", "For detailed, crop-wise guidance for your state, check:")}
-         </p>
+        <h2 className="text-md font-semibold text-emerald-800 mb-1">
+          📑 {t("pestAlerts.officialAdvisories", "Official advisories")}
+        </h2>
+        <p className="text-emerald-800">
+          {t("pestAlerts.checkAdvisories", "For detailed, crop-wise guidance for your state, check:")}
+        </p>
         <ul className="list-disc list-inside mt-2 space-y-1">
           <li>
             <a

@@ -38,7 +38,7 @@ export default function GovtSchemes() {
             )}`;
 
             const res = await fetch(url).catch(() => null);
-            
+
             if (res && res.ok) {
                 const json = await res.json();
                 if (!json.data || json.data.length === 0) {
@@ -97,8 +97,8 @@ export default function GovtSchemes() {
                         className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-50 dark:border-gray-700 hover:shadow-md transition group"
                     >
                         <div className="flex justify-between items-start gap-3">
-                           <h2 className="font-bold text-lg dark:text-white group-hover:text-green-600 transition">{item.title}</h2>
-                           <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold px-2 py-1 rounded uppercase">Live</span>
+                            <h2 className="font-bold text-lg dark:text-white group-hover:text-green-600 transition">{item.title}</h2>
+                            <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold px-2 py-1 rounded uppercase">Live</span>
                         </div>
                         <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm leading-relaxed">
                             {item.shortDescription || t("govtSchemes.noDesc", "No description provided")}

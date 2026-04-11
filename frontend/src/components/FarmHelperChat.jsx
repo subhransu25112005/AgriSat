@@ -43,7 +43,7 @@ const FarmHelperChat = () => {
         if (query.includes("price") || query.includes("market")) return t("chatbot.res_market", "Market prices are updated daily in the Market Prices section. Check them out!");
         if (query.includes("scheme") || query.includes("govt")) return t("chatbot.res_scheme", "There are several government schemes available for farmers. Visit the Govt Schemes page for more info.");
         if (query.includes("hello") || query.includes("hi")) return t("chatbot.res_hello", "Hi there! How can I assist you with your farm today?");
-        
+
         return t("chatbot.res_default", "I'm not sure I understand. Could you please rephrase? I can help with weather, diseases, market prices, and govt schemes.");
     };
 
@@ -101,11 +101,10 @@ const FarmHelperChat = () => {
                         <div className="flex-1 overflow-y-auto p-3 space-y-3">
                             {messages.map(msg => (
                                 <div key={msg.id} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
-                                    <div className={`max-w-[80%] p-2 rounded-xl text-sm ${
-                                        msg.sender === "user" 
-                                        ? "bg-green-600 text-white rounded-br-none" 
-                                        : "bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-bl-none"
-                                    }`}>
+                                    <div className={`max-w-[80%] p-2 rounded-xl text-sm ${msg.sender === "user"
+                                            ? "bg-green-600 text-white rounded-br-none"
+                                            : "bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-bl-none"
+                                        }`}>
                                         {msg.text}
                                     </div>
                                 </div>
@@ -123,13 +122,13 @@ const FarmHelperChat = () => {
                                 placeholder={t("chatbot.placeholder", "Type a message...")}
                                 className="flex-1 border dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
                             />
-                            <button 
+                            <button
                                 onClick={toggleListening}
                                 className={`p-2 rounded-lg ${isListening ? "bg-red-500 text-white" : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"}`}
                             >
                                 {isListening ? "⏹" : "🎤"}
                             </button>
-                            <button 
+                            <button
                                 onClick={() => handleSend(inputValue)}
                                 className="bg-green-600 text-white p-2 rounded-lg"
                             >

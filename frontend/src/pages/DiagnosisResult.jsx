@@ -18,11 +18,10 @@ function ChecklistItem({ item }) {
         className="mt-1 w-4 h-4 text-blue-600 rounded cursor-pointer flex-shrink-0"
       />
       <span
-        className={`text-sm ${
-          checked
+        className={`text-sm ${checked
             ? "line-through text-gray-400"
             : "text-gray-700 dark:text-gray-200 font-medium"
-        }`}
+          }`}
       >
         {item}
       </span>
@@ -35,9 +34,9 @@ function IntelligencePanel({ intelligence }) {
   const [showExplanation, setShowExplanation] = useState(false);
 
   const getSeverityColor = (sev) => {
-    if (sev === "Severe")   return "bg-red-100    text-red-800    border-red-300    dark:bg-red-900/30    dark:text-red-400";
+    if (sev === "Severe") return "bg-red-100    text-red-800    border-red-300    dark:bg-red-900/30    dark:text-red-400";
     if (sev === "Moderate") return "bg-yellow-100 text-yellow-800 border-yellow-300 dark:bg-yellow-900/30 dark:text-yellow-400";
-    if (sev === "Mild")     return "bg-green-100  text-green-800  border-green-300  dark:bg-green-900/30  dark:text-green-400";
+    if (sev === "Mild") return "bg-green-100  text-green-800  border-green-300  dark:bg-green-900/30  dark:text-green-400";
     return "bg-gray-100 text-gray-700 border-gray-300 dark:bg-gray-700 dark:text-gray-300";
   };
 
@@ -45,13 +44,12 @@ function IntelligencePanel({ intelligence }) {
     <div className="space-y-4 mt-4">
 
       {/* ── Urgency Banner ───────────────────────────────────────────── */}
-      <div className={`p-3 rounded-xl font-bold text-sm flex items-center gap-2 border ${
-        intelligence.urgency.includes("Immediate")
+      <div className={`p-3 rounded-xl font-bold text-sm flex items-center gap-2 border ${intelligence.urgency.includes("Immediate")
           ? "bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-900/40"
           : intelligence.urgency.includes("Safe")
-          ? "bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-900/40"
-          : "bg-yellow-50 text-yellow-700 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-400 dark:border-yellow-900/40"
-      }`}>
+            ? "bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-900/40"
+            : "bg-yellow-50 text-yellow-700 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-400 dark:border-yellow-900/40"
+        }`}>
         {intelligence.urgency}
       </div>
 
@@ -200,7 +198,7 @@ export default function DiagnosisResult() {
           prev.unshift(entry);
           localStorage.setItem("crop_history", JSON.stringify(prev.slice(0, 10)));
         }
-      } catch (_) {}
+      } catch (_) { }
     }
   }, [state, intelligence]);
 
@@ -222,8 +220,8 @@ export default function DiagnosisResult() {
     const safeTreatment = intelligence?.advancedTreatment?.length
       ? intelligence.advancedTreatment.join(". ")
       : Array.isArray(state.treatment)
-      ? state.treatment.join(". ")
-      : state.treatment;
+        ? state.treatment.join(". ")
+        : state.treatment;
 
     const textToSpeak = `${state.disease}. ${t("result.symptoms")}: ${state.symptoms}. ${t("result.treatment")}: ${safeTreatment}`;
     const utterance = new SpeechSynthesisUtterance(textToSpeak);

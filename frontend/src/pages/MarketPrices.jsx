@@ -147,8 +147,8 @@ function SellScoreBadge({ score, t }) {
 function VolatilityBadge({ volatility, t }) {
   const map = {
     stable: { icon: "🟢", key: "vol_stable", color: "#15803d" },
-    risky:  { icon: "🟡", key: "vol_risky",  color: "#b45309" },
-    high:   { icon: "🔴", key: "vol_high",   color: "#b91c1c" },
+    risky: { icon: "🟡", key: "vol_risky", color: "#b45309" },
+    high: { icon: "🔴", key: "vol_high", color: "#b91c1c" },
   };
   const v = map[volatility] || map.risky;
   return <span className="flex items-center gap-1 text-xs font-bold" style={{ color: v.color }}>{v.icon} {t(`marketPrices.${v.key}`)}</span>;
@@ -272,9 +272,9 @@ export default function MarketPrices() {
           commodity: selectedCommodity || undefined
         }
       });
-      
+
       const records = res.data?.records || [];
-      
+
       if (records.length === 0) {
         // Fallback to local intelligence if API returns empty but we want to show something
         throw new Error("No data found");
@@ -282,7 +282,7 @@ export default function MarketPrices() {
       setPrices(records);
     } catch (err) {
       console.warn("Mandi API unavailable, using local intelligence engine.");
-      
+
       // Intelligent Fallback Logic
       const dummyAll = [
         { commodity: "Tomato", market: "Bhubaneswar", state, min_price: "2000", max_price: "3000", modal_price: "2500", arrival_date: "09/04/2026" },
@@ -298,7 +298,7 @@ export default function MarketPrices() {
       if (selectedCommodity) {
         filtered = dummyAll.filter(r => r.commodity.toLowerCase() === selectedCommodity.toLowerCase());
       }
-      
+
       if (filtered.length === 0) {
         setError("Market data temporarily unavailable for this selection.");
         setPrices([]);
@@ -366,7 +366,7 @@ export default function MarketPrices() {
 
       {/* ── FILTERS & SELECTORS ──────────────────────────────────────── */}
       <div className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 mb-6 space-y-5">
-        
+
         {/* State Selector */}
         <div>
           <div className="flex justify-between items-center mb-2">
@@ -391,11 +391,10 @@ export default function MarketPrices() {
               <button
                 key={cat.id}
                 onClick={() => { setSelectedCategory(cat.id); setSelectedCommodity(""); }}
-                className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
-                  selectedCategory === cat.id 
-                    ? "bg-green-100 text-green-700 border border-green-300 dark:bg-green-900/30 dark:border-green-700 dark:text-green-400" 
+                className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all ${selectedCategory === cat.id
+                    ? "bg-green-100 text-green-700 border border-green-300 dark:bg-green-900/30 dark:border-green-700 dark:text-green-400"
                     : "bg-gray-50 text-gray-600 border border-gray-200 dark:bg-gray-700/50 dark:border-gray-600 dark:text-gray-300"
-                }`}
+                  }`}
               >
                 <span>{cat.icon}</span> {cat.label}
               </button>
@@ -407,38 +406,38 @@ export default function MarketPrices() {
         <div className="relative">
           <label className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2 block">Search Specific Crop</label>
           <div className="relative">
-            <input 
+            <input
               type="text"
               placeholder={selectedCommodity || "Type to search (e.g. Tomato)..."}
               value={searchQuery}
               onFocus={() => setShowSuggestions(true)}
               onChange={(e) => {
-                 setSearchQuery(e.target.value);
-                 setShowSuggestions(true);
+                setSearchQuery(e.target.value);
+                setShowSuggestions(true);
               }}
               onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
               className="w-full p-3 pl-10 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl outline-none focus:ring-2 focus:ring-green-500 dark:text-white text-sm"
             />
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
             {selectedCommodity && !searchQuery && (
-               <button 
-                 onClick={() => { setSelectedCommodity(""); setSearchQuery(""); }}
-                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 text-xs font-bold"
-               >
-                 ✕ Clear
-               </button>
+              <button
+                onClick={() => { setSelectedCommodity(""); setSearchQuery(""); }}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 text-xs font-bold"
+              >
+                ✕ Clear
+              </button>
             )}
           </div>
-          
+
           <AnimatePresence>
             {showSuggestions && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -5 }}
                 className="absolute z-10 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl shadow-lg max-h-48 overflow-y-auto"
               >
                 {filteredCommodities.length > 0 ? (
                   filteredCommodities.map(c => (
-                    <div 
+                    <div
                       key={c.name}
                       onClick={() => {
                         setSelectedCommodity(c.name);
@@ -447,7 +446,7 @@ export default function MarketPrices() {
                       }}
                       className="px-4 py-2 hover:bg-green-50 dark:hover:bg-gray-700 cursor-pointer flex items-center gap-2 text-sm dark:text-white border-b border-gray-50 dark:border-gray-700/50 last:border-0"
                     >
-                      <span className="text-lg">{c.icon}</span> 
+                      <span className="text-lg">{c.icon}</span>
                       <span className="font-medium">{c.name}</span>
                       <span className="ml-auto text-[10px] text-gray-400 uppercase">{c.category}</span>
                     </div>
@@ -542,12 +541,12 @@ export default function MarketPrices() {
       {/* ── PRICE CARDS ──────────────────────────────────────────────── */}
       <div className="space-y-4">
         {prices.map((item, i) => {
-          const demand    = getDemandLevel(item.commodity);
-          const insight   = getSmartInsight(item.modal_price);
+          const demand = getDemandLevel(item.commodity);
+          const insight = getSmartInsight(item.modal_price);
           const direction = getPriceDirection(item.modal_price);
-          const score     = computeSellScore(item.modal_price, direction);
-          const vol       = getVolatility(item.min_price, item.max_price);
-          const storage   = getStorageAdvice(item.modal_price, direction, t);
+          const score = computeSellScore(item.modal_price, direction);
+          const vol = getVolatility(item.min_price, item.max_price);
+          const storage = getStorageAdvice(item.modal_price, direction, t);
 
           return (
             <motion.div key={i} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="p-4 bg-white dark:bg-gray-800 shadow-sm rounded-2xl border border-gray-100 dark:border-gray-700 hover:shadow-md transition group">

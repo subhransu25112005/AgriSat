@@ -19,8 +19,8 @@ function RiskBadge({ risk }) {
   // Step 6: Color Intelligence — risk level
   const color =
     risk === "Low" ? "bg-green-100 text-green-700" :
-    risk === "Medium" ? "bg-yellow-100 text-yellow-700" :
-    "bg-red-100 text-red-700";
+      risk === "Medium" ? "bg-yellow-100 text-yellow-700" :
+        "bg-red-100 text-red-700";
   return (
     <span className={`text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-widest ${color}`}>
       {risk}
@@ -172,10 +172,9 @@ export default function FarmInsights() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
             className="rounded-[2.5rem] bg-white dark:bg-gray-800 p-8 shadow-lg border border-gray-100 dark:border-gray-700 md:col-span-2 lg:col-span-1">
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-green-600 mb-4">🌱 Crop Health Score</p>
-            <p className={`text-5xl font-black ${
-              (insights?.healthScore ?? 0) >= 7 ? 'text-green-600' :
-              (insights?.healthScore ?? 0) >= 4 ? 'text-yellow-500' : 'text-red-500'
-            }`}>
+            <p className={`text-5xl font-black ${(insights?.healthScore ?? 0) >= 7 ? 'text-green-600' :
+                (insights?.healthScore ?? 0) >= 4 ? 'text-yellow-500' : 'text-red-500'
+              }`}>
               {insights?.healthScore ?? "--"}<span className="text-2xl text-gray-400 font-bold">/10</span>
             </p>
             <HealthBar score={insights?.healthScore ?? 0} />
@@ -217,7 +216,7 @@ export default function FarmInsights() {
             </p>
           </motion.div>
 
-           {/* Card 5: Moisture Level with animated bar */}
+          {/* Card 5: Moisture Level with animated bar */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
             className="rounded-[2.5rem] bg-blue-50 dark:bg-blue-900/20 p-8 shadow-lg border border-blue-100 dark:border-blue-800">
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 mb-4">💧 Moisture Level</p>

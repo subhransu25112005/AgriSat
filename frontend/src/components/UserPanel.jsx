@@ -9,7 +9,7 @@ export default function UserPanel({ onClose, onLogout, onLanguageChange, onTheme
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [activeView, setActiveView] = useState("main"); 
+  const [activeView, setActiveView] = useState("main");
   const [farms, setFarms] = useState([]);
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -24,21 +24,21 @@ export default function UserPanel({ onClose, onLogout, onLanguageChange, onTheme
       const u = await me();
       setUser(u);
       setEditForm({ name: u.name, email: u.email, phone: u.phone, language: u.language });
-    } catch (e) {}
+    } catch (e) { }
   }
 
   async function loadFarms() {
     try {
       const resp = await api.get("/farms");
       setFarms(resp.data);
-    } catch (e) {}
+    } catch (e) { }
   }
 
   async function loadNotifications() {
     try {
       const resp = await api.get("/notifications");
       setNotifications(resp.data);
-    } catch (e) {}
+    } catch (e) { }
   }
 
   useEffect(() => {
@@ -173,23 +173,23 @@ export default function UserPanel({ onClose, onLogout, onLanguageChange, onTheme
             )}
 
             {activeView === "profile" && (
-               <motion.div key="profile" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="p-6">
-                 <button onClick={() => setActiveView("main")} className="mb-4 text-sm font-bold text-green-600 flex items-center gap-1">← Back</button>
-                 <h3 className="font-bold text-lg mb-4">Edit Profile</h3>
-                 <form onSubmit={handleUpdateProfile} className="space-y-4">
-                   <div>
-                     <label className="text-xs font-bold text-gray-400 block mb-1">NAME</label>
-                     <input value={editForm.name} onChange={e => setEditForm({...editForm, name: e.target.value})} className="w-full p-2.5 rounded-xl border border-gray-100 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 text-sm" />
-                   </div>
-                   <div>
-                     <label className="text-xs font-bold text-gray-400 block mb-1">EMAIL</label>
-                     <input value={editForm.email} onChange={e => setEditForm({...editForm, email: e.target.value})} className="w-full p-2.5 rounded-xl border border-gray-100 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 text-sm" />
-                   </div>
-                   <button type="submit" disabled={loading} className="w-full bg-green-600 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-green-200 active:scale-95 transition">
-                     {loading ? "Updating..." : "Save Changes"}
-                   </button>
-                 </form>
-               </motion.div>
+              <motion.div key="profile" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="p-6">
+                <button onClick={() => setActiveView("main")} className="mb-4 text-sm font-bold text-green-600 flex items-center gap-1">← Back</button>
+                <h3 className="font-bold text-lg mb-4">Edit Profile</h3>
+                <form onSubmit={handleUpdateProfile} className="space-y-4">
+                  <div>
+                    <label className="text-xs font-bold text-gray-400 block mb-1">NAME</label>
+                    <input value={editForm.name} onChange={e => setEditForm({ ...editForm, name: e.target.value })} className="w-full p-2.5 rounded-xl border border-gray-100 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 text-sm" />
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold text-gray-400 block mb-1">EMAIL</label>
+                    <input value={editForm.email} onChange={e => setEditForm({ ...editForm, email: e.target.value })} className="w-full p-2.5 rounded-xl border border-gray-100 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 text-sm" />
+                  </div>
+                  <button type="submit" disabled={loading} className="w-full bg-green-600 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-green-200 active:scale-95 transition">
+                    {loading ? "Updating..." : "Save Changes"}
+                  </button>
+                </form>
+              </motion.div>
             )}
 
             {activeView === "farms" && (
@@ -274,11 +274,10 @@ export default function UserPanel({ onClose, onLogout, onLanguageChange, onTheme
                 <button
                   key={lang}
                   onClick={() => { onLanguageChange?.(lang); onClose(); }}
-                  className={`flex-1 py-1.5 text-xs font-bold rounded-lg border transition ${
-                    i18n.language === lang
+                  className={`flex-1 py-1.5 text-xs font-bold rounded-lg border transition ${i18n.language === lang
                       ? "bg-green-600 text-white border-green-600"
                       : "border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-green-400"
-                  }`}
+                    }`}
                 >
                   {lang === "en" ? "EN" : lang === "hi" ? "हि" : "ଓ"}
                 </button>

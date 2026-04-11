@@ -37,7 +37,7 @@ export default function Landing() {
       <div className="relative z-20 flex flex-col min-h-screen">
         {/* Nav */}
         <div className="flex items-center justify-between px-6 pt-8 pb-4">
-          <motion.img 
+          <motion.img
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             src="/logo.svg" alt="AgriSat" className="h-10 drop-shadow-md" />
@@ -58,10 +58,10 @@ export default function Landing() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <motion.div 
-               animate={{ scale: [1, 1.1, 1], opacity: [0.5, 1, 0.5] }}
-               transition={{ duration: 4, repeat: Infinity }}
-               className="text-7xl mb-6 blur-[1px]">🌾</motion.div>
+            <motion.div
+              animate={{ scale: [1, 1.1, 1], opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="text-7xl mb-6 blur-[1px]">🌾</motion.div>
             <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight tracking-tight uppercase">
               {t("landing.title", "Precision Farming")}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
@@ -118,7 +118,7 @@ export default function Landing() {
 
       {/* Main Features Grid */}
       <div className="relative z-20 bg-gray-950 px-6 py-32">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -139,7 +139,7 @@ export default function Landing() {
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              whileHover={{ 
+              whileHover={{
                 y: -15,
                 boxShadow: "0 25px 50px -12px rgba(34, 197, 94, 0.3)",
                 borderColor: "rgba(34, 197, 94, 0.4)"

@@ -34,8 +34,8 @@ export default function Welcome() {
 
       {/* Static Top Decor (Optional padding anchor) */}
       <div className="relative z-20 w-full p-6 flex justify-end">
-        <button 
-          onClick={completeOnboarding} 
+        <button
+          onClick={completeOnboarding}
           className="text-sm font-semibold uppercase tracking-widest text-white/50 hover:text-white transition"
         >
           {t("welcome.skip", "Skip")}
@@ -45,13 +45,13 @@ export default function Welcome() {
       {/* Main Content Arena */}
       <div className="relative z-20 flex-1 flex flex-col items-center justify-center">
         <AnimatePresence mode="wait">
-          
+
           {step === 0 && (
             <WelcomeSlide key="screen1">
-              <motion.div 
-                 initial={{ y: 10, opacity: 0 }}
-                 animate={{ y: 0, opacity: 1 }}
-                 className="text-6xl mb-6 shadow-inner"
+              <motion.div
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="text-6xl mb-6 shadow-inner"
               >
                 🌱
               </motion.div>
@@ -75,7 +75,7 @@ export default function Welcome() {
                   { icon: "📈", text: t("welcome.feature_2", "Track real-time market prices") },
                   { icon: "⛅", text: t("welcome.feature_3", "Get smart climate insights") },
                 ].map((item, i) => (
-                  <motion.div 
+                  <motion.div
                     key={i}
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-lg"
@@ -90,7 +90,7 @@ export default function Welcome() {
 
           {step === 2 && (
             <WelcomeSlide key="screen3">
-              <motion.div 
+              <motion.div
                 animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
                 transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
                 className="text-7xl mb-6 drop-shadow-2xl"
@@ -130,7 +130,7 @@ export default function Welcome() {
 
           {step === 4 && (
             <WelcomeSlide key="screen5">
-              <motion.div 
+              <motion.div
                 initial={{ rotate: -180, opacity: 0 }}
                 animate={{ rotate: 0, opacity: 1 }}
                 className="text-7xl mb-6 drop-shadow-2xl"
@@ -140,8 +140,8 @@ export default function Welcome() {
               <h1 className="text-4xl font-extrabold mb-8 drop-shadow-lg text-green-400">
                 {t("welcome.final", "Let’s grow together")}
               </h1>
-              
-              <button 
+
+              <button
                 onClick={completeOnboarding}
                 className="w-full bg-green-500 hover:bg-green-400 text-gray-900 text-xl font-bold py-4 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.4)] transition transform hover:scale-105"
               >
@@ -157,15 +157,15 @@ export default function Welcome() {
       <div className="relative z-20 w-full p-6 flex flex-col items-center pb-10">
         <div className="flex gap-3 mb-8">
           {[0, 1, 2, 3, 4].map((dot) => (
-            <div 
-              key={dot} 
+            <div
+              key={dot}
               className={`h-2 rounded-full transition-all duration-500 ${step === dot ? "w-8 bg-green-400" : "w-2 bg-white/40"}`}
             />
           ))}
         </div>
-        
+
         {step < 4 && (
-          <button 
+          <button
             onClick={nextStep}
             className="bg-white/20 hover:bg-white/30 backdrop-blur-lg border border-white/40 px-10 py-3 rounded-full font-bold text-lg transition tracking-wide shadow-lg"
           >

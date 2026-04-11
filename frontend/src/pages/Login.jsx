@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 
 export default function Login({ onLogin }) {
   const [authMode, setAuthMode] = useState("password"); // 'password' or 'otp'
-  
+
   // States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [otpCode, setOtpCode] = useState("");
   const [otpSent, setOtpSent] = useState(false);
   const [loading, setLoading] = useState(false);
-  
+
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function Login({ onLogin }) {
       if (!clientId || clientId === "YOUR_GOOGLE_CLIENT_ID_HERE") {
         console.warn("⚠️ VITE_GOOGLE_CLIENT_ID missing or unconfigured in .env! Native Google Login button will be disabled.");
       }
-      
+
       if (window.google && clientId && clientId !== "YOUR_GOOGLE_CLIENT_ID_HERE") {
         window.google.accounts.id.initialize({
           client_id: clientId,
@@ -35,7 +35,7 @@ export default function Login({ onLogin }) {
         );
       }
     };
-    
+
     if (!window.google) {
       const script = document.createElement("script");
       script.src = "https://accounts.google.com/gsi/client";
@@ -61,7 +61,7 @@ export default function Login({ onLogin }) {
   const handlePasswordLogin = async (e) => {
     e.preventDefault();
     if (!email || !password) return alert("Enter email and password");
-    
+
     setLoading(true);
     try {
       const res = await login({ email, password });
@@ -76,7 +76,7 @@ export default function Login({ onLogin }) {
   const handleSendOtp = async (e) => {
     e.preventDefault();
     if (!email) return alert("Enter your email");
-    
+
     setLoading(true);
     try {
       await sendOtp(email);
@@ -91,7 +91,7 @@ export default function Login({ onLogin }) {
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     if (!otpCode) return alert("Enter the OTP code");
-    
+
     setLoading(true);
     try {
       const res = await verifyOtp(email, otpCode);
@@ -114,13 +114,13 @@ export default function Login({ onLogin }) {
 
         {/* Tab Selector */}
         <div className="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1 mb-6">
-          <button 
+          <button
             onClick={() => setAuthMode("password")}
             className={`flex-1 py-2 text-sm font-semibold rounded-md transition ${authMode === "password" ? "bg-white dark:bg-gray-600 shadow text-green-600 dark:text-green-400" : "text-gray-500"}`}
           >
             Password
           </button>
-          <button 
+          <button
             onClick={() => setAuthMode("otp")}
             className={`flex-1 py-2 text-sm font-semibold rounded-md transition ${authMode === "otp" ? "bg-white dark:bg-gray-600 shadow text-green-600 dark:text-green-400" : "text-gray-500"}`}
           >
@@ -143,7 +143,7 @@ export default function Login({ onLogin }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            
+
             <div className="flex justify-end mb-4">
               <Link to="/forgot-password" className="text-xs text-blue-600 font-semibold hover:underline">
                 Forgot password?

@@ -19,7 +19,7 @@ export default function NewsGrid() {
         setLoading(false);
       }
     };
-    
+
     // Initial fetch
     fetchNews();
 
@@ -76,11 +76,11 @@ export default function NewsGrid() {
           {/* Image Thumbnail */}
           {item.image && (
             <div className="w-full h-40 overflow-hidden relative bg-black">
-              <img 
-                src={item.image} 
+              <img
+                src={item.image}
                 alt={item.title}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30" />
             </div>
@@ -96,7 +96,7 @@ export default function NewsGrid() {
                 {item.description}
               </p>
             </div>
-            
+
             {/* Meta Footer */}
             <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-gray-500 dark:text-gray-500 mt-2">
               <span className="truncate max-w-[60%]">{item.source}</span>

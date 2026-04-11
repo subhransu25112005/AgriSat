@@ -202,11 +202,10 @@ export default function KnowledgeHub() {
           <button
             key={cat}
             onClick={() => setCategoryFilter(cat)}
-            className={`px-4 py-2 rounded-full text-sm border ${
-              categoryFilter === cat
+            className={`px-4 py-2 rounded-full text-sm border ${categoryFilter === cat
                 ? "bg-emerald-600 text-white border-emerald-600"
                 : "bg-white text-slate-700 border-slate-300"
-            }`}
+              }`}
           >
             {cat}
           </button>
