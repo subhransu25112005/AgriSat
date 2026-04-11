@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'agrisat-v2.0.0'; // Updated to v2 for the news proxy deploy
+const CACHE_VERSION = 'agrisat-v3.0.0'; // Bumped: forces all browsers to drop stale caches
 const CACHE_NAME = `agrisat-cache-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [

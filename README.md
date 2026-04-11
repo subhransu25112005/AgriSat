@@ -1,78 +1,68 @@
-# 🛰️ AgriSat: Next-Gen Agricultural Intelligence Platform
+# 🛰️ AgriSat — Precision Agriculture Intelligence Platform
 
-<<<<<<< HEAD
 <p align="center">
-  <img src="frontend/public/logo.png" alt="AgriSat Logo" width="200" />
-  <br>
-  <b>Official Logo: favicon.ico</b>
+  <img src="frontend/public/logo.png" alt="AgriSat Logo" width="180" />
+  <br/><br/>
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react" />
+  <img src="https://img.shields.io/badge/FastAPI-Python-009688?style=flat-square&logo=fastapi" />
+  <img src="https://img.shields.io/badge/PWA-Enabled-5A0FC8?style=flat-square&logo=googlechrome" />
+  <img src="https://img.shields.io/badge/Satellite-Sentinel--2-0078D4?style=flat-square&logo=nasa" />
+  <img src="https://img.shields.io/badge/License-MIT-2ecc71?style=flat-square" />
+  <br/>
+  <sub>🌿 Official Logo & Favicon: <code>favicon.ico</code></sub>
 </p>
-
-=======
->>>>>>> 15f176a289ff30a3d17a9f82fd3f4eefe38d4700
-![AgriSat Banner](https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200)
 
 > **Empowering farmers with Satellite Precision, AI-Driven Diagnostics, and Real-Time Market Intelligence.**
 
-AgriSat is a comprehensive, production-grade ecosystem designed to bridge the gap between advanced space technology and ground-level farming. By leveraging Sentinel-2 satellite imagery, TensorFlow-powered crop disease detection, and hyper-local weather forecasting, AgriSat provides actionable insights to maximize yield and minimize risk.
+AgriSat is a production-grade, multi-platform ecosystem that bridges advanced space technology with ground-level farming. By combining Sentinel-2 satellite imagery, TensorFlow-powered crop disease detection, and hyper-local weather intelligence, AgriSat gives every farmer actionable insights to maximize yield and minimize risk.
 
 ---
 
-## 🌟 Key Features
+## ✨ Key Features
 
-### 📡 Satellite Monitoring (NDVI)
-- **Real-time Crop Health**: Monitor vegetation indices (NDVI) across multiple farm plots using Sentinel-2 L2A data.
-- **Historical Analysis**: Track growth patterns and identify anomalies before they become critical.
-- **Interactive Mapping**: Polygon-based field management via Leaflet and Sentinel Hub integration.
-
-### 🧠 AI Crop Diagnosis
-- **Disease Identification**: Instant diagnosis of crop pests and diseases using deep learning models.
-- **Actionable Advice**: Receive tailored treatment plans, organic remedies, and chemical recommendations.
-- **Knowledge Hub**: A curated library of cultivation tips and pest management strategies.
-
-### 📊 Market & Weather Intelligence
-- **Smart Market Prices**: Real-time commodity prices with trend prediction and profit calculators.
-- **Agri-Weather**: 7-day specialized forecasts including precipitation probability, humidity, and optimal spraying windows.
-- **Global News**: Aggregated agricultural news and government scheme updates (Direct Benefit Transfer info).
-
-### 📱 Premium UX & PWA
-- **Mobile First**: Fully responsive design with Capacitor support for Android/iOS deployment.
-- **Offline Ready**: Service Worker caching for critical data in low-connectivity rural areas.
-- **Multi-lingual**: Full i18n support (English, Hindi, etc.) for accessibility.
+| Feature | Description |
+|---|---|
+| 🛰️ **NDVI Satellite Monitor** | Real-time crop health via Sentinel-2 L2A data with interactive field mapping |
+| 🧠 **AI Crop Diagnosis** | Deep learning disease detection with treatment plans |
+| 📈 **Smart Market Prices** | Live mandi rates + price trend predictions + profit calculator |
+| ⛅ **Agri Weather** | 7-day hyper-local forecasts with spray/sow decision windows |
+| 📜 **Govt Scheme Finder** | Real-time DBT subsidy & benefit alerts |
+| 🌱 **Knowledge Hub** | Cultivation guides, pest management library |
+| 📱 **PWA + Native App** | Offline-ready, installable PWA + Android via Capacitor |
+| 🌍 **Multi-lingual** | English, Hindi, Odia (i18n) |
 
 ---
 
-## 🏗️ Technical Architecture
+## 🏗️ Architecture
 
 ```mermaid
 graph TD
-    subgraph Frontend [React / Vite Client]
-        UI[UI Components - Tailwind CSS]
-        State[State Management]
+    subgraph Client ["🖥️ Frontend — React 18 + Vite"]
+        UI[Glass UI / Tailwind CSS]
         Map[Leaflet / NDVI Maps]
-        i18n[Multi-lingual - i18next]
+        i18n[i18next — Multi-lingual]
+        PWA[Service Worker / PWA]
     end
 
-    subgraph Backend [FastAPI / Python Server]
-        API[REST API layer]
+    subgraph Server ["⚙️ Backend — FastAPI / Python"]
         Auth[JWT Authentication]
-        ML[AI/ML Service - TensorFlow]
-        Sentinel[Sentinel Hub Integration]
-        Weather[Weather Service]
+        ML[AI/ML Engine — TensorFlow]
+        Sentinel[Sentinel Hub Service]
+        Weather[Weather Aggregator]
+        News[News Proxy API]
     end
 
-    subgraph Data [Persistence & External]
+    subgraph Data ["💾 Data Layer"]
         DB[(PostgreSQL / SQLite)]
-        S2[Sentinel-2 Satellite Data]
-        API_W[OpenWeather API]
-        API_M[Market/News APIs]
+        S2[Sentinel-2 Satellite]
+        OW[OpenWeatherMap API]
+        Market[Agri Market APIs]
     end
 
-    UI <--> API
-    API <--> ML
-    API <--> Sentinel
-    API <--> DB
+    Client <-->|REST / JSON| Server
+    Server <--> DB
     Sentinel <--> S2
-    Weather <--> API_W
+    Weather <--> OW
 ```
 
 ---
@@ -80,123 +70,144 @@ graph TD
 ## 🛠️ Tech Stack
 
 **Frontend:**
-- **Framework**: React 18 (Vite)
-- **Styling**: Tailwind CSS + Framer Motion
-- **Maps**: Leaflet + React-Leaflet
+- **Framework**: React 18 + Vite 5
+- **Styling**: Tailwind CSS + Framer Motion + Glassmorphism Design System
+- **Maps**: Leaflet + React-Leaflet (NDVI overlay)
 - **Charts**: Chart.js + React-Chartjs-2
-- **Mobile**: Capacitor (Native Android/iOS Bridge)
+- **Mobile**: Capacitor 7 (Android/iOS native bridge)
+- **PWA**: Workbox + Custom Service Worker
 
 **Backend:**
-- **Framework**: FastAPI (Python)
+- **Framework**: FastAPI (Python 3.10+)
 - **ORM**: SQLModel (SQLAlchemy + Pydantic)
-- **Database**: SQLite (Local) / PostgreSQL (Production)
-- **Services**: SentinelHub Python SDK, TensorFlow, Loguru
+- **Database**: SQLite (dev) / PostgreSQL+PostGIS (prod)
+- **Services**: SentinelHub SDK, Loguru, JWT Auth, Passlib
 
-**DevOps & Tools:**
-- **Hosting**: Vercel (Frontend), Render/DigitalOcean (Backend)
-- **PWA**: Workbox
-- **Analytics**: Farm Intelligence Engines
+**DevOps:**
+- **Frontend Host**: Vercel (Edge CDN)
+- **Backend Host**: Render / DigitalOcean
+- **DB**: Supabase (PostgreSQL)
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Prerequisites
-- Node.js (v18+)
-- Python (v3.10+)
-- Sentinel Hub API Credentials
-- OpenWeatherMap API Key
+### Prerequisites
+- **Node.js** v18+
+- **Python** v3.10+
+- Sentinel Hub API credentials (optional — mock NDVI available)
+- OpenWeatherMap API key
 
-### 2. Backend Setup
+### 1. Backend Setup
 ```bash
 cd backend
 python -m venv venv
-source venv/bin/activate  # atau venv\Scripts\activate di Windows
+source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-cp .env.example .env
-# Edit .env with your credentials
-python main.py
+cp .env.example .env            # Fill in your credentials
+uvicorn main:app --reload --port 8000
 ```
 
-### 3. Frontend Setup
+### 2. Frontend Setup
 ```bash
 cd frontend
 npm install
-npm run dev
+npm run dev                     # Starts on http://localhost:5173
 ```
 
-### 4. Environment Variables
-Create a `.env` file in the `frontend` folder:
+### 3. Environment Variables
+
+Create `AgriSat/.env` (root):
+```env
+DATABASE_URL=sqlite+aiosqlite:///./agrisat.db
+SENTINELHUB_CLIENT_ID=your_id
+SENTINELHUB_CLIENT_SECRET=your_secret
+OPENWEATHER_API_KEY=your_key
+JWT_SECRET=supersecretkey
+```
+
+Create `frontend/.env`:
 ```env
 VITE_API_URL=http://localhost:8000
 VITE_WEATHER_API_KEY=your_key
 VITE_MARKET_API_KEY=your_key
 VITE_PLANTNET_API_KEY=your_key
 VITE_GNEWS_API_KEY=your_key
+VITE_YOUTUBE_API_KEY=your_key
 ```
 
 ---
 
-## 📱 Mobile Deployment
-To build for Android:
+## 📱 Mobile (Android) Deployment
+
 ```bash
 cd frontend
 npm run build
-npx cap add android
 npx cap sync
-npx cap open android
+npx cap open android            # Opens Android Studio
 ```
 
 ---
 
 ## 📂 Project Structure
 
-```text
+```
 AgriSat/
-├── backend/            # FastAPI Python project
-│   ├── routes/         # API endpoints (Auth, Farms, NDVI, Weather, AI)
-│   ├── services/       # Business logic (Sentinel, ML, Weather engines)
-│   ├── models.py       # SQLModel database schemas
-│   └── main.py         # Entry point
-├── frontend/           # React / Vite project
-│   ├── src/
-│   │   ├── components/ # Reusable UI pieces
-│   │   ├── pages/      # View components (Dashboard, NDVI Monitor, etc.)
-│   │   └── locales/    # i18n translation files
-│   └── public/         # Static assets & PWA manifest
-└── Capacitor/          # Cross-platform mobile config (Android/iOS)
+├── backend/
+│   ├── routes/          # Auth, Farms, NDVI, Weather, Market, AI
+│   ├── models.py        # SQLModel schemas
+│   ├── sentinel_service.py
+│   ├── weather_service.py
+│   └── main.py          # FastAPI entry point
+├── frontend/
+│   ├── public/
+│   │   ├── favicon.ico  # ← Official Brand Icon
+│   │   ├── logo.png     # ← Primary Logo
+│   │   └── manifest.json
+│   └── src/
+│       ├── components/  # Reusable UI (Header, BottomNav, Cards...)
+│       ├── pages/       # Dashboard, NDVI, Weather, Market...
+│       └── index.css    # Global Design System (tokens, glass, neon)
+└── capacitor.config.json
 ```
 
 ---
 
-## 🔌 API Endpoints (Core)
+## 🔌 API Reference
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/signup` | Register a new user |
-| POST | `/api/auth/login` | Authenticate and get JWT token |
-| GET | `/api/farms` | List user farm plots |
-| POST | `/api/farms` | Create a new farm boundary |
-| POST | `/api/ndvi/analyze` | Trigger satellite analysis for a farm |
-| GET | `/api/weather` | Fetch hyper-local ag-weather |
-| GET | `/api/news` | Get global agricultural intelligence |
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/auth/signup` | — | Register new user |
+| POST | `/auth/login` | — | Get JWT token |
+| GET | `/farms/` | ✅ | List user farms |
+| POST | `/farms/` | ✅ | Create farm boundary |
+| POST | `/ndvi/analyze` | ✅ | Run satellite NDVI scan |
+| POST | `/ndvi/ml/classify` | ✅ | ML crop classification |
+| POST | `/ndvi/yield/predict` | ✅ | Yield prediction |
+| GET | `/weather` | — | Hyper-local forecast |
+| GET | `/api/news` | — | Agricultural news feed |
+| GET | `/market/prices` | — | Commodity market rates |
 
 ---
 
-## ☁️ Deployment
+## ☁️ Production Deployment
 
-### Infrastructure Recommendations
-- **Database**: [Supabase](https://supabase.com) (PostgreSQL + PostGIS) for robust spatial data handling.
-- **Backend Host**: [Render](https://render.com) or [Railway](https://railway.app) for FastAPI.
-- **Frontend Host**: [Vercel](https://vercel.com) for optimized React delivery.
+| Layer | Recommended Service |
+|-------|-------------------|
+| Frontend | [Vercel](https://vercel.com) |
+| Backend | [Render](https://render.com) or [Railway](https://railway.app) |
+| Database | [Supabase](https://supabase.com) (PostgreSQL + PostGIS) |
+| Files | Cloudinary / Supabase Storage |
 
 ---
 
 ## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
 <p align="center">
-  Developed with ❤️ for the Global Farming Community.
+  Made with ❤️ for the Global Farming Community by <strong>Subhranshu Nanda</strong><br/>
+  <sub>AgriSat — Where Satellites Meet the Soil 🌾</sub>
 </p>

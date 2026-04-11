@@ -27,6 +27,12 @@
     color: var(--text);
   }
 
+  html, body, #root {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
   /* Custom Scrollbar fixing */
   ::-webkit-scrollbar {
     width: 6px;
@@ -157,37 +163,26 @@
       overflow-x: hidden;
     }
 
-    /* STEP 1: REMOVE CENTERED LAYOUT */
-    .max-w-md,
-    .max-w-lg,
-    .max-w-xl,
+    /* STEP 1: Prevent horizontal overflow */
     .max-w-screen-md,
-    .mx-auto {
-      max-width: none !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
+    .max-w-screen-lg {
+      max-width: 100% !important;
     }
 
     /* STEP 2 & 8: FULL WIDTH APP LAYOUT + SAFE AREA */
     #root,
-    .main-content,
-    .container,
-    main,
-    div[class*="min-h-screen"],
-    .bg-gradient-to-b {
-      width: 100vw !important;
-      min-height: 100vh !important;
-      padding: 12px !important;
-      padding-bottom: env(safe-area-inset-bottom) !important;
-      box-sizing: border-box;
+    .main-content {
+      width: 100%;
+      min-height: 100dvh;
       overflow-x: hidden;
+      padding-bottom: env(safe-area-inset-bottom);
+      box-sizing: border-box;
     }
 
     /* STEP 3 & 4: EDGE-TO-EDGE DESIGN + FIX CARD SPACING */
     .card,
     .panel,
     .dashboard-card,
-    section,
     div[class*="bg-white/90"] {
       width: 100% !important;
       max-width: 100% !important;
@@ -209,7 +204,6 @@
 
     button,
     .btn {
-      width: 100% !important;
       min-height: 44px !important;
     }
   }

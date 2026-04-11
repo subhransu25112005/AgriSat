@@ -110,7 +110,7 @@ export default function App() {
         {showUI && (
           <>
             {!token ? (
-              <div className="min-h-screen">
+              <div className="min-h-dvh w-full overflow-x-hidden">
                 <Suspense fallback={<RouteLoader />}>
                   <Routes>
                     <Route path="/" element={<Landing />} />
@@ -122,7 +122,7 @@ export default function App() {
                 </Suspense>
               </div>
             ) : (
-              <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+              <div className="min-h-dvh w-full overflow-x-hidden bg-gray-50 dark:bg-gray-950">
                 <OfflineBanner />
                 {/* HEADER */}
                 <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-100 dark:border-gray-800 sticky top-0 z-[45]">
@@ -140,7 +140,7 @@ export default function App() {
                 </header>
 
                 {/* ROUTES */}
-                <main className="max-w-[1440px] mx-auto p-6 min-h-[calc(100vh-80px)]">
+                <main className="max-w-[1440px] mx-auto px-4 sm:px-6 pb-safe" style={{minHeight:'calc(100dvh - 72px)'}}>
                   <Suspense fallback={<RouteLoader />}>
                     <Routes>
                       <Route path="/" element={<Dashboard />} />

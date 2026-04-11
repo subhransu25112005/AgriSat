@@ -68,10 +68,10 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-emerald-50 via-slate-50 to-white">
-      <div className="max-w-md mx-auto p-4 space-y-6 pb-16">
+      <div className="w-full max-w-xl sm:max-w-2xl lg:max-w-5xl xl:max-w-7xl mx-auto px-4 sm:px-6 space-y-6 pb-16">
         {/* DASHBOARD HEADER (ONLY LOGO) */}
         <div className="w-full sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
-          <div className="max-w-md mx-auto flex items-center justify-center px-4 py-3">
+          <div className="max-w-xl sm:max-w-2xl lg:max-w-5xl xl:max-w-7xl mx-auto flex items-center justify-center px-4 py-3">
             <img
               src="/logo.png"
               alt="AgriSat Logo"
@@ -244,7 +244,7 @@ export default function Dashboard() {
             {t("dashboard.smart_farming", "Smart farming tools")}
           </h3>
 
-          <div className="grid grid-cols-2 gap-3 text-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 text-sm">
             {/* 1. Fertilizer calculator */}
             <button
               type="button"
@@ -308,7 +308,7 @@ export default function Dashboard() {
 
         {/* SECOND ROW OF FEATURE CARDS (to reach 8–9 total) */}
         <div className={glowCard}>
-          <div className="grid grid-cols-2 gap-3 text-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 text-sm">
             {/* 5. Market prices */}
             <button
               type="button"
