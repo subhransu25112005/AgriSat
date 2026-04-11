@@ -1,41 +1,54 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import {
+  Camera,
+  FileText,
+  Pill,
+  Cloud,
+  Map,
+  Activity,
+  List,
+  Bug,
+  Sprout,
+  Bell,
+  LineChart,
+  Landmark,
+  BookOpen,
+  Users,
+  PlusCircle
+} from "lucide-react";
 
 import WeatherCard from "../components/Cards/WeatherCard";
-import WeatherIcon from "../components/icons/WeatherIcon";
-import NDVIIcon from "../components/icons/NDVIIcon";
-import SatelliteIcon from "../components/icons/SatelliteIcon";
-import FarmIcon from "../components/icons/FarmIcon";
 import FarmCard from "../components/FarmCard";
 import AgriMediaSection from "../components/media/AgriMediaSection";
+import HeroBanner from "../components/HeroBanner";
+import PageWrapper from "../components/PageWrapper";
 import api from "../api/api";
 
 export default function Dashboard() {
   const { t } = useTranslation();
   const [weather, setWeather] = useState(null);
-  const [location, setLocation] = useState("Your Field"); // or translate dynamically if needed
+  const [location, setLocation] = useState("Your Field");
   const [selectedCrops, setSelectedCrops] = useState([]);
   const [farms, setFarms] = useState([]);
   const [farmsLoading, setFarmsLoading] = useState(true);
 
   const navigate = useNavigate();
 
-  // ---- Fetch weather from your backend ----
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/weather?lat=20.2961&lon=85.8245`)
       .then((res) => res.json())
       .then((data) => {
-        console.log("Weather:", data);
         if (data && data.current) {
           setWeather(data);
-          setLocation("Bhubaneswar"); // later you can make this dynamic
+          setLocation("Bhubaneswar");
         }
       })
       .catch((e) => console.log("Weather Error:", e));
   }, []);
 
-  // ---- Fetch farms from backend ----
   useEffect(() => {
     const loadFarms = async () => {
       try {
@@ -50,7 +63,6 @@ export default function Dashboard() {
     loadFarms();
   }, []);
 
-  // ---- Crop chips at the top ----
   const crops = [
     { name: "grapes", label: t("crops.grapes", "Grapes"), icon: "/assets/illustrations/grapes.png" },
     { name: "papaya", label: t("crops.papaya", "Papaya"), icon: "/assets/illustrations/papaya.png" },
@@ -60,134 +72,122 @@ export default function Dashboard() {
     { name: "Add", label: t("crops.add", "Add"), icon: "add" }
   ];
 
-  // Common glow style for cards
-  const glowCard =
-    "bg-white/90 rounded-xl shadow-md p-4 border border-transparent " +
-    "hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(16,185,129,0.7)] " +
-    "transition-all duration-200";
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-50 via-slate-50 to-white">
-      <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8 space-y-6 pb-16">
-        {/* DASHBOARD HEADER (ONLY LOGO) */}
-        <div className="w-full sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
-          <div className="w-full max-w-screen-xl mx-auto flex items-center justify-center px-4 py-3">
-            <img
-              src="/logo.png"
-              alt="AgriSat Logo"
-              className="h-12 object-contain"
-            />
-          </div>
+    <PageWrapper className="w-full">
+      <div className="w-full space-y-6 pb-20">
+        
+        {/* LOGO HEADER */}
+        <div className="w-full flex items-center justify-center py-2 mb-4">
+          <img
+            src="/logo.png"
+            alt="AgriSat Logo"
+            className="h-14 object-contain drop-shadow-neon"
+          />
         </div>
-        {/* CROP SCROLL WITH SELECT / DESELECT */}
-        <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+
+        {/* V2 HERO BANNER */}
+        <HeroBanner />
+
+        {/* CROP SCROLL */}
+        <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide py-2 px-1">
           {crops.map((crop) => {
             const isSelected = selectedCrops.includes(crop.name);
-
             return (
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 key={crop.name}
                 onClick={() => {
-                  if (crop.name === "Add") {
-                    navigate("/select-crops");
-                    return;
-                  }
-
-                  setSelectedCrops((prev) =>
-                    prev.includes(crop.name)
-                      ? prev.filter((c) => c !== crop.name) // deselect
-                      : [...prev, crop.name] // select
-                  );
+                  if (crop.name === "Add") return navigate("/select-crops");
+                  setSelectedCrops((prev) => prev.includes(crop.name) ? prev.filter((c) => c !== crop.name) : [...prev, crop.name]);
                 }}
-                className="relative flex-shrink-0 focus:outline-none group"
+                className="relative flex-shrink-0 focus:outline-none group flex flex-col items-center"
                 type="button"
               >
-                {/* Blue X when selected */}
                 {isSelected && (
-                  <div className="absolute -top-2 -right-2 bg-blue-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full shadow">
+                  <div className="absolute -top-1 -right-1 bg-neonGreen text-earthyBlack z-10 w-5 h-5 flex items-center justify-center rounded-full shadow-neon font-black text-xs">
                     ×
                   </div>
                 )}
-
                 <div
-                  className={`rounded-2xl shadow-md border transition ${isSelected ? "border-blue-500 shadow-blue-300" : "border-slate-100"
-                    }`}
+                  className={`w-16 h-16 rounded-2xl flex items-center justify-center border transition-all duration-300 shadow-soft
+                    ${isSelected ? "border-neonGreen shadow-neon bg-white/10" : "border-glass-border bg-glass-bg hover:bg-white/5"}`}
                 >
                   {crop.icon === "add" ? (
-                    <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center">
-                      <span className="text-5xl font-bold text-blue-600 leading-none">+</span>
-                    </div>
+                    <PlusCircle size={28} className="text-neonGreen" />
                   ) : (
-                    <img
-                      src={crop.icon}
-                      alt={crop.name}
-                      className="w-16 h-16 rounded-2xl object-cover"
-                    />
+                    <img src={crop.icon} alt={crop.name} className="w-10 h-10 object-contain drop-shadow-md" />
                   )}
                 </div>
-
-                <p className="mt-1 text-xs text-center text-gray-700">{crop.label}</p>
-              </button>
+                <p className="mt-2 text-xs font-medium text-text-secondary">{crop.label}</p>
+              </motion.button>
             );
           })}
         </div>
 
-
-        {/* Weather summary card (top, already working) */}
-        <WeatherCard location={location} weather={weather} />
+        {/* WEATHER CARD */}
+        <div className="glass-card overflow-hidden relative">
+          <WeatherCard location={location} weather={weather} />
+        </div>
 
         {/* HEAL YOUR CROP */}
-        <div className={glowCard}>
-          <h3 className="text-lg font-semibold text-gray-800 mb-3">
+        <motion.div whileHover={{ y: -4 }} className="glass-card p-5 relative overflow-hidden group">
+          <div className="absolute -right-10 -top-10 w-40 h-40 bg-neonGreen opacity-5 blur-3xl group-hover:opacity-10 transition-opacity"></div>
+          
+          <h3 className="widget-header mb-4 flex items-center gap-2">
+            <Camera className="text-neonGreen" size={20} />
             {t("dashboard.healCrop")}
           </h3>
 
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center justify-between mb-5 px-2 relative z-10">
             <div className="flex flex-col items-center text-center">
-              <span className="text-3xl">📷</span>
-              <p className="text-sm">{t("dashboard.takePicture")}</p>
+               <div className="w-12 h-12 rounded-full bg-black/40 flex items-center justify-center mb-2 border border-glass-border shadow-soft">
+                  <Camera size={24} className="text-text-primary" />
+               </div>
+               <p className="text-xs text-text-secondary">{t("dashboard.takePicture")}</p>
             </div>
-
-            <span className="text-2xl text-gray-400">›</span>
-
+            <span className="text-neonGreen/50 font-bold tracking-widest">---&gt;</span>
             <div className="flex flex-col items-center text-center">
-              <span className="text-3xl">📄</span>
-              <p className="text-sm">{t("dashboard.seeDiagnosis")}</p>
+               <div className="w-12 h-12 rounded-full bg-black/40 flex items-center justify-center mb-2 border border-glass-border shadow-soft">
+                  <FileText size={24} className="text-text-primary" />
+               </div>
+               <p className="text-xs text-text-secondary">{t("dashboard.seeDiagnosis")}</p>
             </div>
-
-            <span className="text-2xl text-gray-400">›</span>
-
+            <span className="text-neonGreen/50 font-bold tracking-widest">---&gt;</span>
             <div className="flex flex-col items-center text-center">
-              <span className="text-3xl">💊</span>
-              <p className="text-sm">{t("dashboard.getMedicine")}</p>
+               <div className="w-12 h-12 rounded-full bg-black/40 flex items-center justify-center mb-2 border border-glass-border shadow-soft">
+                  <Pill size={24} className="text-text-primary" />
+               </div>
+               <p className="text-xs text-text-secondary">{t("dashboard.getMedicine")}</p>
             </div>
           </div>
 
           <button
             onClick={() => navigate("/diagnosis")}
-            className="bg-green-600 text-white w-full py-3 rounded-lg font-semibold hover:bg-green-700 active:scale-[0.98] transition-all"
+            className="primary-btn w-full py-3 tracking-wide"
             type="button"
           >
             {t("dashboard.takePicture")}
           </button>
-        </div>
+        </motion.div>
 
         {/* YOUR FARMS SECTION */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between px-1">
-            <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+        <div className="glass-card p-5">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="widget-header flex items-center gap-2">
+              <Map className="text-neonGreen" size={20} />
               {t("dashboard.yourFarms", "Your Farms")}
             </h3>
             {farms.length > 0 && (
-              <Link to="/add-field" className="text-sm font-bold text-green-600 hover:text-green-700">
-                + Add Farm
+              <Link to="/add-field" className="text-xs font-bold text-neonGreen hover:text-white transition-colors uppercase tracking-wider">
+                + ADD FARM
               </Link>
             )}
           </div>
 
           {farmsLoading ? (
             <div className="flex justify-center p-8">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
+              <div className="w-8 h-8 rounded-full border-4 border-neonGreen/20 border-t-neonGreen animate-spin"></div>
             </div>
           ) : farms.length > 0 ? (
             <div className="grid gap-4">
@@ -200,181 +200,68 @@ export default function Dashboard() {
           )}
         </div>
 
-        {/* MAIN TOOLS GRID (Weather, NDVI, Farm insights, Your fields) */}
-        <div className={glowCard}>
-          <div className="grid grid-cols-2 gap-4">
-            <Link
-              to="/weather"
-              className="flex flex-col items-center justify-center py-4 rounded-xl bg-slate-50 dark:bg-[#121821] text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-[#1A2330] hover:-translate-y-0.5 hover:shadow-md border border-transparent dark:border-gray-700 hover:border-emerald-400 transition-all"
-            >
-              <WeatherIcon size={32} />
-              <p className="mt-2 text-sm font-medium">{t("dashboard.weather")}</p>
+        {/* MAIN TOOLS GRID */}
+        <div className="glass-card p-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link to="/weather" className="flex flex-col items-center justify-center p-4 rounded-xl bg-black/20 border border-glass-border hover:border-neonGreen hover:bg-black/40 hover:shadow-neon transition-all group">
+              <Cloud size={32} className="text-text-primary group-hover:text-neonGreen transition-colors" />
+              <p className="mt-3 text-sm font-medium">{t("dashboard.weather")}</p>
+            </Link>
+            
+            <Link to="/ndvi" className="flex flex-col items-center justify-center p-4 rounded-xl bg-black/20 border border-glass-border hover:border-neonGreen hover:bg-black/40 hover:shadow-neon transition-all group">
+              <Activity size={32} className="text-text-primary group-hover:text-neonGreen transition-colors" />
+              <p className="mt-3 text-sm font-medium">{t("ndvi.title")}</p>
             </Link>
 
-            <Link
-              to="/ndvi"
-              onClick={() => navigate("/ndvi-map")}
-              className="flex flex-col items-center justify-center py-4 rounded-xl bg-slate-50 dark:bg-[#121821] text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-[#1A2330] hover:-translate-y-0.5 hover:shadow-md border border-transparent dark:border-gray-700 hover:border-emerald-400 transition-all"
-            >
-              <NDVIIcon size={32} />
-              <p className="mt-2 text-sm font-medium">{t("ndvi.title")}</p>
+            <Link to="/farm-insights" className="flex flex-col items-center justify-center p-4 rounded-xl bg-black/20 border border-glass-border hover:border-neonGreen hover:bg-black/40 hover:shadow-neon transition-all group">
+              <Map size={32} className="text-text-primary group-hover:text-neonGreen transition-colors" />
+              <p className="mt-3 text-sm font-medium">{t("farmInsights.title")}</p>
             </Link>
 
-            <Link
-              to="/farm-insights"
-              className="flex flex-col items-center justify-center py-4 rounded-xl bg-slate-50 dark:bg-[#121821] text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-[#1A2330] hover:-translate-y-0.5 hover:shadow-md border border-transparent dark:border-gray-700 hover:border-emerald-400 transition-all"
-            >
-              <SatelliteIcon size={32} />
-              <p className="mt-2 text-sm font-medium">{t("farmInsights.title")}</p>
-            </Link>
-
-            <Link
-              to="/profile"
-              className="flex flex-col items-center justify-center py-4 rounded-xl bg-slate-50 dark:bg-[#121821] text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-[#1A2330] hover:-translate-y-0.5 hover:shadow-md border border-transparent dark:border-gray-700 hover:border-emerald-400 transition-all"
-            >
-              <FarmIcon size={32} />
-              <p className="mt-2 text-sm font-medium">{t("ndvi.farmList")}</p>
+            <Link to="/profile" className="flex flex-col items-center justify-center p-4 rounded-xl bg-black/20 border border-glass-border hover:border-neonGreen hover:bg-black/40 hover:shadow-neon transition-all group">
+              <List size={32} className="text-text-primary group-hover:text-neonGreen transition-colors" />
+              <p className="mt-3 text-sm font-medium">{t("ndvi.farmList")}</p>
             </Link>
           </div>
         </div>
 
-        {/* EXTRA FEATURE CARDS (like Plantix section – 4 cards) */}
-        <div className={glowCard}>
-          <h3 className="text-base font-semibold text-gray-800 mb-3">
-            {t("dashboard.smart_farming", "Smart farming tools")}
+        {/* SMART FARMING TOOLS */}
+        <div className="glass-card p-5">
+          <h3 className="widget-header mb-4 flex items-center gap-2">
+             <Sprout size={20} className="text-neonGreen" />
+             {t("dashboard.smart_farming", "Smart farming tools")}
           </h3>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 text-sm">
-            {/* 1. Fertilizer calculator */}
-            <button
-              type="button"
-              onClick={() => navigate("/fertilizer")}
-              className="flex flex-col items-start justify-between px-3 py-3 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-transparent hover:border-emerald-400 hover:shadow-md hover:-translate-y-0.5 transition-all"
-            >
-              <span className="text-xl mb-1"></span>
-
-              <span className="font-semibold text-slate-800">
-                {t("fertilizer.title")}
-              </span>
-
-              <span className="text-xs text-slate-600 mt-1">
-                {t("fertilizer.subtitle", "Get dose per acre")}
-              </span>
-            </button>
-
-            {/* 2. Pests & diseases guide */}
-            <button
-              type="button"
-              onClick={() => navigate("pests")}
-              className="flex flex-col items-start justify-between px-3 py-3 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-transparent hover:border-emerald-400 hover:shadow-md hover:-translate-y-0.5 transition-all"
-            >
-              <span className="text-xl mb-1">🪲</span>
-              <span className="font-semibold text-slate-800">
-                {t("pests.title")}
-              </span>
-              <span className="text-xs text-slate-600 mt-1">
-                {t("pests.subtitle", "Identify & prevent")}
-              </span>
-            </button>
-
-            {/* 3. Cultivation tips */}
-            <button
-              type="button"
-              onClick={() => navigate("/cultivation-tips")}
-              className="flex flex-col items-start justify-between px-3 py-3 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-transparent hover:border-emerald-400 hover:shadow-md hover:-translate-y-0.5 transition-all"
-            >
-              <span className="text-xl mb-1">🌱</span>
-              <span className="font-semibold text-slate-800">
-                {t("cultivationTips.title")}
-              </span>
-              <span className="text-xs text-slate-600 mt-1">
-                {t("cultivationTips.subtitle", "Best practices")}
-              </span>
-            </button>
-
-            {/* 4. Pest alerts */}
-            <button
-              type="button"
-              onClick={() => navigate("/pest-alerts")}
-              className="flex flex-col items-start justify-between px-3 py-3 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-transparent hover:border-emerald-400 hover:shadow-md hover:-translate-y-0.5 transition-all"
-            >
-              <span className="text-xl mb-1">⚠️</span>
-              <span className="font-semibold text-slate-800">{t("pestAlerts.title")}</span>
-              <span className="text-xs text-slate-600 mt-1">{t("pestAlerts.subtitle", "Stay notified")}</span>
-            </button>
-
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[
+              { path: "/fertilizer", icon: Sprout, title: t("fertilizer.title"), sub: t("fertilizer.subtitle", "Get dose per acre") },
+              { path: "/pests", icon: Bug, title: t("pests.title"), sub: t("pests.subtitle", "Identify & prevent") },
+              { path: "/cultivation-tips", icon: BookOpen, title: t("cultivationTips.title"), sub: t("cultivationTips.subtitle", "Best practices") },
+              { path: "/pest-alerts", icon: Bell, title: t("pestAlerts.title"), sub: t("pestAlerts.subtitle", "Stay notified") },
+              { path: "/market-prices", icon: LineChart, title: t("marketPrices.title"), sub: t("marketPrices.subtitle", "Check mandi rates") },
+              { path: "/govt-schemes", icon: Landmark, title: t("govtSchemes.title"), sub: t("govtSchemes.subtitle", "Know your benefits") },
+              { path: "/knowledge-hub", icon: BookOpen, title: t("knowledgeHub.title"), sub: t("knowledgeHub.subtitle", "Guides & videos") },
+              { path: "/expert", icon: Users, title: t("dashboard.ask_expert", "Ask an expert"), sub: t("dashboard.ask_expert_sub", "Talk to agronomist") },
+            ].map((tool, idx) => (
+              <motion.button
+                key={idx}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => navigate(tool.path)}
+                className="flex flex-col items-start px-4 py-4 rounded-xl bg-black/20 border border-glass-border hover:border-neonGreen hover:shadow-neon transition-all group text-left relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-16 h-16 bg-neonGreen/5 blur-2xl group-hover:bg-neonGreen/20 transition-all rounded-full"></div>
+                <tool.icon size={26} className="text-text-primary group-hover:text-neonGreen transition-colors mb-3 relative z-10" />
+                <span className="font-semibold text-text-primary group-hover:text-white transition-colors relative z-10">{tool.title}</span>
+                <span className="text-xs text-text-secondary mt-1 relative z-10">{tool.sub}</span>
+              </motion.button>
+            ))}
           </div>
         </div>
 
-        {/* SECOND ROW OF FEATURE CARDS (to reach 8–9 total) */}
-        <div className={glowCard}>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 text-sm">
-            {/* 5. Market prices */}
-            <button
-              type="button"
-              onClick={() => navigate("/market-prices")}
-              className="flex flex-col items-start justify-between px-3 py-3 rounded-xl bg-sky-50 hover:bg-sky-100 border border-transparent hover:border-emerald-400 hover:shadow-md hover:-translate-y-0.5 transition-all"
-            >
-              <span className="text-xl mb-1">💹</span>
-              <span className="font-semibold text-slate-800">
-                {t("marketPrices.title")}
-              </span>
-              <span className="text-xs text-slate-600 mt-1">
-                {t("marketPrices.subtitle", "Check mandi rates")}
-              </span>
-            </button>
-
-            {/* 6. Govt schemes */}
-            <button
-              type="button"
-              onClick={() => navigate("/govt-schemes")}
-              className="flex flex-col items-start justify-between px-3 py-3 rounded-xl bg-sky-50 hover:bg-sky-100 border border-transparent hover:border-emerald-400 hover:shadow-md hover:-translate-y-0.5 transition-all"
-            >
-              <span className="text-xl mb-1">📜</span>
-              <span className="font-semibold text-slate-800">
-                {t("govtSchemes.title")}
-              </span>
-              <span className="text-xs text-slate-600 mt-1">
-                {t("govtSchemes.subtitle", "Know your benefits")}
-              </span>
-            </button>
-
-            {/* 7. Knowledge hub */}
-            <button
-              type="button"
-              onClick={() => navigate("/knowledge-hub")}
-              className="flex flex-col items-start justify-between px-3 py-3 rounded-xl bg-sky-50 hover:bg-sky-100 border border-transparent hover:border-emerald-400 hover:shadow-md hover:-translate-y-0.5 transition-all"
-            >
-              <span className="text-xl mb-1">📚</span>
-              <span className="font-semibold text-slate-800">
-                {t("knowledgeHub.title")}
-              </span>
-              <span className="text-xs text-slate-600 mt-1">
-                {t("knowledgeHub.subtitle", "Guides & videos")}
-              </span>
-            </button>
-
-            {/* 8. Expert help */}
-            <button
-              type="button"
-              className="flex flex-col items-start justify-between px-3 py-3 rounded-xl bg-sky-50 hover:bg-sky-100 border border-transparent hover:border-emerald-400 hover:shadow-md hover:-translate-y-0.5 transition-all"
-            >
-              <span className="text-xl mb-1">👨‍🌾</span>
-              <span className="font-semibold text-slate-800">
-                {t("dashboard.ask_expert", "Ask an expert")}
-              </span>
-              <span className="text-xs text-slate-600 mt-1">
-                {t("dashboard.ask_expert_sub", "Talk to agronomist")}
-              </span>
-            </button>
-          </div>
-        </div>
-
-        {/* AGRI LIVE UPDATES (Videos & News) */}
+        {/* AGRI LIVE UPDATES */}
         <AgriMediaSection />
-
-        <div className="h-6" />
       </div>
-    </div>
+    </PageWrapper>
   );
 }

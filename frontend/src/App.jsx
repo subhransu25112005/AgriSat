@@ -112,27 +112,29 @@ export default function App() {
             {!token ? (
               <div className="min-h-dvh w-full overflow-x-hidden">
                 <Suspense fallback={<RouteLoader />}>
-                  <Routes>
-                    <Route path="/" element={<Landing />} />
-                    <Route path="/login" element={<Login onLogin={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
-                    <Route path="/signup" element={<Signup onSignedUp={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
-                    <Route path="/forgot-password" element={<ForgotPassword />} />
-                    <Route path="*" element={<Landing />} />
-                  </Routes>
+                  <AnimatePresence mode="wait">
+                    <Routes>
+                      <Route path="/" element={<Landing />} />
+                      <Route path="/login" element={<Login onLogin={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
+                      <Route path="/signup" element={<Signup onSignedUp={(tk) => { localStorage.setItem("token", tk); setToken(tk); setAuth(tk); }} />} />
+                      <Route path="/forgot-password" element={<ForgotPassword />} />
+                      <Route path="*" element={<Landing />} />
+                    </Routes>
+                  </AnimatePresence>
                 </Suspense>
               </div>
             ) : (
-              <div className="min-h-dvh w-full overflow-x-hidden bg-gray-50 dark:bg-gray-950">
+              <div className="min-h-dvh w-full overflow-x-hidden bg-transparent">
                 <OfflineBanner />
                 {/* HEADER */}
-                <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-100 dark:border-gray-800 sticky top-0 z-[45]">
+                <header className="sticky top-0 z-[45]">
                   <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8 py-4 flex items-center justify-between">
                     <div className="w-10"></div>
 
                     <button
                       id="user-menu-btn"
                       onClick={() => setMenuOpen(!menuOpen)}
-                      className="w-12 h-12 flex items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-green-900/40 text-gray-700 dark:text-gray-200 transition-all font-black text-xl"
+                      className="w-12 h-12 flex items-center justify-center rounded-2xl bg-black/40 hover:bg-neonGreen/20 text-text-primary transition-all font-black text-xl border border-glass-border shadow-soft"
                     >
                       ⋮
                     </button>
@@ -142,28 +144,30 @@ export default function App() {
                 {/* ROUTES */}
                 <main className="w-full max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8" style={{minHeight:'calc(100dvh - 72px)'}}>
                   <Suspense fallback={<RouteLoader />}>
-                    <Routes>
-                      <Route path="/" element={<Dashboard />} />
-                      <Route path="/weather" element={<WeatherPage />} />
-                      <Route path="/ndvi" element={<NDVIMonitor />} />
-                      <Route path="/farm-insights" element={<FarmInsights />} />
-                      <Route path="/profile" element={<Profile />} />
-                      <Route path="/add-field" element={<AddField />} />
-                      <Route path="/settings" element={<Settings />} />
-                      <Route path="/diagnosis" element={<Diagnosis />} />
-                      <Route path="/diagnosis/result" element={<DiagnosisResult />} />
-                      <Route path="/select-crops" element={<SelectCrops />} />
-                      <Route path="/fertilizer" element={<FertilizerCalculator />} />
-                      <Route path="/pests" element={<PestsDiseases />} />
-                      <Route path="/cultivation-tips" element={<CultivationTips />} />
-                      <Route path="/pest-alerts" element={<PestAlerts />} />
-                      <Route path="/market-prices" element={<MarketPrices />} />
-                      <Route path="/govt-schemes" element={<GovtSchemes />} />
-                      <Route path="/knowledge-hub" element={<KnowledgeHub />} />
-                      <Route path="/welcome" element={<Welcome />} />
-                      {/* Fallback for logged-in users */}
-                      <Route path="*" element={<Dashboard />} />
-                    </Routes>
+                    <AnimatePresence mode="wait">
+                      <Routes>
+                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/weather" element={<WeatherPage />} />
+                        <Route path="/ndvi" element={<NDVIMonitor />} />
+                        <Route path="/farm-insights" element={<FarmInsights />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/add-field" element={<AddField />} />
+                        <Route path="/settings" element={<Settings />} />
+                        <Route path="/diagnosis" element={<Diagnosis />} />
+                        <Route path="/diagnosis/result" element={<DiagnosisResult />} />
+                        <Route path="/select-crops" element={<SelectCrops />} />
+                        <Route path="/fertilizer" element={<FertilizerCalculator />} />
+                        <Route path="/pests" element={<PestsDiseases />} />
+                        <Route path="/cultivation-tips" element={<CultivationTips />} />
+                        <Route path="/pest-alerts" element={<PestAlerts />} />
+                        <Route path="/market-prices" element={<MarketPrices />} />
+                        <Route path="/govt-schemes" element={<GovtSchemes />} />
+                        <Route path="/knowledge-hub" element={<KnowledgeHub />} />
+                        <Route path="/welcome" element={<Welcome />} />
+                        {/* Fallback for logged-in users */}
+                        <Route path="*" element={<Dashboard />} />
+                      </Routes>
+                    </AnimatePresence>
                   </Suspense>
                 </main>
 
@@ -188,4 +192,5 @@ export default function App() {
       </BrowserRouter>
     </ErrorBoundary>
   );
+
 }
