@@ -1,107 +1,193 @@
-🧠 AGRISAT INTELLIGENCE ENGINE™
+# 🛰️ AgriSat: Next-Gen Agricultural Intelligence Platform
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Powered%20By-AI%20%2B%20Satellite-00FF7F?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Decision%20Engine-Real%20Time-purple?style=for-the-badge"/>
-</p>«AgriSat is not just an app — it's an Intelligence Engine that transforms raw data into farming decisions.»
+![AgriSat Banner](https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200)
+
+> **Empowering farmers with Satellite Precision, AI-Driven Diagnostics, and Real-Time Market Intelligence.**
+
+AgriSat is a comprehensive, production-grade ecosystem designed to bridge the gap between advanced space technology and ground-level farming. By leveraging Sentinel-2 satellite imagery, TensorFlow-powered crop disease detection, and hyper-local weather forecasting, AgriSat provides actionable insights to maximize yield and minimize risk.
 
 ---
 
-🎥 🚀 PRODUCT PREVIEW (LIKE REAL STARTUP)
+## 🌟 Key Features
 
-<p align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3h3eWZ4Z2t6dHZjM2F0dXo3c3F5eHBzYmJ0eDR1dGZ5cGJqZ3R6dCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o7btPCcdNniyf0ArS/giphy.gif" width="80%"/>
-</p>---
+### 📡 Satellite Monitoring (NDVI)
+- **Real-time Crop Health**: Monitor vegetation indices (NDVI) across multiple farm plots using Sentinel-2 L2A data.
+- **Historical Analysis**: Track growth patterns and identify anomalies before they become critical.
+- **Interactive Mapping**: Polygon-based field management via Leaflet and Sentinel Hub integration.
 
-🌌 ⚡ HOW IT WORKS (SIMPLIFIED FLOW)
+### 🧠 AI Crop Diagnosis
+- **Disease Identification**: Instant diagnosis of crop pests and diseases using deep learning models.
+- **Actionable Advice**: Receive tailored treatment plans, organic remedies, and chemical recommendations.
+- **Knowledge Hub**: A curated library of cultivation tips and pest management strategies.
 
+### 📊 Market & Weather Intelligence
+- **Smart Market Prices**: Real-time commodity prices with trend prediction and profit calculators.
+- **Agri-Weather**: 7-day specialized forecasts including precipitation probability, humidity, and optimal spraying windows.
+- **Global News**: Aggregated agricultural news and government scheme updates (Direct Benefit Transfer info).
+
+### 📱 Premium UX & PWA
+- **Mobile First**: Fully responsive design with Capacitor support for Android/iOS deployment.
+- **Offline Ready**: Service Worker caching for critical data in low-connectivity rural areas.
+- **Multi-lingual**: Full i18n support (English, Hindi, etc.) for accessibility.
+
+---
+
+## 🏗️ Technical Architecture
+
+```mermaid
 graph TD
-A[📱 Farmer Input] --> B[🌐 Frontend App]
-B --> C[⚡ Backend API]
-C --> D[🧠 AI Engine]
-C --> E[📡 Satellite Data]
-C --> F[🌦 Weather Data]
-C --> G[📊 Market Data]
-D --> H[📈 Smart Insights]
-H --> I[🚜 Farmer Decision]
+    subgraph Frontend [React / Vite Client]
+        UI[UI Components - Tailwind CSS]
+        State[State Management]
+        Map[Leaflet / NDVI Maps]
+        i18n[Multi-lingual - i18next]
+    end
+
+    subgraph Backend [FastAPI / Python Server]
+        API[REST API layer]
+        Auth[JWT Authentication]
+        ML[AI/ML Service - TensorFlow]
+        Sentinel[Sentinel Hub Integration]
+        Weather[Weather Service]
+    end
+
+    subgraph Data [Persistence & External]
+        DB[(PostgreSQL / SQLite)]
+        S2[Sentinel-2 Satellite Data]
+        API_W[OpenWeather API]
+        API_M[Market/News APIs]
+    end
+
+    UI <--> API
+    API <--> ML
+    API <--> Sentinel
+    API <--> DB
+    Sentinel <--> S2
+    Weather <--> API_W
+```
 
 ---
 
-🧠 💡 CORE INTELLIGENCE MODULES
+## 🛠️ Tech Stack
 
-Module| Description
-🤖 AI Engine| Crop disease detection & prediction
-📡 Satellite Engine| NDVI + field monitoring
-🌦 Weather Engine| Forecast + advisory
-📊 Market Engine| Price intelligence
-💧 Irrigation Engine| Smart watering alerts
+**Frontend:**
+- **Framework**: React 18 (Vite)
+- **Styling**: Tailwind CSS + Framer Motion
+- **Maps**: Leaflet + React-Leaflet
+- **Charts**: Chart.js + React-Chartjs-2
+- **Mobile**: Capacitor (Native Android/iOS Bridge)
 
----
+**Backend:**
+- **Framework**: FastAPI (Python)
+- **ORM**: SQLModel (SQLAlchemy + Pydantic)
+- **Database**: SQLite (Local) / PostgreSQL (Production)
+- **Services**: SentinelHub Python SDK, TensorFlow, Loguru
 
-📊 🚀 PERFORMANCE & OPTIMIZATION
-
-- ⚡ Ultra-fast Vite frontend
-- 📱 Mobile-first responsive UI
-- 🔄 PWA offline support
-- 🧠 Optimized ML inference
-- 🌍 CDN-based deployment
-
----
-
-🔐 🛡 SECURITY & RELIABILITY
-
-- 🔒 API key protection (backend only)
-- 🌐 CORS secured endpoints
-- ⚡ Error boundaries (no white screen)
-- 🔄 Auto cache invalidation
-- 📡 Stable production deployment
+**DevOps & Tools:**
+- **Hosting**: Vercel (Frontend), Render/DigitalOcean (Backend)
+- **PWA**: Workbox
+- **Analytics**: Farm Intelligence Engines
 
 ---
 
-🌍 🚀 DEPLOYMENT STACK
+## 🚀 Getting Started
 
-Layer| Platform
-Frontend| Vercel
-Backend| Render / Cloud Run
-APIs| GNews, Weather
-Storage| Cloud
+### 1. Prerequisites
+- Node.js (v18+)
+- Python (v3.10+)
+- Sentinel Hub API Credentials
+- OpenWeatherMap API Key
+
+### 2. Backend Setup
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # atau venv\Scripts\activate di Windows
+pip install -r requirements.txt
+cp .env.example .env
+# Edit .env with your credentials
+python main.py
+```
+
+### 3. Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### 4. Environment Variables
+Create a `.env` file in the `frontend` folder:
+```env
+VITE_API_URL=http://localhost:8000
+VITE_WEATHER_API_KEY=your_key
+VITE_MARKET_API_KEY=your_key
+VITE_PLANTNET_API_KEY=your_key
+VITE_GNEWS_API_KEY=your_key
+```
 
 ---
 
-📈 💰 SCALABILITY VISION
-
-- 🌍 Pan-India farmer onboarding
-- 📡 Real-time satellite streaming
-- 🤖 Advanced ML models
-- 🧠 Predictive agriculture system
-- 💬 Voice-based farmer assistant
-
----
-
-🏆 💎 WHY THIS IS DIFFERENT
-
-«Most projects show features.
-AgriSat shows impact + intelligence + scalability.»
+## 📱 Mobile Deployment
+To build for Android:
+```bash
+cd frontend
+npm run build
+npx cap add android
+npx cap sync
+npx cap open android
+```
 
 ---
 
-🌱 ❤️ BUILT FOR REAL PEOPLE
+## 📂 Project Structure
 
-This platform is designed for:
-
-👨‍🌾 Small farmers
-🌾 Rural communities
-📉 Reducing farming risk
-📈 Increasing income
+```text
+AgriSat/
+├── backend/            # FastAPI Python project
+│   ├── routes/         # API endpoints (Auth, Farms, NDVI, Weather, AI)
+│   ├── services/       # Business logic (Sentinel, ML, Weather engines)
+│   ├── models.py       # SQLModel database schemas
+│   └── main.py         # Entry point
+├── frontend/           # React / Vite project
+│   ├── src/
+│   │   ├── components/ # Reusable UI pieces
+│   │   ├── pages/      # View components (Dashboard, NDVI Monitor, etc.)
+│   │   └── locales/    # i18n translation files
+│   └── public/         # Static assets & PWA manifest
+└── Capacitor/          # Cross-platform mobile config (Android/iOS)
+```
 
 ---
 
-🚀 FINAL IMPRESSION (RECRUITER HOOK)
+## 🔌 API Endpoints (Core)
 
-«“This is not just a project — this is a scalable AgriTech platform.”»
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/signup` | Register a new user |
+| POST | `/api/auth/login` | Authenticate and get JWT token |
+| GET | `/api/farms` | List user farm plots |
+| POST | `/api/farms` | Create a new farm boundary |
+| POST | `/api/ndvi/analyze` | Trigger satellite analysis for a farm |
+| GET | `/api/weather` | Fetch hyper-local ag-weather |
+| GET | `/api/news` | Get global agricultural intelligence |
+
+---
+
+## ☁️ Deployment
+
+### Infrastructure Recommendations
+- **Database**: [Supabase](https://supabase.com) (PostgreSQL + PostGIS) for robust spatial data handling.
+- **Backend Host**: [Render](https://render.com) or [Railway](https://railway.app) for FastAPI.
+- **Frontend Host**: [Vercel](https://vercel.com) for optimized React delivery.
+
+---
+
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 <p align="center">
-  💚 Built with vision. Powered by AI. Focused on impact. 💚
+  Developed with ❤️ for the Global Farming Community.
 </p>
