@@ -26,7 +26,7 @@ from routes.news import router as news_router
 route_modules = [
     "auth", "farms", "ndvi_extended", "weather", 
     "predict", "market", "schemes", "insights", 
-    "notifications", "support"
+    "notifications", "support", "news"
 ]
 
 routers = {}
@@ -58,7 +58,8 @@ app.add_middleware(
 )
 
 # ✅ Safely Include Routers
-app.include_router(news_router, prefix="/api")
+# Standard dynamic loading handles prefixes within the router files
+
 for name, router in routers.items():
     app.include_router(router)
     logger.info(f"✅ Loaded {name} API routes")
