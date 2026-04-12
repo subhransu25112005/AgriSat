@@ -62,6 +62,7 @@ export default function VideoCarousel() {
             <img
               src={video.thumbnail}
               alt={video.title}
+              onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x400/1e293b/10b981?text=Video+Unavailable' }}
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
 

@@ -77,9 +77,10 @@ export default function NewsGrid() {
           {item.image && (
             <div className="w-full h-40 overflow-hidden relative bg-black">
               <img
-                src={item.image}
-                alt={item.title}
+                src={item?.image}
+                alt={item?.title}
                 loading="lazy"
+                onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x400/1e293b/10b981?text=News+Unavailable' }}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30" />
