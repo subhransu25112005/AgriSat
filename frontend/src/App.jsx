@@ -142,7 +142,7 @@ export default function App() {
                 </header>
 
                 {/* ROUTES */}
-                <main className="w-full max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8" style={{minHeight:'calc(100dvh - 72px)'}}>
+                <main className="w-full max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8" style={{ minHeight: 'calc(100dvh - 72px)' }}>
                   <Suspense fallback={<RouteLoader />}>
                     <AnimatePresence mode="wait">
                       <Routes>
