@@ -21,14 +21,16 @@ MOCK_NEWS = [
         "description": "New automated moisture control technologies are helping farmers save up to 40% water while increasing overall crop productivity.",
         "image": "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?w=800&q=80",
         "source": "AgriTech Daily",
-        "url": "https://example.com/irrigation-success"
+        "url": "https://example.com/irrigation-success",
+        "publishedAt": "2024-03-20T10:00:00Z"
     },
     {
         "title": "Government Expansion of Organic Farming Subsidies for 2024",
         "description": "Ministry of Agriculture announces new financial support packages for small-scale farmers transitioning to chemical-free cultivation.",
         "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
         "source": "Govt Bulletin",
-        "url": "https://example.com/govt-subsidy"
+        "url": "https://example.com/govt-subsidy",
+        "publishedAt": "2024-03-19T14:30:00Z"
     }
 ]
 
@@ -85,7 +87,8 @@ async def get_news():
                 "description": a.get("description"),
                 "image": a.get("image"),
                 "url": a.get("url"),
-                "source": a.get("source", {}).get("name")
+                "source": a.get("source", {}).get("name"),
+                "publishedAt": a.get("publishedAt")
             }
             for a in raw_articles
         ]
@@ -99,6 +102,7 @@ async def get_news():
     except Exception as e:
         logger.error(f"News Proxy Critical Error: {e}. Using safety fallbacks.")
         return {"articles": MOCK_NEWS, "status": "success", "error": str(e)}
+
 
 
 
