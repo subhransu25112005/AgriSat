@@ -27,7 +27,7 @@ export default function FarmCard({ farm, onAdd }) {
 
   const statusColors = {
     healthy: "bg-green-100 text-green-700 border-green-200 dark:bg-green-900/30 dark:text-green-400",
-    risk:    "bg-red-100 text-red-700 border-red-200 dark:bg-red-900/30 dark:text-red-400",
+    risk: "bg-red-100 text-red-700 border-red-200 dark:bg-red-900/30 dark:text-red-400",
     warning: "bg-yellow-100 text-yellow-700 border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-400",
   };
   const status = farm.status || "healthy";
