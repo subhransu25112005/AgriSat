@@ -38,15 +38,22 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/weather?lat=20.2961&lon=85.8245`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.current) {
-          setWeather(data);
+    const fetchWeather = async () => {
+      try {
+        const res = await api.get("/weather/", {
+          params: { lat: 20.2961, lon: 85.8245 }
+        });
+        if (res.data && res.data.current) {
+          setWeather(res.data);
           setLocation("Bhubaneswar");
         }
-      })
-      .catch((e) => console.log("Weather Error:", e));
+      } catch (e) {
+        console.error("Weather Fetch Error:", e);
+        // Fallback to null so UI remains in graceful Loading/--°C state
+        setWeather(null);
+      }
+    };
+    fetchWeather();
   }, []);
 
   useEffect(() => {
@@ -75,7 +82,7 @@ export default function Dashboard() {
   return (
     <PageWrapper className="w-full">
       <div className="w-full space-y-6 pb-20">
-        
+
         {/* LOGO HEADER */}
         <div className="w-full flex items-center justify-center py-2 mb-4">
           <img
@@ -133,7 +140,7 @@ export default function Dashboard() {
         {/* HEAL YOUR CROP */}
         <motion.div whileHover={{ y: -4 }} className="glass-card p-5 relative overflow-hidden group">
           <div className="absolute -right-10 -top-10 w-40 h-40 bg-neonGreen opacity-5 blur-3xl group-hover:opacity-10 transition-opacity"></div>
-          
+
           <h3 className="widget-header mb-4 flex items-center gap-2">
             <Camera className="text-neonGreen" size={20} />
             {t("dashboard.healCrop")}
@@ -141,24 +148,24 @@ export default function Dashboard() {
 
           <div className="flex items-center justify-between mb-5 px-2 relative z-10">
             <div className="flex flex-col items-center text-center">
-               <div className="w-12 h-12 rounded-full bg-black/40 flex items-center justify-center mb-2 border border-glass-border shadow-soft">
-                  <Camera size={24} className="text-text-primary" />
-               </div>
-               <p className="text-xs text-text-secondary">{t("dashboard.takePicture")}</p>
+              <div className="w-12 h-12 rounded-full bg-black/40 flex items-center justify-center mb-2 border border-glass-border shadow-soft">
+                <Camera size={24} className="text-text-primary" />
+              </div>
+              <p className="text-xs text-text-secondary">{t("dashboard.takePicture")}</p>
             </div>
             <span className="text-neonGreen/50 font-bold tracking-widest">---&gt;</span>
             <div className="flex flex-col items-center text-center">
-               <div className="w-12 h-12 rounded-full bg-black/40 flex items-center justify-center mb-2 border border-glass-border shadow-soft">
-                  <FileText size={24} className="text-text-primary" />
-               </div>
-               <p className="text-xs text-text-secondary">{t("dashboard.seeDiagnosis")}</p>
+              <div className="w-12 h-12 rounded-full bg-black/40 flex items-center justify-center mb-2 border border-glass-border shadow-soft">
+                <FileText size={24} className="text-text-primary" />
+              </div>
+              <p className="text-xs text-text-secondary">{t("dashboard.seeDiagnosis")}</p>
             </div>
             <span className="text-neonGreen/50 font-bold tracking-widest">---&gt;</span>
             <div className="flex flex-col items-center text-center">
-               <div className="w-12 h-12 rounded-full bg-black/40 flex items-center justify-center mb-2 border border-glass-border shadow-soft">
-                  <Pill size={24} className="text-text-primary" />
-               </div>
-               <p className="text-xs text-text-secondary">{t("dashboard.getMedicine")}</p>
+              <div className="w-12 h-12 rounded-full bg-black/40 flex items-center justify-center mb-2 border border-glass-border shadow-soft">
+                <Pill size={24} className="text-text-primary" />
+              </div>
+              <p className="text-xs text-text-secondary">{t("dashboard.getMedicine")}</p>
             </div>
           </div>
 
@@ -207,7 +214,7 @@ export default function Dashboard() {
               <Cloud size={32} className="text-text-primary group-hover:text-neonGreen transition-colors" />
               <p className="mt-3 text-sm font-medium">{t("dashboard.weather")}</p>
             </Link>
-            
+
             <Link to="/ndvi" className="flex flex-col items-center justify-center p-4 rounded-xl bg-black/20 border border-glass-border hover:border-neonGreen hover:bg-black/40 hover:shadow-neon transition-all group">
               <Activity size={32} className="text-text-primary group-hover:text-neonGreen transition-colors" />
               <p className="mt-3 text-sm font-medium">{t("ndvi.title")}</p>
@@ -228,8 +235,8 @@ export default function Dashboard() {
         {/* SMART FARMING TOOLS */}
         <div className="glass-card p-5">
           <h3 className="widget-header mb-4 flex items-center gap-2">
-             <Sprout size={20} className="text-neonGreen" />
-             {t("dashboard.smart_farming", "Smart farming tools")}
+            <Sprout size={20} className="text-neonGreen" />
+            {t("dashboard.smart_farming", "Smart farming tools")}
           </h3>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
