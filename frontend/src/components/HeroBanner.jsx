@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Leaf, Plane } from "lucide-react";
+import Earth3D from "./Earth3D";
 
 const quotes = [
   "Empowering Farmers with Intelligence.",
@@ -22,8 +23,11 @@ export default function HeroBanner() {
   return (
     <div className="relative w-full h-[45vh] min-h-[300px] overflow-hidden rounded-3xl mb-8 flex items-center justify-center bg-darkForest glass-card border-none shadow-neon">
       
+      {/* 3D Scene Background */}
+      <Earth3D />
+      
       {/* Background Deep Glows */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-[#0F7A3A]/20 via-[#0B130D] to-[#00ff88]/10 opacity-70"></div>
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#0F7A3A]/20 via-[#0B130D]/50 to-[#00ff88]/10 opacity-70 pointer-events-none"></div>
       
       {/* Floating Particles/Elements */}
       <div className="absolute grid grid-cols-2 gap-8 top-10 left-10 opacity-10 blur-sm pointer-events-none">
@@ -33,7 +37,7 @@ export default function HeroBanner() {
          <Plane size={80} className="text-brandAccent transform -rotate-12 animate-[particleDrift_15s_infinite]" />
       </div>
 
-      <div className="relative z-10 text-center px-4 md:px-10 max-w-4xl mx-auto flex flex-col items-center">
+      <div className="relative z-10 text-center px-4 md:px-10 max-w-4xl mx-auto flex flex-col items-center pointer-events-none">
         
         <motion.div
            initial={{ scale: 0.8, opacity: 0 }}
